@@ -13,6 +13,7 @@ const QuizExercise = dynamic(() => import("./QuizExercise").then((m) => m.QuizEx
 const PredictOutput = dynamic(() => import("./PredictOutput").then((m) => m.PredictOutput), { loading });
 const TypeTheCode = dynamic(() => import("./TypeTheCode").then((m) => m.TypeTheCode), { loading });
 const CodeChallenge = dynamic(() => import("./CodeChallenge").then((m) => m.CodeChallenge), { loading });
+const TerminalExercise = dynamic(() => import("./TerminalExercise").then((m) => m.TerminalExercise), { loading });
 
 export function UnitExercise({
   unit,
@@ -58,9 +59,14 @@ export function UnitExercise({
     case "build-it":
       exercise = <CodeChallenge challenge={unit.challenge} kind={unit.type} onPassed={handlePassed} />;
       break;
+    case "terminal":
+      exercise = <TerminalExercise spec={unit.terminal} onPassed={handlePassed} />;
+      break;
     case "boss":
       exercise = unit.challenge ? (
         <CodeChallenge challenge={unit.challenge} kind="boss" onPassed={handlePassed} />
+      ) : unit.terminal ? (
+        <TerminalExercise spec={unit.terminal} title="Boss Challenge" onPassed={handlePassed} />
       ) : (
         <QuizExercise questions={unit.questions ?? []} title="Boss Challenge" onPassed={handlePassed} />
       );

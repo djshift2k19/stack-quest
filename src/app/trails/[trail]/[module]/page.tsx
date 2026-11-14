@@ -33,6 +33,7 @@ const TYPE_LABELS: Record<string, string> = {
   "type-the-code": "Type the code",
   "build-it": "Build it",
   boss: "Boss Challenge",
+  terminal: "Practice terminal",
 };
 
 export default async function ModulePage({ params }: PageProps<"/trails/[trail]/[module]">) {

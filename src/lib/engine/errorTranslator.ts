@@ -171,9 +171,94 @@ const SQL_RULES: Rule[] = [
   },
 ];
 
+const TERMINAL_RULES: Rule[] = [
+  {
+    pattern: /command not found: (\S+)/,
+    translate: (m) => ({
+      title: `The terminal doesn't know a command called "${m[1]}"`,
+      explanation: "The first word you type is the command. This one isn't a command the terminal recognises, usually because of a typo or a missing space.",
+      whereToLook: `Check the spelling of "${m[1]}". Type help to see the commands you can practise here.`,
+    }),
+  },
+  {
+    pattern: /^(?:cd|ls|cat|rm|mv|cp|touch|mkdir): (.+?): No such file or directory$|^cd: no such file or directory: (.+)$/,
+    translate: (m) => ({
+      title: `There's nothing called "${m[1] ?? m[2]}" here`,
+      explanation: "The command looked for that name in the folder you're standing in (or along the path you gave) and found nothing. Names are case-sensitive: Documents and documents are different.",
+      whereToLook: "Type pwd to see where you are and ls to see what's here. Then check the spelling and capital letters.",
+    }),
+  },
+  {
+    pattern: /File exists$/,
+    translate: () => ({
+      title: "Something with that name already exists",
+      explanation: "You can't make two things with the same name in the same folder.",
+      whereToLook: "Type ls to see what's already here, then pick a different name, or use the one that exists.",
+    }),
+  },
+  {
+    pattern: /is a directory/i,
+    translate: () => ({
+      title: "That's a folder, not a file",
+      explanation: "This command works on files. To delete a folder and everything inside it, use rm -r (carefully!). To look inside a folder, use ls or cd.",
+      whereToLook: "Check whether the name you typed is a folder (ls shows folders with a / at the end here).",
+    }),
+  },
+  {
+    pattern: /not a directory/,
+    translate: () => ({
+      title: "That's a file, not a folder",
+      explanation: "You can only cd into folders. Files are opened or read instead, for example with cat.",
+      whereToLook: "Type ls to check which names are folders (they end with /).",
+    }),
+  },
+  {
+    pattern: /fatal: not a git repository/,
+    translate: () => ({
+      title: "Git isn't tracking this folder yet",
+      explanation: "Git commands only work inside a folder where Git has been switched on with git init (or one of the folders inside it).",
+      whereToLook: "Type pwd to check you're in your project folder. If you are, run git init first.",
+    }),
+  },
+  {
+    pattern: /nothing added to commit but untracked files present/,
+    translate: () => ({
+      title: "Nothing has been added for this snapshot yet",
+      explanation: "A commit saves what's in the staging area, and it's empty. Your files exist, but you haven't told Git to include them.",
+      whereToLook: "Run git add with the file name (or git add . for everything), then commit again.",
+    }),
+  },
+  {
+    pattern: /nothing to commit/,
+    translate: () => ({
+      title: "There's nothing new to save",
+      explanation: "Everything is already saved in the last commit. Change or add a file first.",
+      whereToLook: "Run git status: it tells you what (if anything) has changed.",
+    }),
+  },
+  {
+    pattern: /pathspec '(.+?)' did not match any files/,
+    translate: (m) => ({
+      title: `Git can't find "${m[1]}"`,
+      explanation: "git add needs the name of a file (or folder) that exists here.",
+      whereToLook: "Type ls to check the exact name, including capitals and the extension (like .txt).",
+    }),
+  },
+  {
+    pattern: /add a message with -m/,
+    translate: () => ({
+      title: "Every commit needs a message",
+      explanation: 'The message describes what changed, so you (and others) can understand the history later. Put it in quotes after -m.',
+      whereToLook: 'Try: git commit -m "Describe what you did"',
+    }),
+  },
+];
+
 export const TIMEOUT_ERROR_NAME = "TimeoutError";
 
-export function translateError(err: ErrorInfo, language: "javascript" | "sql" = "javascript"): Translation {
+export type ErrorLanguage = "javascript" | "sql" | "terminal";
+
+export function translateError(err: ErrorInfo, language: ErrorLanguage = "javascript"): Translation {
   if (err.name === TIMEOUT_ERROR_NAME && language === "sql") {
     return {
       title: "Your query took too long and was stopped",
@@ -190,13 +275,19 @@ export function translateError(err: ErrorInfo, language: "javascript" | "sql" = 
     };
   }
 
-  for (const rule of language === "sql" ? SQL_RULES : JS_RULES) {
+  const rules = language === "sql" ? SQL_RULES : language === "terminal" ? TERMINAL_RULES : JS_RULES;
+  for (const rule of rules) {
     const match = err.message.match(rule.pattern);
     if (match) return rule.translate(match, err);
   }
 
   return {
-    title: language === "sql" ? "The database reported a problem" : `JavaScript reported a ${err.name || "problem"}`,
+    title:
+      language === "sql"
+        ? "The database reported a problem"
+        : language === "terminal"
+          ? "The terminal reported a problem"
+          : `JavaScript reported a ${err.name || "problem"}`,
     explanation:
       "This one isn't in the translator yet. Read the real message below slowly: it usually names the thing that went wrong.",
     whereToLook: `${at(err)}. Try searching the web for the exact message in quotes.`,

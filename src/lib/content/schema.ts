@@ -52,6 +52,7 @@ export const UNIT_TYPES = [
   "type-the-code",
   "build-it",
   "boss",
+  "terminal",
 ] as const;
 
 export const LANGUAGES = ["javascript", "html", "css", "sql"] as const;
@@ -135,6 +136,43 @@ export const challengeSchema = z
     }
   });
 
+/* ---------- The practice terminal ---------- */
+
+export const terminalCheckSchema = z
+  .object({
+    ran: z.string().optional(),
+    cwd: z.string().optional(),
+    exists: z.array(z.string()).optional(),
+    missing: z.array(z.string()).optional(),
+    fileContains: z.object({ path: z.string(), text: z.string() }).optional(),
+    gitRepo: z.string().optional(),
+    gitCommits: z.object({ repo: z.string(), atLeast: z.number().int().min(1) }).optional(),
+    gitStaged: z.object({ repo: z.string(), paths: z.array(z.string()).min(1) }).optional(),
+  })
+  .refine((c) => Object.values(c).some((v) => v !== undefined), { message: "a task check needs at least one condition" });
+
+export const terminalTaskSchema = z.object({
+  /** What to do, e.g. "Make a folder called projects". */
+  instruction: z.string().min(1),
+  check: terminalCheckSchema,
+  hints: hintLadder,
+  /** Commands that complete the task (shown after the hints, and used by the tests). */
+  solution: z.array(z.string().min(1)).min(1),
+  /** Shown once the task is done: what just happened. */
+  explain: z.string().optional(),
+});
+
+export const terminalSchema = z.object({
+  setup: z
+    .object({
+      cwd: z.string().optional(),
+      dirs: z.array(z.string()).optional(),
+      files: z.record(z.string(), z.string()).optional(),
+    })
+    .default({}),
+  tasks: z.array(terminalTaskSchema).min(1),
+});
+
 /* ---------- The unit types ---------- */
 
 const base = {
@@ -181,18 +219,20 @@ const typeTheCodeUnit = z.object({
   target: z.string().min(1),
 });
 
+const terminalUnit = z.object({ ...base, type: z.literal("terminal"), terminal: terminalSchema });
+
 const bossUnit = z
   .object({
     ...base,
     type: z.literal("boss"),
     xp: z.number().int().min(1).default(50),
-    /** A boss is either a code challenge... */
+    /** A boss is a code challenge, a practice-terminal mission, or (for no-code trails) scenario questions. */
     challenge: challengeSchema.optional(),
-    /** ...or (for no-code trails) a set of scenario questions. */
+    terminal: terminalSchema.optional(),
     questions: z.array(questionSchema).optional(),
   })
-  .refine((u) => Boolean(u.challenge) !== Boolean(u.questions), {
-    message: "a boss needs either a challenge or questions, not both",
+  .refine((u) => [u.challenge, u.terminal, u.questions].filter(Boolean).length === 1, {
+    message: "a boss needs exactly one of: challenge, terminal or questions",
     path: ["challenge"],
   });
 
@@ -204,6 +244,7 @@ export const unitFrontmatterSchema = z.discriminatedUnion("type", [
   codeUnit("build-it"),
   typeTheCodeUnit,
   bossUnit,
+  terminalUnit,
 ]);
 
 /* ---------- Glossary ---------- */
@@ -223,6 +264,8 @@ export type ChallengeTest = z.infer<typeof testSchema>;
 export type ApiRoute = z.infer<typeof apiRouteSchema>;
 export type Language = (typeof LANGUAGES)[number];
 export type GlossaryEntry = z.infer<typeof glossaryEntrySchema>;
+export type TerminalSpec = z.infer<typeof terminalSchema>;
+export type TerminalTask = z.infer<typeof terminalTaskSchema>;
 
 export type TrailMeta = z.infer<typeof trailSchema>;
 export type ModuleMeta = z.infer<typeof moduleSchema>;

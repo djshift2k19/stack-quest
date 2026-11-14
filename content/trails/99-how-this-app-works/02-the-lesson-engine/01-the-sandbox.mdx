@@ -17,7 +17,7 @@ When you press **Run & check**, your code doesn't run in the Stack Quest page it
 
 1. **A sealed frame.** The code goes into an invisible frame inside the page (an *iframe*) with the `sandbox` setting switched on. That gives it a "nobody" address, so it can't read your saved progress or touch the page around it.
 2. **No internet.** A security rule (a *Content Security Policy*) inside the frame blocks every network request. Your code can't download or send anything, which protects you and your data bundle.
-3. **A time limit.** The code runs in a background worker (a *Web Worker*). If it runs for more than 3 seconds (usually an endless loop), Stack Quest switches the worker off and tells you what probably happened.
+3. **A time limit.** The code runs in a background worker (a *Web Worker*). If it runs for more than 3 seconds (usually an <Term word="loop">endless loop</Term>), Stack Quest switches the worker off and tells you what probably happened.
 
 The code that builds these walls is in `src/sandboxes/js/frame.ts`. Open it and look for `sandbox` and `default-src 'none'`.
 

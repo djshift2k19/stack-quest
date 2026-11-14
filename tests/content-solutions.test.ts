@@ -13,6 +13,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { getCatalog, getUnit } from "@/lib/content/loader";
 import type { Challenge, UnitFrontmatter } from "@/lib/content/schema";
 import { sameOutput } from "@/lib/engine/sameOutput";
+import { checkTask, createShell, execute } from "@/lib/terminal/shell";
 import { createJsRuntime } from "@/sandboxes/js/runtime";
 import { runSqlJob } from "@/sandboxes/sql/sqlCore";
 
@@ -67,6 +68,24 @@ describe("every exercise in content/ is solvable", async () => {
         const printed = r.logs.map((l) => l.text).join("\n");
         const expected = meta.answer ?? meta.options!.find((o) => o.correct)!.text;
         expect(sameOutput(printed, expected)).toBe(true);
+      });
+    }
+
+    const terminal = meta.type === "terminal" ? meta.terminal : meta.type === "boss" ? meta.terminal : undefined;
+    if (terminal) {
+      it(`${key}: every terminal task is done by its solution commands, in order`, () => {
+        let state = createShell(terminal.setup);
+        terminal.tasks.forEach((task, i) => {
+          expect(checkTask(state, task.check, []), `task ${i + 1} is already done before starting`).toBe(false);
+          const ran: string[] = [];
+          for (const command of task.solution) {
+            const r = execute(state, command);
+            expect(r.ok, `task ${i + 1}: "${command}" failed: ${r.lines.map((l) => l.text).join(" ")}`).toBe(true);
+            state = r.state;
+            ran.push(r.command);
+          }
+          expect(checkTask(state, task.check, ran), `task ${i + 1} isn't complete after its solution`).toBe(true);
+        });
       });
     }
 

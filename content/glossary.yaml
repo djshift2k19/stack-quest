@@ -126,3 +126,178 @@
   term: Variable
   definition: A name that holds a value so you can use it later, like a labelled jar.
   example: "let score = 10; creates a variable called score holding 10."
+
+- id: loop
+  term: Loop
+  definition: Code that repeats a set of instructions, either a fixed number of times or until a condition stops being true. An "endless loop" never stops.
+  example: Going through every learner in a list and adding up their XP is a loop.
+
+- id: client
+  term: Client
+  definition: The program (or device) that asks a server for something. Your browser is a client.
+  example: When you open a news site, your phone's browser is the client and the news site's computer is the server.
+
+- id: internet
+  term: Internet
+  definition: The worldwide network of connected computers, linked by cables, fibre, cell towers and satellites, that lets them send each other data.
+  example: Your phone reaches the internet through your mobile network or Wi-Fi.
+
+- id: web
+  term: The web
+  definition: The collection of web pages and sites you visit with a browser. It's one of many things that run on top of the internet (others include email and WhatsApp).
+  example: Wikipedia is part of the web; your WhatsApp messages travel over the internet but aren't the web.
+
+- id: website
+  term: Website
+  definition: A collection of related web pages under one name, like a book made of pages.
+  example: news24.com is a website; each article on it is a web page.
+
+- id: url
+  term: URL
+  definition: Short for "Uniform Resource Locator". The full address of something on the web, such as a page or a picture.
+  example: https://www.example.co.za/about is a URL.
+
+- id: domain-name
+  term: Domain name
+  definition: The human-friendly name of a website, like example.co.za, which you rent yearly from a registrar.
+  example: In https://www.sanparks.org/parks, the domain name is sanparks.org.
+
+- id: ip-address
+  term: IP address
+  definition: A number that identifies a device on the internet, like a street address for computers.
+  example: 104.18.32.7 is an IP address.
+
+- id: dns
+  term: DNS
+  definition: Short for "Domain Name System". The internet's phone book, which turns a domain name into the IP address of the server to contact.
+  example: DNS turns example.co.za into an address like 104.18.32.7.
+
+- id: protocol
+  term: Protocol
+  definition: An agreed set of rules for how two computers talk to each other, so both understand the conversation.
+  example: HTTP is the protocol browsers and web servers use.
+
+- id: http
+  term: HTTP
+  definition: Short for "HyperText Transfer Protocol". The rules for how a client asks a web server for something and how the server replies.
+  example: Your browser sends an HTTP request for a page, and the server sends an HTTP response back.
+
+- id: https
+  term: HTTPS
+  definition: HTTP with encryption (the S stands for "secure"), so nobody in between can read or change what's sent. Browsers show a padlock.
+  example: Banking sites always use HTTPS.
+
+- id: encryption
+  term: Encryption
+  definition: Scrambling information so only someone with the right key can unscramble and read it.
+  example: HTTPS encrypts your password on its way to the server.
+
+- id: request
+  term: Request
+  definition: A message from a client asking a server for something, or asking it to do something.
+  example: "GET /products is a request for the list of products."
+
+- id: response
+  term: Response
+  definition: The server's reply to a request, with a status code and usually some content.
+  example: A response with status 200 and the page's HTML.
+
+- id: status-code
+  term: Status code
+  definition: A three-digit number at the start of every HTTP response that says how the request went.
+  example: 200 means OK, 404 means Not Found, 500 means the server had a problem.
+
+- id: json
+  term: JSON
+  definition: Short for "JavaScript Object Notation". A simple text format for sending structured data, made of names and values in curly brackets.
+  example: '{ "name": "Thandi", "xp": 320 }'
+
+- id: cloud
+  term: The cloud
+  definition: Computers in someone else's data centre that you rent over the internet, instead of owning and running them yourself.
+  example: Your Google Photos backups are stored in the cloud.
+
+- id: data-centre
+  term: Data centre
+  definition: A building full of servers, with strong power, cooling, security and internet connections.
+  example: Several big cloud companies have data centres in Johannesburg and Cape Town.
+
+- id: frontend
+  term: Front end
+  definition: The part of an app that runs in your browser or phone and that you see and click.
+  example: Stack Quest's buttons, pages and progress rings are the front end.
+
+- id: backend
+  term: Back end
+  definition: The part of an app that runs on servers, out of sight, such as storing data, checking passwords and sending emails.
+  example: A shop's back end saves your order and charges your card.
+
+- id: full-stack
+  term: Full-stack developer
+  definition: A developer who can build both the front end and the back end of an app, including the database.
+  example: By the end of Stack Quest, you'll be one.
+
+- id: terminal
+  term: Terminal
+  definition: An app where you control the computer by typing commands instead of clicking. Also called the command line.
+  example: On a Mac, open Spotlight (Command + Space) and type Terminal.
+
+- id: command
+  term: Command
+  definition: An instruction you type in the terminal. The first word is the command, and what follows are its arguments.
+  example: In "mkdir projects", mkdir is the command and projects is the argument.
+
+- id: working-directory
+  term: Working directory
+  definition: The folder the terminal is currently "standing in". Commands act there unless you give a different path.
+  example: "pwd prints the working directory, e.g. /Users/learner."
+
+- id: home-folder
+  term: Home folder
+  definition: Your personal folder on the computer, holding Desktop, Documents and Downloads. The terminal shortens it to ~.
+  example: On a Mac it's /Users/yourname.
+
+- id: code-editor
+  term: Code editor
+  definition: A program for writing code, like a word processor designed for programming, with colours, auto-complete and error hints.
+  example: VS Code is the code editor most web developers use.
+
+- id: extension
+  term: Extension
+  definition: An add-on that gives a program extra features.
+  example: VS Code extensions can add spell-checking or support for new languages.
+
+- id: shortcut
+  term: Keyboard shortcut
+  definition: A combination of keys that does something instantly, without the mouse.
+  example: Command + S saves the file you're editing.
+
+- id: version-control
+  term: Version control
+  definition: A system that records every change to your files over time, so you can see history, undo mistakes and work with others.
+  example: Git is the most popular version control system.
+
+- id: git
+  term: Git
+  definition: The version control tool almost all developers use. It saves snapshots (commits) of a project's files.
+  example: git commit -m "Add contact page" saves a snapshot with a message.
+
+- id: repository
+  term: Repository
+  definition: A project folder that Git is tracking, including the full history of its changes. Often called a "repo".
+  example: Running git init in a folder turns it into a repository.
+
+- id: commit
+  term: Commit
+  definition: A saved snapshot of your project at one moment, with a message describing what changed.
+  example: '"Fix spelling on home page" is a good commit message.'
+
+- id: staging-area
+  term: Staging area
+  definition: Git's waiting room, holding the changes you've chosen (with git add) to include in your next commit.
+  example: git add notes.txt puts notes.txt in the staging area.
+
+- id: github
+  term: GitHub
+  definition: A website that stores Git repositories online, as a backup and so people can work together. Git is the tool; GitHub is a place to keep the results.
+  example: Many open-source projects, like VS Code itself, live on GitHub.

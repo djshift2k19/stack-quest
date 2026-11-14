@@ -49,3 +49,14 @@ describe("error translator: SQL", () => {
     expect(translateError({ name: "error", message: msg }, "sql").title).toContain("grouped");
   });
 });
+
+describe("error translator: terminal", () => {
+  const t = (message: string) => translateError({ name: "", message }, "terminal");
+  it("explains common terminal and Git messages", () => {
+    expect(t("zsh: command not found: lss").title).toContain('"lss"');
+    expect(t("cd: no such file or directory: Projetcs").title).toContain('"Projetcs"');
+    expect(t("cat: notes.txt: No such file or directory").title).toContain('"notes.txt"');
+    expect(t("fatal: not a git repository (or any of the parent directories): .git").title).toContain("isn't tracking");
+    expect(t('nothing added to commit but untracked files present (use "git add" to track)').whereToLook).toContain("git add");
+  });
+});

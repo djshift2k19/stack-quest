@@ -3,7 +3,7 @@
 /** Small shared pieces used by every exercise type. */
 
 import type { ReactNode } from "react";
-import { translateError, type ErrorInfo } from "@/lib/engine/errorTranslator";
+import { translateError, type ErrorInfo, type ErrorLanguage } from "@/lib/engine/errorTranslator";
 import type { FakeRequest, LogLine, TestResult } from "@/sandboxes/types";
 
 export const primaryButton =
@@ -80,7 +80,7 @@ export function HintLadder({
   );
 }
 
-export function ErrorExplanation({ error, language }: { error: ErrorInfo; language: "javascript" | "sql" }) {
+export function ErrorExplanation({ error, language, compact = false }: { error: ErrorInfo; language: ErrorLanguage; compact?: boolean }) {
   const t = translateError(error, language);
   return (
     <div role="alert" data-testid="error-explanation" className="mt-4 rounded-xl border border-flame/40 bg-surface p-4">
@@ -92,13 +92,17 @@ export function ErrorExplanation({ error, language }: { error: ErrorInfo; langua
       <p className="mt-2 text-sm">
         <strong>Where to look:</strong> {t.whereToLook}
       </p>
-      <details className="mt-2 text-sm">
-        <summary className="cursor-pointer text-muted">The real error message</summary>
-        <pre className="mt-1 overflow-x-auto rounded-lg bg-surface-2 p-2 font-mono text-xs">
-          {error.name}: {error.message}
-          {error.line ? ` (line ${error.line})` : ""}
-        </pre>
-      </details>
+      {/* In the terminal the real message is already on screen, so "compact" skips repeating it. */}
+      {!compact && (
+        <details className="mt-2 text-sm">
+          <summary className="cursor-pointer text-muted">The real error message</summary>
+          <pre className="mt-1 overflow-x-auto rounded-lg bg-surface-2 p-2 font-mono text-xs">
+            {error.name ? `${error.name}: ` : ""}
+            {error.message}
+            {error.line ? ` (line ${error.line})` : ""}
+          </pre>
+        </details>
+      )}
     </div>
   );
 }
