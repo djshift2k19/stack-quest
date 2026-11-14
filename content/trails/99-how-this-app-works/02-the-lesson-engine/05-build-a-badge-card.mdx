@@ -1,0 +1,45 @@
+---
+id: build-a-badge-card
+title: Build a badge card in HTML
+type: build-it
+minutes: 7
+xp: 20
+goals:
+  - Write a heading and a paragraph in HTML.
+  - Watch the live preview update as you type.
+challenge:
+  language: html
+  starter: |
+    <!doctype html>
+    <html>
+      <body>
+        <!-- Add your heading and paragraph below this line -->
+
+      </body>
+    </html>
+  solution: |
+    <!doctype html>
+    <html>
+      <body>
+        <h1>First Step</h1>
+        <p>Finish your first unit.</p>
+      </body>
+    </html>
+  hints:
+    - HTML wraps text in "tags". A main heading uses the h1 tag, and a paragraph uses p.
+    - "A tag has an opening part and a closing part with a slash, like this: <h1>Your text</h1>"
+    - "Add <h1>First Step</h1> on one line and <p>Finish your first unit.</p> on the next."
+  tests:
+    - name: The page has a main heading (h1)
+      code: expect(document.querySelector("h1")).toBeTruthy()
+    - name: The heading says "First Step"
+      code: expect(document.querySelector("h1")?.textContent.trim()).toBe("First Step")
+    - name: There's a paragraph (p) underneath
+      code: expect(document.querySelector("h1 ~ p")).toBeTruthy()
+---
+
+Badges on your profile page are made of <Term word="html">HTML</Term>. Let's build a simple one.
+
+HTML marks up text with **tags** in angle brackets. `<h1>` starts a main heading and `</h1>` (with a slash) ends it. `<p>` and `</p>` wrap a paragraph.
+
+Build a card that shows the **First Step** badge as a heading, with "Finish your first unit." as a paragraph below it. Watch the live preview as you type.

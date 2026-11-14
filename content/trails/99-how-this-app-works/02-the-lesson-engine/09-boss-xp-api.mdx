@@ -1,0 +1,61 @@
+---
+id: boss-xp-api
+title: "Boss Challenge: A tiny XP API"
+type: boss
+minutes: 10
+xp: 60
+goals:
+  - Answer pretend web requests with the right data and status code.
+  - Combine functions, conditions and the XP rule.
+challenge:
+  language: javascript
+  starter: |
+    const learners = {
+      thandi: { name: "Thandi", xp: 320 },
+      sipho: { name: "Sipho", xp: 90 },
+    };
+
+    // When someone asks for GET /api/learners/:id, answer with that learner.
+    server.get("/api/learners/:id", (req, res) => {
+      const learner = learners[req.params.id];
+      // TODO 1: if there's no such learner, answer with status 404.
+      // TODO 2: otherwise, answer with the learner as JSON.
+    });
+  solution: |
+    const learners = {
+      thandi: { name: "Thandi", xp: 320 },
+      sipho: { name: "Sipho", xp: 90 },
+    };
+
+    server.get("/api/learners/:id", (req, res) => {
+      const learner = learners[req.params.id];
+      if (!learner) {
+        return res.status(404).json({ error: "No such learner" });
+      }
+      res.json(learner);
+    });
+  hints:
+    - The handler gets req (the request) and res (your reply). Use res.json(...) to send data back.
+    - "if (!learner) means \"if there's no learner\". Inside it, reply with res.status(404).json({ error: \"No such learner\" })."
+    - "After the if block, add res.json(learner); to send the learner back with the normal 200 status."
+  tests:
+    - name: "GET /api/learners/thandi answers 200 with Thandi's data"
+      code: |
+        const res = await fetch("/api/learners/thandi");
+        expect(res.status).toBe(200);
+        expect(await res.json()).toEqual({ name: "Thandi", xp: 320 });
+    - name: "GET /api/learners/sipho answers with Sipho"
+      code: |
+        const res = await fetch("/api/learners/sipho");
+        expect((await res.json()).name).toBe("Sipho");
+    - name: "An unknown learner answers 404 (Not Found)"
+      code: |
+        const res = await fetch("/api/learners/nobody");
+        expect(res.status).toBe(404);
+---
+
+A <Term word="server">server</Term> waits for requests and sends back answers. Stack Quest's sandbox has a **pretend server**, so you can practise without any real internet.
+
+Every answer has a **status code**: `200` means "OK, here you go" and `404` means "there's nothing here". Finish the two TODOs so the <Term word="api">API</Term> answers correctly. The panel underneath shows every request the checks make, and the status code each one got back.
+
+It's fine if this feels like a stretch. The hints walk you through it, and you'll learn all of this properly in the back-end trail.

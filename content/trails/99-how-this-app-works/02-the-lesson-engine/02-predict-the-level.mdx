@@ -1,0 +1,39 @@
+---
+id: predict-the-level
+title: Predict the level
+type: predict-output
+minutes: 4
+xp: 10
+goals:
+  - Trace through a small loop by hand.
+language: javascript
+code: |
+  function xpRequiredForLevel(level) {
+    return 50 * level * (level - 1);
+  }
+
+  console.log(xpRequiredForLevel(2));
+  console.log(xpRequiredForLevel(3));
+options:
+  - text: |-
+      100
+      300
+    correct: true
+  - text: |-
+      100
+      150
+    why: "For level 3: 50 × 3 × (3 − 1) = 50 × 3 × 2."
+  - text: |-
+      2
+      3
+    why: The function doesn't hand back the level. It hands back the XP the formula works out.
+explanation: "For level 2: 50 × 2 × 1 = 100. For level 3: 50 × 3 × 2 = 300. This is the real formula Stack Quest uses for levels."
+hints:
+  - Each console.log prints what the function hands back (returns).
+  - Swap the number into the formula. For level 2, that's 50 × 2 × (2 − 1).
+  - Level 2 gives 50 × 2 × 1 = 100. Now do the same for level 3.
+---
+
+This is the real level formula from `src/lib/gamification/xp.ts` (simplified a little). You haven't learned JavaScript yet, and that's fine: read it like a maths formula.
+
+`console.log(...)` means "print this", so the program prints two lines.

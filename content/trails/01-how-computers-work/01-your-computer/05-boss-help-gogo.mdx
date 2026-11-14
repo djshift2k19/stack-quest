@@ -1,0 +1,41 @@
+---
+id: boss-help-gogo
+title: "Boss Challenge: Help Gogo find her photos"
+type: boss
+minutes: 6
+xp: 50
+goals:
+  - Combine input, output, files, folders and programs to solve a real problem.
+questions:
+  - prompt: Gogo says "I saved the photo from my grandson but it's gone!" Her phone says it was saved to /Pictures/WhatsApp/IMG_2041.jpg. What should you tell her?
+    options:
+      - text: Open the Pictures folder, then the WhatsApp folder inside it. The photo IMG_2041.jpg is there.
+        correct: true
+        why: Exactly. The file path gives you the directions folder by folder.
+      - text: The photo is lost forever
+        why: The file path tells us exactly where it is, so it isn't lost.
+      - text: It's in the WhatsApp program, not in a file
+        why: The program received the photo and saved it as a file, at the path shown.
+  - prompt: Gogo double-clicks IMG_2041.jpg and the Photos app opens it. In this story, which is the program and which is the data?
+    options:
+      - text: Photos is the program; IMG_2041.jpg is the data
+        correct: true
+        why: The recipe (Photos) works on the ingredients (the photo file).
+      - text: IMG_2041.jpg is the program; Photos is the data
+        why: Swap them around. The photo is what gets worked on.
+      - text: They're both programs
+        why: Only Photos contains instructions. The .jpg file holds picture data.
+  - prompt: Gogo wants to know why her phone "forgot" an unsaved note when the battery died. What's the best explanation?
+    options:
+      - text: The note was only in memory (the countertop), which is cleared when power goes off. Saved files go to storage (the pantry).
+        correct: true
+        why: Perfect use of the countertop and pantry analogy.
+      - text: The phone deletes notes on purpose
+        why: It wasn't deleted on purpose. It was never saved to storage.
+      - text: Notes are saved in the battery
+        why: Batteries hold power, not information.
+---
+
+**Boss Challenges** combine everything from a module into one real-world problem. This one has no code, just your new knowledge, and you can retry as often as you like.
+
+Gogo (your grandmother) has a few questions about her new phone. Help her out.

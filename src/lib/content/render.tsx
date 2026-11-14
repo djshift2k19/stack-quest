@@ -9,8 +9,9 @@
 import { evaluate } from "@mdx-js/mdx";
 import * as runtime from "react/jsx-runtime";
 import { mdxComponents } from "@/components/lesson/MdxComponents";
+import type { GlossaryEntry } from "./schema";
 
-export async function renderMdx(source: string) {
+export async function renderMdx(source: string, glossary: GlossaryEntry[]) {
   const { default: Content } = await evaluate(source, { ...runtime });
-  return <Content components={mdxComponents} />;
+  return <Content components={mdxComponents(glossary)} />;
 }

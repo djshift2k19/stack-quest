@@ -1,0 +1,41 @@
+---
+id: fix-the-bonus
+title: Fix the no-hint bonus
+type: fix-the-bug
+minutes: 6
+xp: 20
+goals:
+  - Read a failing test and use it to find a bug.
+  - Fix a real Stack Quest function.
+challenge:
+  language: javascript
+  starter: |
+    const NO_HINT_BONUS = 0.5;
+
+    function xpForCompletion(baseXp, hintsUsed) {
+      const bonus = hintsUsed === 1 ? Math.round(baseXp * NO_HINT_BONUS) : 0;
+      return baseXp + bonus;
+    }
+  solution: |
+    const NO_HINT_BONUS = 0.5;
+
+    function xpForCompletion(baseXp, hintsUsed) {
+      const bonus = hintsUsed === 0 ? Math.round(baseXp * NO_HINT_BONUS) : 0;
+      return baseXp + bonus;
+    }
+  hints:
+    - Read the failing checks. Which learners get the bonus at the moment?
+    - The bonus is for using zero hints, but the code checks for a different number.
+    - On line 4, change hintsUsed === 1 to hintsUsed === 0.
+  tests:
+    - name: "No hints on a 10 XP unit earns 15 XP"
+      code: expect(xpForCompletion(10, 0)).toBe(15)
+    - name: "One hint earns the normal 10 XP"
+      code: expect(xpForCompletion(10, 1)).toBe(10)
+    - name: "Three hints still earn the normal 20 XP on a 20 XP unit"
+      code: expect(xpForCompletion(20, 3)).toBe(20)
+---
+
+Someone changed Stack Quest's XP rule and broke it. Now the bonus goes to the wrong learners.
+
+Press **Run & check** first, **before** changing anything, and read which checks fail. The failing checks are your clues: professional developers fix bugs this way every day.

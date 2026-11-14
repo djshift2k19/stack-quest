@@ -79,3 +79,22 @@ test("page weight: the dashboard's JavaScript stays small", async ({ page }, tes
   console.log(`[page weight] ${testInfo.project.name}: dashboard JavaScript = ${kb} KB compressed`);
   expect(kb).toBeLessThan(250);
 });
+
+test("no page scrolls sideways (important on phones)", async ({ page }, testInfo) => {
+  const pages = [
+    "/",
+    "/profile",
+    "/glossary",
+    "/trails/how-computers-work/your-computer/files-and-folders",
+    "/trails/how-this-app-works/the-lesson-engine/fix-the-bonus",
+    "/trails/how-this-app-works/the-lesson-engine/build-a-badge-card",
+  ];
+  for (const path of pages) {
+    await page.goto(path, { waitUntil: "networkidle" });
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    expect(overflow, `${path} is wider than the screen`).toBeLessThanOrEqual(0);
+    if (process.env.SCREENSHOT_DIR) {
+      await page.screenshot({ path: `${process.env.SCREENSHOT_DIR}/${testInfo.project.name}${path.replaceAll("/", "_") || "_home"}.png`, fullPage: false });
+    }
+  }
+});

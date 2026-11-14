@@ -1,0 +1,50 @@
+---
+id: style-the-badge
+title: Colour the badge with CSS
+type: build-it
+minutes: 6
+xp: 20
+goals:
+  - Write a CSS rule with a selector and a property.
+challenge:
+  language: css
+  fixture: |
+    <!doctype html>
+    <html>
+      <head></head>
+      <body>
+        <div class="badge">
+          <h1>First Step</h1>
+          <p>Finish your first unit.</p>
+        </div>
+      </body>
+    </html>
+  starter: |
+    .badge {
+
+    }
+  solution: |
+    .badge {
+      background-color: gold;
+      padding: 16px;
+    }
+  hints:
+    - Properties go inside the curly brackets, written as name, colon, value, semicolon.
+    - "The property for a background colour is background-color. For space inside the edges, use padding."
+    - "Inside .badge { }, add background-color: gold; on one line and padding: 16px; on the next."
+  tests:
+    - name: The badge has a gold background
+      code: expect(getComputedStyle(document.querySelector(".badge")).backgroundColor).toBe("rgb(255, 215, 0)")
+    - name: The badge has 16px of padding
+      code: expect(getComputedStyle(document.querySelector(".badge")).paddingTop).toBe("16px")
+---
+
+<Term word="css">CSS</Term> controls how things look. A CSS **rule** has a **selector** (which things to style) and **properties** (how to style them):
+
+```css
+.badge {
+  color: green;
+}
+```
+
+`.badge` selects everything with `class="badge"`. Give the badge card a **gold** background colour and **16px** of padding (space between the edge and the text).

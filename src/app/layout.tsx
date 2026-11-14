@@ -45,6 +45,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
                 </span>
                 Stack Quest
               </Link>
+              <Link href="/glossary" className="inline-flex min-h-11 items-center rounded-full px-3 text-sm hover:bg-surface-2">
+                Glossary
+              </Link>
               <Link href="/profile" className="inline-flex min-h-11 items-center rounded-full px-3 text-sm hover:bg-surface-2">
                 Profile
               </Link>

@@ -1,0 +1,10 @@
+id: the-lesson-engine
+title: "The Lesson Engine (built in Phase 2)"
+summary: How Stack Quest runs your code safely, checks it automatically and explains errors, with practice on real pieces of Stack Quest.
+goals:
+  - Explain what a sandbox is and why your practice code runs in one.
+  - Use the hint ladder and the error translator to get unstuck.
+  - Try every kind of exercise using real code from Stack Quest.
+badge:
+  name: Engine Room
+  emoji: ⚙️

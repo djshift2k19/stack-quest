@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { UnitExercise } from "@/components/exercises/UnitExercise";
 import { CompletePanel } from "@/components/lesson/CompletePanel";
-import { getCatalog, getUnit } from "@/lib/content/loader";
+import { getCatalog, getGlossary, getUnit } from "@/lib/content/loader";
 import { renderMdx } from "@/lib/content/render";
 
 export async function generateStaticParams() {
@@ -28,7 +29,9 @@ export default async function UnitPage({ params }: PageProps<"/trails/[trail]/[m
   const index = mod.units.findIndex((u) => u.key === unit.key);
   const previous = mod.units[index - 1];
   const next = mod.units[index + 1];
-  const content = await renderMdx(unit.body);
+  const content = await renderMdx(unit.body, await getGlossary());
+  const nextHref = next ? `/trails/${next.key}` : `/trails/${mod.key}`;
+  const nextLabel = next ? `Next: ${next.title}` : "Back to module";
 
   return (
     <article>
@@ -54,16 +57,13 @@ export default async function UnitPage({ params }: PageProps<"/trails/[trail]/[m
         </div>
       </header>
 
-      {unit.meta.type === "reading" ? (
-        <div className="lesson">{content}</div>
-      ) : (
-        <p className="rounded-xl border border-border bg-surface-2 p-4">
-          This kind of unit (<strong>{unit.meta.type}</strong>) needs the lesson engine, which arrives in Phase 2.
-        </p>
-      )}
+      {/* The lesson text: for exercises, this is the explanation and instructions. */}
+      <div className="lesson">{content}</div>
 
-      {unit.meta.type === "reading" && (
-        <CompletePanel unitKey={unit.key} baseXp={unit.meta.xp} nextHref={next ? `/trails/${next.key}` : `/trails/${mod.key}`} nextLabel={next ? `Next: ${next.title}` : "Back to module"} />
+      {unit.meta.type === "reading" ? (
+        <CompletePanel unitKey={unit.key} baseXp={unit.meta.xp} nextHref={nextHref} nextLabel={nextLabel} />
+      ) : (
+        <UnitExercise unit={unit.meta} unitKey={unit.key} nextHref={nextHref} nextLabel={nextLabel} />
       )}
 
       <nav aria-label="Unit navigation" className="mt-8 flex flex-wrap justify-between gap-3 border-t border-border pt-4 text-sm">

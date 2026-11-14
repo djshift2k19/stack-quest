@@ -1,0 +1,34 @@
+---
+id: the-sandbox
+title: How your code runs safely
+type: reading
+minutes: 6
+xp: 10
+goals:
+  - Explain what a sandbox is.
+  - Name the three walls that keep practice code sealed off.
+---
+
+<Analogy title="A science lab's glove box">
+Some labs have a sealed glass box with rubber gloves built in. Scientists can handle anything inside it, but nothing inside can escape into the room. Stack Quest runs your practice code in a box like that.
+</Analogy>
+
+When you press **Run & check**, your code doesn't run in the Stack Quest page itself. It runs in a <Term word="sandbox">sandbox</Term>, built from three walls:
+
+1. **A sealed frame.** The code goes into an invisible frame inside the page (an *iframe*) with the `sandbox` setting switched on. That gives it a "nobody" address, so it can't read your saved progress or touch the page around it.
+2. **No internet.** A security rule (a *Content Security Policy*) inside the frame blocks every network request. Your code can't download or send anything, which protects you and your data bundle.
+3. **A time limit.** The code runs in a background worker (a *Web Worker*). If it runs for more than 3 seconds (usually an endless loop), Stack Quest switches the worker off and tells you what probably happened.
+
+The code that builds these walls is in `src/sandboxes/js/frame.ts`. Open it and look for `sandbox` and `default-src 'none'`.
+
+## Checking your answer
+
+Each challenge comes with **tests**: small checks like "`xpForCompletion(10, 0)` gives 15". After your code runs, the tests run inside the same sandbox and report ✅ or ⭕ for each one. They're the same kind of test you ran with `npm test` in Phase 1.
+
+## SQL is different
+
+SQL lessons use **PGlite**, a real Postgres database compiled to run in your browser. It's about 5 MB, so it only downloads when you tap the button, and then your browser keeps a copy.
+
+<KeyIdea>
+Your practice code runs in a **sandbox**: a sealed frame with no internet and a time limit. That's why you can experiment freely. Nothing you type can break Stack Quest or touch your progress.
+</KeyIdea>

@@ -8,7 +8,19 @@
 import { PGlite } from "@electric-sql/pglite";
 import { runSqlJob, type SqlJob } from "./sqlCore";
 
-const ready = PGlite.create();
+/**
+ * Download the compressed copy of the engine's data file (made by
+ * scripts/prepare-sql-engine.mjs) and unpack it here, which saves about
+ * 4 MB of data compared with the uncompressed original.
+ */
+async function loadFsBundle(): Promise<Blob> {
+  const res = await fetch("/sql/pglite.data.gz");
+  if (!res.ok || !res.body) throw new Error(`Couldn't download the SQL engine (status ${res.status})`);
+  const unpacked = res.body.pipeThrough(new DecompressionStream("gzip"));
+  return new Response(unpacked).blob();
+}
+
+const ready = loadFsBundle().then((fsBundle) => PGlite.create({ fsBundle }));
 
 ready.then(
   () => self.postMessage({ kind: "ready" }),

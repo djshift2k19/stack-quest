@@ -1,0 +1,46 @@
+---
+id: query-the-leaderboard
+title: Ask the database a question
+type: build-it
+minutes: 7
+xp: 20
+goals:
+  - Write a SELECT query with WHERE and ORDER BY.
+challenge:
+  language: sql
+  setup: |
+    CREATE TABLE learners (
+      id serial PRIMARY KEY,
+      name text NOT NULL,
+      city text NOT NULL,
+      xp int NOT NULL
+    );
+    INSERT INTO learners (name, city, xp) VALUES
+      ('Thandi', 'Durban', 320),
+      ('Sipho', 'Soweto', 90),
+      ('Aisha', 'Cape Town', 540),
+      ('Pieter', 'Bloemfontein', 210),
+      ('Lerato', 'Durban', 150);
+  starter: |
+    SELECT name, xp
+    FROM learners;
+  solution: |
+    SELECT name, xp
+    FROM learners
+    WHERE xp > 200
+    ORDER BY xp DESC;
+  hints:
+    - "You need two extra parts: one that filters rows, and one that sorts them."
+    - WHERE filters rows (for example WHERE xp > 200). ORDER BY sorts them, and DESC means biggest first.
+    - "Add WHERE xp > 200 on a new line after FROM learners, then ORDER BY xp DESC, and end with a semicolon."
+  tests:
+    - name: Only learners with more than 200 XP are shown
+      sameResultAs: SELECT name, xp FROM learners WHERE xp > 200
+    - name: The highest XP comes first
+      sameResultAs: SELECT name, xp FROM learners WHERE xp > 200 ORDER BY xp DESC
+      orderMatters: true
+---
+
+One day, Stack Quest's optional leaderboard will live in a <Term word="database">database</Term>. You ask a database questions in <Term word="sql">SQL</Term>.
+
+The starter query asks for every learner's name and XP. Press **Run query & check** to see all five rows. Then change it to show **only learners with more than 200 XP**, **highest first**.

@@ -1,0 +1,35 @@
+---
+id: read-the-error
+title: Let the error translator help
+type: fix-the-bug
+minutes: 5
+xp: 15
+goals:
+  - Use an error message to find a mistake.
+  - Know where to find the real error message.
+challenge:
+  language: javascript
+  starter: |
+    const learnerName = "Thandi";
+    const xp = 120;
+
+    console.log(learnername + " has " + xp + " XP");
+  solution: |
+    const learnerName = "Thandi";
+    const xp = 120;
+
+    console.log(learnerName + " has " + xp + " XP");
+  hints:
+    - The translator says which name JavaScript doesn't know. Compare it with the name on line 1.
+    - JavaScript is case-sensitive, so learnername and learnerName are two different names.
+    - On line 4, change learnername to learnerName (with a capital N).
+  tests:
+    - name: The code runs without crashing
+      code: expect(true).toBe(true)
+    - name: It prints "Thandi has 120 XP"
+      code: expect(learnerName + " has " + xp + " XP").toBe("Thandi has 120 XP")
+---
+
+When code crashes, you get an <Term word="error-message">error message</Term>. Stack Quest shows a plain-English explanation first and keeps the real message underneath, so you learn to read both.
+
+Press **Run & check** and read what the translator says. Then open **"The real error message"** and see how it says the same thing in fewer words.

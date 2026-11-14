@@ -48,7 +48,7 @@ export function ThemeToggle() {
       aria-label={`Colour theme: ${LABELS[theme]}. Switch to ${LABELS[next]}.`}
     >
       <span aria-hidden="true">{ICONS[theme]}</span>
-      <span>{LABELS[theme]}</span>
+      <span className="hidden sm:inline">{LABELS[theme]}</span>
     </button>
   );
 }
