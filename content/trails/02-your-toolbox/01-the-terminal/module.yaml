@@ -1,0 +1,11 @@
+id: the-terminal
+title: The Terminal, Without Fear
+summary: Control your computer by typing. Practise every command in a pretend terminal where nothing can break.
+goals:
+  - Explain what a terminal is and why developers use it.
+  - Find out where you are and what's around you (pwd, ls).
+  - Move between folders (cd) using relative and absolute paths.
+  - Create, read, move, copy and delete files and folders.
+badge:
+  name: Command Line Cadet
+  emoji: ⌨️

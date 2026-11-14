@@ -1,0 +1,58 @@
+---
+id: good-commit-messages
+title: Writing good commit messages
+type: quiz
+minutes: 5
+xp: 15
+goals:
+  - Tell good commit messages from bad ones.
+questions:
+  - prompt: Which commit message is most useful six months from now?
+    options:
+      - text: Fix total price ignoring the delivery fee
+        correct: true
+        why: It says exactly what changed, so anyone can find it later.
+      - text: stuff
+        why: Future-you will have no idea what "stuff" was.
+      - text: asdfgh
+        why: Keyboard mashing tells nobody anything.
+  - prompt: How should a commit message usually start?
+    options:
+      - text: With a verb, as an instruction, like "Add", "Fix", "Remove" or "Update"
+        correct: true
+        why: The convention is to finish the sentence "This commit will…" ("…Add login page").
+      - text: With the date
+        why: Git records the date automatically.
+      - text: With your name
+        why: Git records the author automatically too.
+  - prompt: You fixed a typo AND added a whole new contact page. What's best?
+    options:
+      - text: Two separate commits, "Fix typo in heading" and "Add contact page"
+        correct: true
+        why: Small, focused commits are easy to understand and undo one at a time.
+      - text: One commit called "changes"
+        why: Mixing unrelated changes makes history hard to read and undo.
+      - text: Don't commit until the whole website is finished
+        why: Commit little and often. Each commit is a save point.
+  - prompt: 'How often should you commit?'
+    options:
+      - text: Every time you finish a small, working step
+        correct: true
+        why: Little and often gives you plenty of save points.
+      - text: Once a month
+        why: That's a lot of work to lose if something goes wrong.
+      - text: Only when everything is perfect
+        why: Nothing is ever perfect. Save your progress along the way.
+---
+
+Commit messages are notes to your future self and your teammates. Here's what good ones look like.
+
+A good message:
+
+- **starts with a verb**: Add, Fix, Update, Remove
+- **says what changed**, in about 50 characters
+- **covers one idea**: if you need "and", consider two commits
+
+Good: `Add contact form to home page`. Not useful: `update`, `fix`, `wip`, `aaa`.
+
+Stack Quest's own history is a good example. Run `git log --oneline` in VS Code's terminal.

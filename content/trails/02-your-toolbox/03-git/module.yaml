@@ -1,0 +1,11 @@
+id: git
+title: Git and GitHub, Your Safety Net
+summary: Save snapshots of your work so you can always go back. Practise Git safely, then connect your real projects to GitHub.
+goals:
+  - Explain what version control is and why every developer uses it.
+  - Create a repository and make commits (git init, status, add, commit, log).
+  - Use the staging area to choose what goes into a commit.
+  - Explain what GitHub adds on top of Git.
+badge:
+  name: Time Traveller
+  emoji: ⏳

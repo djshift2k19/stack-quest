@@ -1,0 +1,11 @@
+id: vs-code
+title: VS Code, Your Workshop
+summary: Get comfortable in the code editor professionals use, with the shortcuts that save hours.
+goals:
+  - Explain what a code editor gives you over a plain text editor.
+  - Find your way around VS Code's main areas.
+  - Use the essential keyboard shortcuts.
+  - Open a project from the terminal.
+badge:
+  name: Workshop Regular
+  emoji: 🛠️

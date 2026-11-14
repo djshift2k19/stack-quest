@@ -1,0 +1,66 @@
+---
+id: making-things
+title: "Making folders and files: mkdir, touch, echo, cat"
+type: terminal
+minutes: 9
+xp: 20
+goals:
+  - Create folders with mkdir and empty files with touch.
+  - Write text into a file with echo and >, and read it back with cat.
+terminal:
+  tasks:
+    - instruction: Make a new folder called projects in your home folder.
+      check: { exists: [~/projects] }
+      hints:
+        - mkdir stands for "make directory".
+        - Type mkdir, a space, then the new folder's name.
+        - "Type exactly: mkdir projects"
+      solution: [mkdir projects]
+      explain: Run ls to see your new folder.
+    - instruction: Move into your new projects folder.
+      check: { cwd: ~/projects }
+      hints:
+        - You learned this command in the last unit.
+        - cd, then the folder name.
+        - "Type exactly: cd projects"
+      solution: [cd projects]
+    - instruction: Inside projects, make a folder called my-first-site.
+      check: { exists: [~/projects/my-first-site] }
+      hints:
+        - Same command as before, with a new name.
+        - Developers use dashes instead of spaces in names. Spaces cause trouble in the terminal.
+        - "Type exactly: mkdir my-first-site"
+      solution: [mkdir my-first-site]
+    - instruction: Create an empty file called index.html INSIDE my-first-site, without moving.
+      check: { exists: [~/projects/my-first-site/index.html] }
+      hints:
+        - touch creates an empty file.
+        - Give touch the path to the new file, which is the folder name, a slash, then the file name.
+        - "Type exactly: touch my-first-site/index.html"
+      solution: [touch my-first-site/index.html]
+      explain: Try ls my-first-site to see it. In Trail 3 you'll fill an index.html with a real web page.
+    - instruction: 'Create a file called notes.txt containing the text "Hello, world" (in projects).'
+      check: { fileContains: { path: ~/projects/notes.txt, text: "Hello, world" } }
+      hints:
+        - echo prints text. The > symbol sends it into a file instead of the screen.
+        - Put the text in quotes, then >, then the file name.
+        - 'Type exactly: echo "Hello, world" > notes.txt'
+      solution: ['echo "Hello, world" > notes.txt']
+      explain: Careful, > replaces whatever was in the file. Use >> to ADD to the end instead.
+    - instruction: Show the contents of notes.txt to check it worked.
+      check: { ran: cat notes.txt }
+      hints:
+        - Which command shows a file's contents?
+        - cat, then the file name.
+        - "Type exactly: cat notes.txt"
+      solution: [cat notes.txt]
+---
+
+Time to make things.
+
+- `mkdir name` **makes** a folder (directory).
+- `touch name` makes an **empty file**.
+- `echo "text"` prints text. Add `> file` to put the text **into a file** instead.
+- `cat file` shows what's **in** a file.
+
+**Naming tip:** avoid spaces in file and folder names. Use dashes (`my-first-site`). In the terminal, a space separates words, so `mkdir my site` would make **two** folders: `my` and `site`.

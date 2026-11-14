@@ -1,0 +1,11 @@
+id: reading-errors
+title: Reading Error Messages
+summary: Errors are clues, not failures. Learn to find the useful line, decode it, and search for help like a professional.
+goals:
+  - Treat error messages as helpful clues.
+  - Find the what, where and why in any error message.
+  - Recover from common terminal mistakes.
+  - Search for help effectively, including with AI.
+badge:
+  name: Error Detective
+  emoji: 🕵️

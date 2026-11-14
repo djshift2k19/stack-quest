@@ -1,0 +1,50 @@
+---
+id: why-version-control
+title: Why version control?
+type: reading
+minutes: 6
+xp: 10
+goals:
+  - Explain what version control is.
+  - Describe a commit and a repository.
+---
+
+<Analogy title="Save points in a game">
+In a video game you save before the boss fight. If it goes badly, you go back to the save point instead of starting the whole game again. <Term word="git">Git</Term> gives your project save points.
+</Analogy>
+
+## The problem
+
+Without help, projects end up like this:
+
+```
+cv.docx
+cv-final.docx
+cv-final-v2.docx
+cv-final-v2-REALLY-FINAL.docx
+```
+
+Which is newest? What changed between them? What if you broke something three versions ago?
+
+## Version control
+
+<Term word="version-control">Version control</Term> records your project's history properly. Git is the tool almost every developer uses (you installed it in Phase 1). With it you can:
+
+- **See the history**: every change, when it happened and why.
+- **Go back** to any earlier version if something breaks.
+- **Work with others** on the same files without overwriting each other.
+- **Experiment safely**: try an idea, and throw it away if it doesn't work.
+
+## The words
+
+- **<Term word="repository">Repository</Term>** ("repo"): a project folder that Git is tracking. Git keeps its records in a hidden `.git` folder inside it.
+- **<Term word="commit">Commit</Term>**: one save point, a snapshot of your files plus a **message** saying what changed, such as "Add contact page".
+- **History** (or **log**): the list of commits, newest first.
+
+## You've already seen this
+
+Stack Quest itself is a Git repository. Every phase was built in small commits. In VS Code's terminal, type `git log --oneline` to see them all.
+
+<KeyIdea>
+**Git** saves **commits** (snapshots with a message) of a **repository** (a tracked project folder), so you can see history, go back and work with others safely.
+</KeyIdea>

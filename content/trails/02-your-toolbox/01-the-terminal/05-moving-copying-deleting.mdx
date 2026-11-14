@@ -1,0 +1,65 @@
+---
+id: moving-copying-deleting
+title: "Moving, copying and deleting: mv, cp, rm"
+type: terminal
+minutes: 9
+xp: 20
+goals:
+  - Move and rename with mv.
+  - Copy with cp.
+  - Delete with rm, and understand why to be careful.
+terminal:
+  setup:
+    files:
+      Downloads/photo.jpg: "(a photo)"
+      Downloads/old-notes.txt: "Nothing important\n"
+      Desktop/draft.txt: "My first draft\n"
+  tasks:
+    - instruction: Move photo.jpg from Downloads into Documents.
+      check: { exists: [~/Documents/photo.jpg], missing: [~/Downloads/photo.jpg] }
+      hints:
+        - "mv takes two things: where it is now, then where it should go."
+        - The first is Downloads/photo.jpg and the second is the Documents folder.
+        - "Type exactly: mv Downloads/photo.jpg Documents"
+      solution: [mv Downloads/photo.jpg Documents]
+      explain: When the second name is a folder, mv moves the file into it.
+    - instruction: Make a backup copy of Desktop/draft.txt called draft-backup.txt (also on the Desktop).
+      check: { exists: [~/Desktop/draft.txt, ~/Desktop/draft-backup.txt] }
+      hints:
+        - cp works like mv, but keeps the original.
+        - First the existing file, then the new name. Both are in Desktop.
+        - "Type exactly: cp Desktop/draft.txt Desktop/draft-backup.txt"
+      solution: [cp Desktop/draft.txt Desktop/draft-backup.txt]
+    - instruction: Rename Desktop/draft.txt to final.txt.
+      check: { exists: [~/Desktop/final.txt], missing: [~/Desktop/draft.txt] }
+      hints:
+        - There's no "rename" command. Renaming is moving a file to a new name in the same folder.
+        - Use mv with the old path, then the new path.
+        - "Type exactly: mv Desktop/draft.txt Desktop/final.txt"
+      solution: [mv Desktop/draft.txt Desktop/final.txt]
+      explain: mv both moves and renames.
+    - instruction: Delete Downloads/old-notes.txt.
+      check: { missing: [~/Downloads/old-notes.txt] }
+      hints:
+        - rm stands for "remove".
+        - rm, then the path to the file.
+        - "Type exactly: rm Downloads/old-notes.txt"
+      solution: [rm Downloads/old-notes.txt]
+      explain: Gone. On a real Mac, rm does NOT use the Bin. There's no undo, so double-check before pressing Enter.
+---
+
+- `mv from to` **moves** a file. It's also how you **rename** one.
+- `cp from to` **copies** a file.
+- `rm file` **removes** (deletes) a file. `rm -r folder` deletes a folder and **everything in it**.
+
+## ⚠️ A serious warning about rm
+
+On your real Mac, `rm` deletes **immediately and permanently**. Nothing goes to the Bin, and there's no "are you sure?". Professional developers have deleted months of work with one mistyped `rm -r`.
+
+Habits that keep you safe:
+
+1. Run `pwd` and `ls` first, so you know exactly where you are.
+2. Never type `rm -r` with `~` or `/` on its own.
+3. Use Git (module 3) so your work is backed up.
+
+This practice terminal won't let you delete your home folder. The real one will.

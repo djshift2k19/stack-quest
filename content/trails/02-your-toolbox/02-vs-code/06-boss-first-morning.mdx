@@ -1,0 +1,48 @@
+---
+id: boss-first-morning
+title: "Boss Challenge: Your first morning as a developer"
+type: boss
+minutes: 6
+xp: 50
+goals:
+  - Combine terminal and VS Code skills into a real daily routine.
+questions:
+  - prompt: "It's 8am. You open Terminal and want to work on ~/projects/portfolio in VS Code. What do you type?"
+    options:
+      - text: cd ~/projects/portfolio, then code .
+        correct: true
+        why: The classic start to a developer's day.
+      - text: code ~
+        why: That would open your whole home folder, not the project.
+      - text: mkdir portfolio
+        why: That would try to make a new folder, and the project already exists.
+  - prompt: You want to change a word that appears 6 times in index.html. What's the slickest way?
+    options:
+      - text: Double-click the word, press ⌘D five times to select every copy, then type the new word
+        correct: true
+        why: Multi-cursor editing. This is one of VS Code's superpowers.
+      - text: Retype the whole file
+        why: That works, but it's slow and risky.
+      - text: Use rm and start again
+        why: Please don't!
+  - prompt: A red squiggle appears under a line you just typed. What should you do first?
+    options:
+      - text: Hover over it to read the message, or check the Problems tab
+        correct: true
+        why: The editor is telling you what's wrong. Read it.
+      - text: Ignore it until the end of the day
+        why: Problems pile up. Fixing them early is much easier.
+      - text: Uninstall VS Code
+        why: The squiggle is the editor helping you, not breaking.
+  - prompt: "It's 5pm. You've made good changes. What two things should you do before closing VS Code?"
+    options:
+      - text: Save every file (⌘S), and commit your work with Git (the next module!)
+        correct: true
+        why: Saved, and backed up in your project's history.
+      - text: Close the window, since it saves automatically
+        why: VS Code warns about unsaved files, but saving (and committing) is your job.
+      - text: Delete the project to keep things tidy
+        why: Definitely not!
+---
+
+Walk through a real working day using your terminal and VS Code skills.

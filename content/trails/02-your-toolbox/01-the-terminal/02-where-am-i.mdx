@@ -1,0 +1,58 @@
+---
+id: where-am-i
+title: "Where am I? pwd and ls"
+type: terminal
+minutes: 7
+xp: 15
+goals:
+  - Use pwd to see where you are.
+  - Use ls to see what's in a folder.
+terminal:
+  setup:
+    files:
+      Documents/cv.pdf: "(a PDF document)"
+      Documents/budget.xlsx: "(a spreadsheet)"
+      Desktop/todo.txt: "Buy bread\nCall Gogo\nFinish Stack Quest unit\n"
+  tasks:
+    - instruction: Find out where you are. Type pwd and press Enter.
+      check: { ran: pwd }
+      hints:
+        - pwd stands for "print working directory".
+        - Type the three letters p, w, d, then press Enter.
+        - "Type exactly: pwd"
+      solution: [pwd]
+      explain: /Users/learner is your home folder. The prompt shortens it to ~.
+    - instruction: List what's in the folder you're in. (Use ls, short for "list".)
+      check: { ran: ls }
+      hints:
+        - The command is two letters, short for "list".
+        - It's a lowercase L followed by an s.
+        - "Type exactly: ls"
+      solution: [ls]
+      explain: These are the folders inside your home folder. This practice terminal adds a / after folder names. The real Mac terminal shows them in a different colour instead.
+    - instruction: List what's inside the Documents folder, without going into it.
+      check: { ran: ls Documents }
+      hints:
+        - You can give ls the name of a folder to look inside.
+        - Put a space after ls, then the folder's name. Capital letters matter.
+        - "Type exactly: ls Documents"
+      solution: [ls Documents]
+      explain: You looked inside Documents while staying where you are.
+    - instruction: "Show what's written in the to-do list: the file todo.txt in the Desktop folder."
+      check: { ran: cat }
+      hints:
+        - The command to show a file's contents is cat (short for "concatenate").
+        - Give cat the path to the file, which is the folder name, a slash, then the file name.
+        - "Type exactly: cat Desktop/todo.txt"
+      solution: [cat Desktop/todo.txt]
+      explain: cat prints a file's contents. Desktop/todo.txt is a relative path, meaning "from here, go into Desktop, then todo.txt".
+---
+
+Two commands you'll use constantly:
+
+- `pwd` prints the <Term word="working-directory">working directory</Term>, the folder the terminal is "standing in".
+- `ls` lists what's in a folder.
+
+Click in the black terminal below, type each command and press **Enter**. Your tasks are listed under the terminal. If you make a typo, the error translator explains what happened, so just try again.
+
+**Tip:** press the **↑ arrow key** to bring back your last command.

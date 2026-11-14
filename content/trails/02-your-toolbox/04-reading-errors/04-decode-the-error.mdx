@@ -1,0 +1,56 @@
+---
+id: decode-the-error
+title: Decode the error
+type: quiz
+minutes: 6
+xp: 15
+goals:
+  - Read real error messages and say what they mean.
+questions:
+  - prompt: "What's the most useful part of this error?"
+    code: |
+      ReferenceError: totl is not defined
+          at addPrices (cart.js:8:10)
+          at checkout (cart.js:21:3)
+    options:
+      - text: '"totl" in cart.js on line 8, which looks like a typo of "total"'
+        correct: true
+        why: The message names the unknown thing, and the top "at" line says where.
+      - text: Line 21, because it's at the bottom
+        why: Start with the TOP "at" line. That's where it actually broke.
+      - text: The word ReferenceError on its own
+        why: The type helps, but the message and location tell you what to fix.
+  - prompt: "You run: cd Desktop/projects and get 'cd: no such file or directory: Desktop/projects'. What do you do first?"
+    options:
+      - text: Run ls Desktop to see what's really there
+        correct: true
+        why: Investigate. The folder may have a different name or be somewhere else.
+      - text: Restart the computer
+        why: Restarting won't create a missing folder.
+      - text: Run the same command again, faster
+        why: The same command gives the same error.
+  - prompt: "npm test shows: '1 failed, 25 passed'. What does this mean?"
+    options:
+      - text: One check failed. Scroll up to find its name and what it expected.
+        correct: true
+        why: Test output always names the failing test and what it expected versus what it got.
+      - text: Everything is broken
+        why: 25 passed! Only one thing needs attention.
+      - text: The tests themselves are broken
+        why: Possible, but rare. Read the failure first.
+  - prompt: "Which part of this error points at the cause?"
+    code: |
+      Error: Cannot find module './Profle'
+    language: javascript
+    options:
+      - text: "'./Profle', which looks like a misspelling of Profile"
+        correct: true
+        why: The quoted name is the clue. Errors often quote exactly what they couldn't find.
+      - text: "The word Error"
+        why: That only says something went wrong, not what.
+      - text: "Nothing, because this error is unreadable"
+        why: It says exactly what's missing. Read the quoted part slowly.
+    hint: Look closely at the spelling inside the quotes.
+---
+
+Real error messages from JavaScript, the terminal and tests. What do they really mean?

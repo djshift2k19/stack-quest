@@ -1,0 +1,53 @@
+---
+id: tour-of-vs-code
+title: A tour of VS Code
+type: reading
+minutes: 8
+xp: 15
+goals:
+  - Name VS Code's main areas and what each is for.
+  - Open the built-in terminal.
+---
+
+<Analogy title="A workshop layout">
+A good workshop has a shelf of materials, a workbench, a tool rack and a window to the outside. VS Code has the same four zones.
+</Analogy>
+
+Open VS Code on your Mac with the Stack Quest folder (**File → Open Folder…**) and find each part as you read.
+
+## 1. The Activity Bar (far left icons)
+
+A thin strip of icons that switches what the sidebar shows:
+
+- 📄 **Explorer**: your project's files and folders.
+- 🔍 **Search**: find text across every file.
+- 🔀 **Source Control**: your Git changes (module 3).
+- 🧩 **Extensions**: add-ons.
+
+## 2. The Sidebar (the shelf)
+
+Shows whatever you picked in the Activity Bar. In **Explorer**, click a file to open it, and click a folder to expand it. Try opening `content/glossary.yaml`.
+
+## 3. The Editor (the workbench)
+
+The big area in the middle where you read and write code. Each open file gets a **tab** along the top. A **dot** on a tab means unsaved changes, and **⌘S** saves.
+
+## 4. The Panel (the window at the bottom)
+
+Open it with **View → Terminal** (or **Control + `**, where ` is the key below Esc). It's a real terminal, already standing in your project folder. You can run `npm test` right here without switching apps.
+
+The panel also has a **Problems** tab, listing every error squiggle in the project.
+
+## 5. The Status Bar (the very bottom line)
+
+Small but useful: the Git branch you're on, the number of errors and warnings, and the language of the current file.
+
+## On your Mac
+
+1. Open the Stack Quest folder in VS Code.
+2. Open the built-in terminal and type `pwd`. Notice it's already in the project folder.
+3. Run `npm test` from there.
+
+<KeyIdea>
+VS Code has an **Activity Bar** (switches views), a **Sidebar** (files), the **Editor** (your code), the **Panel** (built-in terminal) and the **Status Bar**. The built-in terminal opens in your project folder, which is handy.
+</KeyIdea>

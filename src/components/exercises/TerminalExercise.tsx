@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { TerminalSpec } from "@/lib/content/schema";
-import { checkTask, createShell, execute, promptText, type OutLine, type ShellState } from "@/lib/terminal/shell";
+import { checkTask, createShell, execute, normaliseCommandLine, promptText, type OutLine, type ShellState } from "@/lib/terminal/shell";
 import { CodeBlock, ErrorExplanation, ExerciseCard, HintLadder, secondaryButton } from "./ui";
 
 type ScreenLine = { kind: "cmd"; prompt: string; text: string } | ({ kind: "out" } & OutLine);
@@ -62,7 +62,7 @@ export function TerminalExercise({
     setLastError(result.ok ? null : (result.lines.find((l) => l.tone === "error")?.text ?? null));
 
     if (finished || !line.trim()) return;
-    const ran = result.ok ? [...ranThisTask, result.command] : ranThisTask;
+    const ran = result.ok ? [...ranThisTask, result.command, normaliseCommandLine(line)] : ranThisTask;
     // Complete the current task (and any following ones that are already satisfied).
     let i = taskIndex;
     let ranNow = ran;

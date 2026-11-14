@@ -13,7 +13,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { getCatalog, getUnit } from "@/lib/content/loader";
 import type { Challenge, UnitFrontmatter } from "@/lib/content/schema";
 import { sameOutput } from "@/lib/engine/sameOutput";
-import { checkTask, createShell, execute } from "@/lib/terminal/shell";
+import { checkTask, createShell, execute, normaliseCommandLine } from "@/lib/terminal/shell";
 import { createJsRuntime } from "@/sandboxes/js/runtime";
 import { runSqlJob } from "@/sandboxes/sql/sqlCore";
 
@@ -82,7 +82,7 @@ describe("every exercise in content/ is solvable", async () => {
             const r = execute(state, command);
             expect(r.ok, `task ${i + 1}: "${command}" failed: ${r.lines.map((l) => l.text).join(" ")}`).toBe(true);
             state = r.state;
-            ran.push(r.command);
+            ran.push(r.command, normaliseCommandLine(command));
           }
           expect(checkTask(state, task.check, ran), `task ${i + 1} isn't complete after its solution`).toBe(true);
         });

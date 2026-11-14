@@ -1,0 +1,54 @@
+---
+id: recovering-in-the-terminal
+title: Recovering from terminal mistakes
+type: terminal
+minutes: 8
+xp: 20
+goals:
+  - Use error messages to fix typos and wrong names.
+  - Use ls and pwd to investigate.
+terminal:
+  setup:
+    dirs: [Projects-2026/website]
+    files:
+      Projects-2026/website/Notes.txt: "Remember: names are case-sensitive!\n"
+  tasks:
+    - instruction: Go into the website folder, inside the projects folder. (Hint, try cd projects first and read the error!)
+      check: { cwd: ~/Projects-2026/website }
+      hints:
+        - The error says there's no "projects". Run ls to see what the folder is really called.
+        - It's called Projects-2026, with a capital P and a year.
+        - "Type exactly: cd Projects-2026/website"
+      solution: [cd Projects-2026/website]
+      explain: Reading the error, then using ls to investigate, is the whole skill.
+    - instruction: Show the contents of the notes file in this folder.
+      check: { ran: cat }
+      hints:
+        - Try cat notes.txt and read the error. Then use ls.
+        - The file's name starts with a capital N.
+        - "Type exactly: cat Notes.txt"
+      solution: [cat Notes.txt]
+    - instruction: "Try to make a folder called website in Projects-2026 (it already exists, so read the error). Then make one called website-v2 instead."
+      check: { exists: [~/Projects-2026/website-v2] }
+      hints:
+        - First go up one level with cd .., then try mkdir website.
+        - '"File exists" means the name is taken. Choose website-v2.'
+        - "Type: cd .. then: mkdir website-v2"
+      solution: [cd .., mkdir website-v2]
+    - instruction: Run a command you've misspelled on purpose (like lss), read the error, then run the correct one.
+      check: { ran: ls }
+      hints:
+        - Try typing lss and read what zsh says.
+        - '"command not found" means the first word isn''t a real command.'
+        - "Type exactly: ls"
+      solution: [ls]
+      explain: '"command not found" nearly always means a typo in the first word.'
+---
+
+This time the tasks are designed to **trip you up**. Folder and file names aren't quite what you'd guess, so you'll see real error messages. Each time:
+
+1. Read the error (the translator explains it underneath).
+2. Investigate with `ls` and `pwd`.
+3. Fix the command and try again.
+
+Getting errors here is the point. There's no penalty, ever.

@@ -1,0 +1,66 @@
+---
+id: moving-around
+title: "Moving around: cd"
+type: terminal
+minutes: 8
+xp: 15
+goals:
+  - Move into folders and back out with cd.
+  - Use ~, .. and absolute paths.
+terminal:
+  setup:
+    dirs:
+      - Documents/school/maths
+      - Projects
+  tasks:
+    - instruction: Move into the Documents folder.
+      check: { cwd: ~/Documents }
+      hints:
+        - cd stands for "change directory".
+        - Type cd, a space, then the folder name.
+        - "Type exactly: cd Documents"
+      solution: [cd Documents]
+      explain: Look at the prompt. It now shows Documents. Run pwd if you want to check.
+    - instruction: Go two folders deeper, into school and then maths, in ONE command.
+      check: { cwd: ~/Documents/school/maths }
+      hints:
+        - You can give cd a path with several folder names joined by slashes.
+        - The path from here is school, a slash, then maths.
+        - "Type exactly: cd school/maths"
+      solution: [cd school/maths]
+      explain: One command, two folders. Paths can be as long as you need.
+    - instruction: Go UP one level, back to the school folder.
+      check: { cwd: ~/Documents/school }
+      hints:
+        - Two dots mean "the folder above this one" (the parent).
+        - Type cd, a space, then two full stops.
+        - "Type exactly: cd .."
+      solution: [cd ..]
+      explain: .. always means "one level up". You can chain them, like cd ../..
+    - instruction: Jump straight back to your home folder.
+      check: { cwd: "~" }
+      hints:
+        - The tilde (~) means your home folder.
+        - "On a Mac keyboard, ~ is Shift + the key to the left of Z (or below Esc)."
+        - "Type exactly: cd ~ (or just cd on its own)"
+      solution: ["cd ~"]
+      explain: cd ~ (or just cd) always takes you home, from anywhere.
+    - instruction: "Go to the Projects folder using its FULL path, starting with /Users."
+      check: { cwd: ~/Projects }
+      hints:
+        - A full (absolute) path starts at the very top, with a /.
+        - Your home folder's full path is /Users/learner (run pwd to check).
+        - "Type exactly: cd /Users/learner/Projects"
+      solution: [cd /Users/learner/Projects]
+      explain: Absolute paths start with / and work from anywhere. Relative paths (like Projects) start from where you are.
+---
+
+`cd` means **change directory**: it moves the terminal into a different folder.
+
+Three shortcuts to remember:
+
+- `..` means the folder **above** this one (the "parent").
+- `~` means your **home folder**.
+- A path starting with `/` is an **absolute path**: the full address from the very top, which works from anywhere. A path without it is **relative**: it starts from where you are now.
+
+Watch the prompt change as you move.

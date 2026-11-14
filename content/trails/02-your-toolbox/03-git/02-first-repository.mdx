@@ -1,0 +1,43 @@
+---
+id: first-repository
+title: "Your first repository: git init and git status"
+type: terminal
+minutes: 6
+xp: 15
+goals:
+  - Turn a folder into a repository with git init.
+  - Ask Git what's going on with git status.
+terminal:
+  setup:
+    dirs: [projects]
+  tasks:
+    - instruction: Make a folder called recipes inside projects, and go into it.
+      check: { cwd: ~/projects/recipes }
+      hints:
+        - Two commands, mkdir and then cd.
+        - mkdir projects/recipes, then cd projects/recipes.
+        - "Type: mkdir projects/recipes, press Enter, then type: cd projects/recipes"
+      solution: [mkdir projects/recipes, cd projects/recipes]
+    - instruction: Turn this folder into a Git repository.
+      check: { gitRepo: ~/projects/recipes }
+      hints:
+        - init is short for "initialise", meaning start.
+        - git, then init.
+        - "Type exactly: git init"
+      solution: [git init]
+      explain: Git created a hidden .git folder. Try ls -a to see it. Never delete it, because it holds your history!
+    - instruction: Ask Git for the status of your new repository.
+      check: { ran: git status }
+      hints:
+        - Same command as before.
+        - git, then status.
+        - "Type exactly: git status"
+      solution: [git status]
+      explain: '"No commits yet" and "nothing to commit": a brand-new, empty repository. Next unit, you''ll make your first commit.'
+---
+
+`git init` switches Git on for a folder, turning it into a repository. You only do it **once** per project.
+
+`git status` is the command you'll type most. It answers: "What's changed? What's ready to save?" When in doubt, run `git status`.
+
+**Try this first, for fun:** before `git init`, type `git status`. Git complains `fatal: not a git repository`, because it isn't switched on in that folder yet. "fatal" sounds scary, but it just means "I can't do that". Read the translator's explanation, then carry on with the tasks.

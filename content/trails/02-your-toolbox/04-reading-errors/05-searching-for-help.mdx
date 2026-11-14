@@ -1,0 +1,42 @@
+---
+id: searching-for-help
+title: Searching for help like a pro
+type: reading
+minutes: 6
+xp: 10
+goals:
+  - Search for an error effectively.
+  - Use AI help safely and sensibly.
+---
+
+<Analogy title="Asking a mechanic">
+"My car's broken" gets you nowhere. "A grinding noise when I brake, front left, since yesterday" gets you a fix. Asking for help with code works the same way.
+</Analogy>
+
+## Searching the web
+
+1. **Copy the exact error message** and search for it in quotes, leaving out your own file names and numbers:
+   `"Cannot read properties of undefined (reading"`
+2. **Add the tool's name**: `react`, `next.js`, `postgres`, `git`.
+3. **Prefer official documentation**, then well-voted answers. Check the **date**: tools change, and a 2017 answer may be out of date.
+
+## Asking an AI assistant
+
+AI assistants are genuinely useful for explaining errors. To use them well:
+
+- **Give context**: what you were trying to do, the exact error, and the relevant code.
+- **Ask it to explain**, not just fix: "Why does this happen?" helps you learn.
+- **Never paste secrets**: passwords, API keys or anything from your secret settings file (`.env.local`). Remove them first.
+- **Check the answer**: AI can be confidently wrong, and may invent commands. Run the tests and read what it changed. Trail 11 is all about this.
+
+## Asking a person
+
+Show what you tried: "I expected X, got Y, and I tried A and B." People love helping someone who's clearly tried.
+
+## Rubber duck debugging
+
+Explain the problem out loud, line by line, to a rubber duck (or a patient pet). You'll often spot the answer halfway through the sentence. Professionals really do this.
+
+<KeyIdea>
+Search the **exact error in quotes** with the tool's name. With AI: give context, ask **why**, **never paste secrets**, and **verify** the answer. Explaining the problem out loud often solves it.
+</KeyIdea>

@@ -1,0 +1,58 @@
+---
+id: anatomy-of-an-error
+title: The anatomy of an error message
+type: reading
+minutes: 7
+xp: 10
+goals:
+  - Find the type, message and location in an error.
+  - Know which line of a long error matters most.
+---
+
+<Analogy title="A doctor's note">
+A doctor's note says the condition ("sprained ankle"), where ("left ankle") and sometimes the cause ("fell playing soccer"). Error messages have the same three parts. They're just written in shorthand.
+</Analogy>
+
+## A JavaScript error
+
+```
+TypeError: Cannot read properties of undefined (reading 'name')
+    at showLearner (profile.js:14:22)
+    at main (app.js:3:5)
+```
+
+- **`TypeError`** is the **type** of problem: something was the wrong kind of value.
+- **`Cannot read properties of undefined (reading 'name')`** is **what** happened: the code asked for `.name` on something that doesn't exist.
+- **`profile.js:14:22`** is **where**: file `profile.js`, line **14**, character 22.
+- The lines starting with `at` are the **stack trace**: the trail of which code called which. **Start with the top one**, which is where it actually broke.
+
+## A terminal error
+
+```
+cd: no such file or directory: Projetcs
+```
+
+- **`cd`** is **who** complained (which command).
+- **`no such file or directory`** is **what**.
+- **`Projetcs`** is the **clue**: look at the spelling!
+
+## A Git error
+
+```
+fatal: not a git repository (or any of the parent directories): .git
+```
+
+`fatal` sounds dramatic, but it just means "I stopped". The rest says why: Git isn't switched on in this folder.
+
+## When an error is very long
+
+Some errors are 50 lines long. Don't panic. Look for:
+
+1. The **first** line that says `Error`.
+2. The first `at …` line that mentions **your** files, not library files.
+
+Everything else is usually noise.
+
+<KeyIdea>
+Every error has a **type**, a **message** (what) and a **location** (where). In long errors, read the first "Error" line and the first line that mentions **your own** file.
+</KeyIdea>

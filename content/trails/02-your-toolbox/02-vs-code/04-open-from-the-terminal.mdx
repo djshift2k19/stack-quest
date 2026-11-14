@@ -1,0 +1,50 @@
+---
+id: open-from-the-terminal
+title: "Opening projects from the terminal: code ."
+type: terminal
+minutes: 6
+xp: 15
+goals:
+  - Open a folder in VS Code from the terminal.
+  - Understand what . means in a path.
+terminal:
+  setup:
+    dirs: [projects/portfolio, projects/recipes]
+  tasks:
+    - instruction: Go into the portfolio project (inside projects).
+      check: { cwd: ~/projects/portfolio }
+      hints:
+        - Use cd with a path.
+        - The path is projects/portfolio.
+        - "Type exactly: cd projects/portfolio"
+      solution: [cd projects/portfolio]
+    - instruction: Open this folder in VS Code from the terminal.
+      check: { ran: code . }
+      hints:
+        - The command is called code, and a single dot means "this folder".
+        - Type code, a space, then a full stop.
+        - "Type exactly: code ."
+      solution: [code .]
+      explain: On your real Mac, this opens VS Code with the whole folder in the sidebar. It's how most developers start their day.
+---
+
+Developers rarely open projects through menus. Instead they `cd` into the folder and type:
+
+```
+code .
+```
+
+The single dot `.` means **"this folder, right here"**, just as `..` means "the folder above".
+
+## Setting it up on your real Mac (one time)
+
+The `code` command isn't switched on by default:
+
+1. Open VS Code.
+2. Press **⌘⇧P** to open the Command Palette.
+3. Type `shell command` and choose **"Shell Command: Install 'code' command in PATH"**.
+4. Close and reopen your Terminal app.
+
+After that, `code .` works from any folder.
+
+Practise below first. The practice terminal pretends to open VS Code.

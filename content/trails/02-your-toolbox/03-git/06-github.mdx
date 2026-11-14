@@ -1,0 +1,49 @@
+---
+id: github
+title: GitHub, your online backup
+type: reading
+minutes: 7
+xp: 10
+goals:
+  - Explain the difference between Git and GitHub.
+  - Describe push and pull.
+  - Know the steps to connect a project to GitHub.
+---
+
+<Analogy title="A photo album and a cloud backup">
+Git is like a photo album on your shelf: a complete history, but only in your house. <Term word="github">GitHub</Term> is like backing that album up to the cloud: it's safe if your laptop is stolen, and you can share it with friends.
+</Analogy>
+
+## Git and GitHub are different things
+
+- **Git** is a **tool** on your computer. It works offline and needs no account.
+- **GitHub** is a **website** that stores copies of Git repositories online. It's free for personal projects and owned by Microsoft. (GitLab and Bitbucket do the same job.)
+
+## Push and pull
+
+- **`git push`** sends your new commits **up** to GitHub.
+- **`git pull`** brings commits from GitHub **down** to your computer, for example ones a teammate made, or ones you made on another computer.
+
+The copy on GitHub is called the **remote**. Your Mac has the **local** copy.
+
+## Why it matters for you
+
+1. **Backup.** If your MacBook is lost, stolen or broken, your code survives.
+2. **Portfolio.** Employers look at GitHub profiles. Your Stack Quest projects can live there to show your skills.
+3. **Collaboration.** Teams use GitHub to review each other's code (with "pull requests") before it's merged.
+4. **Deploying.** In Trail 10, services like Vercel can publish your site automatically every time you push.
+
+## Connecting Stack Quest to GitHub (when you're ready)
+
+This is optional, and you decide when. The rough steps are:
+
+1. Create a free account at github.com. Choose a professional username, because employers will see it.
+2. Create a new **private** repository there, with no README.
+3. GitHub then shows you two commands to connect your project: `git remote add origin …` and `git push -u origin main`.
+4. GitHub will ask you to log in. Use the **GitHub CLI** or **GitHub Desktop** to sign in securely, and **never paste passwords or tokens into a chat** (including with an AI).
+
+When you want to do this, ask me in our build chat and we'll do it together, step by step.
+
+<KeyIdea>
+**Git** is the tool that saves history on your computer. **GitHub** is a website that stores a copy online. **Push** sends commits up, and **pull** brings them down. Together they give you backup, a portfolio and teamwork.
+</KeyIdea>

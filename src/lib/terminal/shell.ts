@@ -53,6 +53,8 @@ export interface ShellSetup {
   cwd?: string;
   dirs?: string[];
   files?: Record<string, string>;
+  /** Folders that already have Git switched on (as if `git init` had run). */
+  repos?: string[];
 }
 
 export const HOME = "/Users/learner";
@@ -139,6 +141,11 @@ export function createShell(setup: ShellSetup = {}): ShellState {
     setNode(root, full, { type: "file", content });
   }
   const repos: Record<string, Repo> = {};
+  for (const r of setup.repos ?? []) {
+    const dir = resolvePath(HOME, HOME, r);
+    mkdirP(root, `${dir}/.git`);
+    repos[dir] = { index: {}, commits: [] };
+  }
   return { root, cwd: resolvePath(HOME, HOME, setup.cwd ?? HOME), home: HOME, repos, history: [] };
 }
 
@@ -168,6 +175,16 @@ export function tokenize(line: string): string[] {
   }
   if (has || current) tokens.push(current);
   return tokens;
+}
+
+/**
+ * A tidy version of what was typed, for checking tasks like "ls Documents":
+ * extra spaces and a trailing / on folder names don't matter.
+ */
+export function normaliseCommandLine(line: string): string {
+  return tokenize(line)
+    .map((t) => (t.length > 1 ? t.replace(/\/$/, "") : t))
+    .join(" ");
 }
 
 /* ---------- Git helpers ---------- */
@@ -520,7 +537,7 @@ function git(
 /* ---------- Checking tasks ---------- */
 
 export interface TerminalCheck {
-  /** A command (e.g. "ls" or "git status") ran successfully. */
+  /** A command ran successfully: either its name ("ls", "git status") or the exact line ("ls Documents"). */
   ran?: string;
   /** You're standing in this folder. */
   cwd?: string;

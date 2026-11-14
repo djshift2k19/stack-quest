@@ -1,0 +1,57 @@
+---
+id: boss-error-detective
+title: "Trail Boss: The error detective"
+type: boss
+minutes: 9
+xp: 75
+goals:
+  - Use everything from this trail to diagnose real-world problems.
+questions:
+  - prompt: "You run npm run dev and see: 'zsh: command not found: npm'. What's the most likely cause?"
+    options:
+      - text: Node.js isn't installed, or the Terminal was open during the install and needs reopening
+        correct: true
+        why: npm comes with Node.js. "command not found" means the terminal can't find it.
+      - text: Your code has a typo
+        why: The error is about the npm command itself. Your code hasn't even run yet.
+      - text: The internet is down
+        why: The command isn't found locally. That has nothing to do with the internet.
+  - prompt: "git commit -m 'Add page' says 'nothing added to commit but untracked files present'. What did you forget?"
+    options:
+      - text: git add, to stage the files
+        correct: true
+        why: A commit only saves what's been staged with git add.
+      - text: git init
+        why: Then the error would be "not a git repository".
+      - text: Saving the files in VS Code
+        why: The files exist ("untracked files present"). They just aren't staged.
+  - prompt: "In VS Code a file tab shows a dot, and the browser still shows your old version. What's the fix?"
+    options:
+      - text: Press ⌘S to save the file
+        correct: true
+        why: A dot on the tab means unsaved changes. The browser only sees saved files.
+      - text: Run rm on the file
+        why: That would delete your work!
+      - text: Make a new commit
+        why: Commit after saving. First, the file needs to be saved.
+  - prompt: "Your error says 'at loadTrail (loader.ts:42:7)' and then 30 lines from node_modules. Where do you look first?"
+    options:
+      - text: loader.ts line 42, the first line from your own code
+        correct: true
+        why: node_modules is other people's library code. Your bug is almost certainly in your own file.
+      - text: The last line in node_modules
+        why: Library code is rarely the problem. Start with your own file.
+      - text: Nowhere, because long errors can't be fixed
+        why: Long errors usually have one useful line. Find it.
+  - prompt: "You ask an AI assistant for help with an error. Which message is best?"
+    options:
+      - text: '"I''m running npm test. I expected 26 passes, but get: [exact error]. Here''s the function: [code]. Why does this happen?"'
+        correct: true
+        why: Context, the exact error, the relevant code and a "why?" question. Perfect.
+      - text: '"it doesnt work fix it"'
+        why: Without context, the AI has to guess, and might confidently guess wrong.
+      - text: '"Here''s my secret settings file with my keys, what''s wrong?"'
+        why: Never share secrets with anyone, AI included.
+---
+
+**This is the final challenge of Trail 2.** You're the team's error detective. Each case is a real situation a new developer meets. Use everything from this trail: the terminal, VS Code, Git and reading errors.

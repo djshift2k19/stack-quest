@@ -1,0 +1,48 @@
+---
+id: what-is-a-terminal
+title: What is a terminal, and why bother?
+type: reading
+minutes: 6
+xp: 10
+goals:
+  - Explain what a terminal is.
+  - Read a terminal prompt.
+---
+
+<Analogy title="Texting your computer">
+Finder is like pointing at things in a shop. The <Term word="terminal">terminal</Term> is like sending the shopkeeper a precise text message: "Two loaves of white bread, sliced." It's faster and more exact, once you know the words.
+</Analogy>
+
+## What it is
+
+The terminal (also called the **command line**) is an app where you type <Term word="command">commands</Term> instead of clicking. On your Mac, it's called **Terminal**. You opened it during setup to run `npm run dev`.
+
+## Why developers use it
+
+- **Many developer tools only work there.** Node.js, npm, Git and the Stack Quest tests are all run from the terminal.
+- **It's precise.** `npm test` does exactly the same thing every time.
+- **It's fast.** One line can do what would take twenty clicks.
+- **It's the same everywhere.** Servers in data centres have no screen or mouse, only a terminal.
+
+## Reading the prompt
+
+When the terminal is ready, it shows a **prompt**, like this:
+
+```
+learner@stack-quest ~ %
+```
+
+- `learner` is the user you're logged in as.
+- `stack-quest` is the computer's name.
+- `~` is where you are right now. `~` is short for your <Term word="home-folder">home folder</Term>.
+- `%` means "ready, type a command". (On some computers it's `$`.)
+
+You type after the `%` and press **Enter** (Return). The result appears underneath, then a new prompt appears.
+
+## It's safe here
+
+In the next units you'll use a **practice terminal** inside Stack Quest. It copies the real Mac terminal's commands and messages, but its files are pretend, so nothing can break your real computer. Experiment freely. Type `help` any time to see the commands.
+
+<KeyIdea>
+The **terminal** lets you control your computer by typing **commands**. The **prompt** shows where you are and that it's ready. Developers use it because it's precise, fast and needed by most developer tools.
+</KeyIdea>

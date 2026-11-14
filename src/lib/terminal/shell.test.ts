@@ -106,6 +106,16 @@ describe("git", () => {
 });
 
 describe("task checks", () => {
+  it("can check the exact command typed, ignoring extra spaces and trailing slashes", async () => {
+    const { normaliseCommandLine } = await import("./shell");
+    expect(normaliseCommandLine("ls   Documents/")).toBe("ls Documents");
+  });
+
+  it("can start with Git already switched on in a folder", () => {
+    const s = createShell({ dirs: ["projects/site"], repos: ["projects/site"], cwd: "projects/site" });
+    expect(run(s, "git status").text).toContain("No commits yet");
+  });
+
   it("checks folders, files, commands and git progress", () => {
     const { state } = run(createShell(), "mkdir projects", "cd projects", "git init", 'echo "x" > a.txt', "git add a.txt");
     const ran = ["mkdir", "cd", "git init", "echo", "git add"];

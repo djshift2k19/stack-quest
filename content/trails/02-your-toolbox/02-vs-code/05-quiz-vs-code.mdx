@@ -1,0 +1,48 @@
+---
+id: quiz-vs-code
+title: Check your understanding
+type: quiz
+minutes: 4
+xp: 15
+goals:
+  - Recall VS Code's areas and shortcuts.
+questions:
+  - prompt: You need to open a file called CelebrationList.tsx but don't know which folder it's in. What's fastest?
+    options:
+      - text: Press ⌘P and type part of its name
+        correct: true
+        why: ⌘P finds files by name, from anywhere.
+      - text: Click through every folder in the Explorer
+        why: That works, but slowly. ⌘P is made for this.
+      - text: Restart VS Code
+        why: That won't find the file.
+  - prompt: A tab shows a dot instead of an ✕. What does that mean?
+    options:
+      - text: The file has unsaved changes. Press ⌘S.
+        correct: true
+        why: The dot means "changed but not saved".
+      - text: The file has an error
+        why: Errors show as squiggles and in the Problems tab, not as a dot on the tab.
+      - text: The file is hidden
+        why: Hidden files are about names starting with a dot, not the tab.
+  - prompt: What does the dot mean in code . ?
+    options:
+      - text: This folder, the one I'm in now
+        correct: true
+        why: A single dot is always "here".
+      - text: The folder above
+        why: That's two dots (..).
+      - text: Every folder on the computer
+        why: The dot only means the current folder.
+  - prompt: Where's the quickest place to run npm test while editing?
+    options:
+      - text: VS Code's built-in terminal (⌃`), which is already in the project folder
+        correct: true
+        why: No app switching, and no cd needed.
+      - text: Safari
+        why: Safari is a browser. Tests run from a terminal.
+      - text: The Extensions view
+        why: Extensions add features. They don't run your tests.
+---
+
+Four quick questions about your new workshop.

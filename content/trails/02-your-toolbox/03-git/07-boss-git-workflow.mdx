@@ -1,0 +1,57 @@
+---
+id: boss-git-workflow
+title: "Boss Challenge: A day's work, safely saved"
+type: boss
+minutes: 10
+xp: 60
+goals:
+  - Run the full Git workflow from scratch, without step-by-step instructions.
+terminal:
+  setup:
+    dirs: [projects]
+  tasks:
+    - instruction: Create a new project folder ~/projects/spaza-site and make it a Git repository.
+      check: { gitRepo: ~/projects/spaza-site }
+      hints:
+        - You need mkdir, cd and one Git command.
+        - mkdir projects/spaza-site, cd projects/spaza-site, then git init.
+        - "Type: mkdir projects/spaza-site, then cd projects/spaza-site, then git init"
+      solution: [mkdir projects/spaza-site, cd projects/spaza-site, git init]
+    - instruction: 'Create index.html containing "Gogo''s Spaza", and prices.txt containing "Bread R18".'
+      check:
+        exists: [~/projects/spaza-site/index.html, ~/projects/spaza-site/prices.txt]
+        fileContains: { path: ~/projects/spaza-site/prices.txt, text: Bread R18 }
+      hints:
+        - echo with > writes text into a new file. You need two commands.
+        - Put the text in quotes, for example echo "Bread R18" > prices.txt
+        - 'Type: echo "Gogo''s Spaza" > index.html, then: echo "Bread R18" > prices.txt'
+      solution: ['echo "Gogo''s Spaza" > index.html', 'echo "Bread R18" > prices.txt']
+    - instruction: Save both files in your first commit, with a clear message.
+      check: { gitCommits: { repo: ~/projects/spaza-site, atLeast: 1 } }
+      hints:
+        - Stage, then commit.
+        - git add . stages everything. Then git commit -m with a message.
+        - 'Type: git add . then: git commit -m "Add home page and price list"'
+      solution: [git add ., 'git commit -m "Add home page and price list"']
+    - instruction: 'Prices went up! Add the line "Milk R25" to prices.txt, then commit just that change.'
+      check:
+        gitCommits: { repo: ~/projects/spaza-site, atLeast: 2 }
+        fileContains: { path: ~/projects/spaza-site/prices.txt, text: Milk R25 }
+      hints:
+        - Use >> to add to the end, then stage and commit.
+        - echo "Milk R25" >> prices.txt, then git add prices.txt, then commit.
+        - 'Type: echo "Milk R25" >> prices.txt, then: git add prices.txt, then: git commit -m "Add milk price"'
+      solution: ['echo "Milk R25" >> prices.txt', git add prices.txt, 'git commit -m "Add milk price"']
+    - instruction: Show the history in its short, one-line form.
+      check: { ran: git log --oneline }
+      hints:
+        - The history command takes an option for a shorter view.
+        - The option is --oneline (two dashes).
+        - "Type exactly: git log --oneline"
+      solution: [git log --oneline]
+      explain: Two clear save points. That's exactly how professionals work.
+---
+
+**No step-by-step help this time** (well, there are always hints if you need them). Set up Gogo's spaza shop website as a Git project and save your work properly, the way professionals do.
+
+Remember the rhythm: **change → `git status` → `git add` → `git commit -m "…"`**.

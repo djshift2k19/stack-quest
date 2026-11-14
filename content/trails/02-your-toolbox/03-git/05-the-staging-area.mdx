@@ -1,0 +1,66 @@
+---
+id: the-staging-area
+title: Choosing what to save with the staging area
+type: terminal
+minutes: 9
+xp: 20
+goals:
+  - Read git status's three sections.
+  - Commit only some of your changes.
+terminal:
+  setup:
+    cwd: projects/recipes
+    repos: [projects/recipes]
+    files:
+      projects/recipes/pap.txt: "Maize meal\nWater\nSalt\n"
+      projects/recipes/chakalaka.txt: "Beans\nTomatoes\n"
+  tasks:
+    - instruction: 'Stage EVERYTHING in this folder at once, and commit it as "Add first recipes".'
+      check: { gitCommits: { repo: ~/projects/recipes, atLeast: 1 } }
+      hints:
+        - A single dot means "this folder", and that works with git add too.
+        - git add . stages every change in this folder.
+        - 'Type: git add . press Enter, then: git commit -m "Add first recipes"'
+      solution: [git add ., 'git commit -m "Add first recipes"']
+    - instruction: Add the line Chilli to the END of chakalaka.txt (keep the other lines!).
+      check: { fileContains: { path: ~/projects/recipes/chakalaka.txt, text: "Tomatoes\nChilli" } }
+      hints:
+        - One > replaces a file, but two (>>) add to the end.
+        - echo Chilli, then >>, then the file name.
+        - "Type exactly: echo Chilli >> chakalaka.txt"
+      solution: [echo Chilli >> chakalaka.txt]
+    - instruction: Add the line Butter to the end of pap.txt as well.
+      check: { fileContains: { path: ~/projects/recipes/pap.txt, text: "Salt\nButter" } }
+      hints:
+        - Same as the last step, for a different file.
+        - echo Butter >> pap.txt
+        - "Type exactly: echo Butter >> pap.txt"
+      solution: [echo Butter >> pap.txt]
+      explain: Now run git status. Both files are listed under "Changes not staged for commit".
+    - instruction: Stage ONLY chakalaka.txt (not pap.txt).
+      check: { gitStaged: { repo: ~/projects/recipes, paths: [~/projects/recipes/chakalaka.txt] } }
+      hints:
+        - Instead of the dot, name the file.
+        - git add, then the file name.
+        - "Type exactly: git add chakalaka.txt"
+      solution: [git add chakalaka.txt]
+      explain: Run git status. chakalaka.txt is "to be committed", while pap.txt is still "not staged".
+    - instruction: 'Commit with the message "Add chilli to chakalaka". Then run git status to see that pap.txt is still waiting.'
+      check: { gitCommits: { repo: ~/projects/recipes, atLeast: 2 } }
+      hints:
+        - Only what's staged gets committed.
+        - git commit -m, then the message in quotes.
+        - 'Type exactly: git commit -m "Add chilli to chakalaka"'
+      solution: ['git commit -m "Add chilli to chakalaka"']
+      explain: The commit only contains the chakalaka change. Your pap change is safe, waiting for its own commit.
+---
+
+`git status` can show three groups of files:
+
+- **Changes to be committed** (green): staged, and in the next snapshot.
+- **Changes not staged for commit** (red): changed, but not chosen yet.
+- **Untracked files** (red): new files Git isn't looking after yet.
+
+The staging area lets you **choose** what goes into each commit. If you changed two unrelated things, you can save them as two separate, clearly-named commits.
+
+`git add .` (with a dot) stages **everything** in the current folder. `git add file.txt` stages just that file.

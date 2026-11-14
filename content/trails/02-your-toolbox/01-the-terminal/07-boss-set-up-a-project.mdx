@@ -1,0 +1,73 @@
+---
+id: boss-set-up-a-project
+title: "Boss Challenge: Set up a real project folder"
+type: boss
+minutes: 10
+xp: 60
+goals:
+  - Combine every terminal command from this module to organise a project.
+terminal:
+  setup:
+    files:
+      Downloads/me.jpg: "(your photo)"
+      Downloads/IMG_0042.jpg: "(a random photo)"
+  tasks:
+    - instruction: Create a folder called portfolio inside a new projects folder (so ~/projects/portfolio).
+      check: { exists: [~/projects/portfolio] }
+      hints:
+        - You need two folders, one inside the other. You can do it in two steps.
+        - mkdir projects, then mkdir projects/portfolio. (mkdir -p projects/portfolio makes both at once.)
+        - "Type: mkdir -p projects/portfolio"
+      solution: [mkdir -p projects/portfolio]
+    - instruction: Go into the portfolio folder.
+      check: { cwd: ~/projects/portfolio }
+      hints:
+        - cd takes a path.
+        - The path from home is projects/portfolio.
+        - "Type: cd projects/portfolio"
+      solution: [cd projects/portfolio]
+    - instruction: Inside portfolio, make two folders, css and images, in ONE command.
+      check: { exists: [~/projects/portfolio/css, ~/projects/portfolio/images] }
+      hints:
+        - mkdir can take several names at once, separated by spaces.
+        - mkdir, then css, then images.
+        - "Type: mkdir css images"
+      solution: [mkdir css images]
+    - instruction: Create index.html in portfolio and style.css inside the css folder.
+      check: { exists: [~/projects/portfolio/index.html, ~/projects/portfolio/css/style.css] }
+      hints:
+        - touch creates empty files, and it can take several names too.
+        - The second file needs a path into the css folder.
+        - "Type: touch index.html css/style.css"
+      solution: [touch index.html css/style.css]
+    - instruction: 'Write "My portfolio" into a new file called README.md.'
+      check: { fileContains: { path: ~/projects/portfolio/README.md, text: My portfolio } }
+      hints:
+        - echo with > writes text into a file.
+        - Put the text in quotes, then >, then README.md.
+        - 'Type: echo "My portfolio" > README.md'
+      solution: ['echo "My portfolio" > README.md']
+    - instruction: Move your photo me.jpg from Downloads into the images folder.
+      check: { exists: [~/projects/portfolio/images/me.jpg], missing: [~/Downloads/me.jpg] }
+      hints:
+        - Downloads isn't inside portfolio. Use ~ to start the path from home.
+        - mv, then ~/Downloads/me.jpg, then images.
+        - "Type: mv ~/Downloads/me.jpg images"
+      solution: [mv ~/Downloads/me.jpg images]
+      explain: That's a tidy project folder, laid out exactly like the one you'll build in Trail 3!
+---
+
+Every web project starts with a tidy folder. Using only the terminal, build this layout:
+
+```
+projects/
+└── portfolio/
+    ├── README.md        (contains "My portfolio")
+    ├── index.html
+    ├── css/
+    │   └── style.css
+    └── images/
+        └── me.jpg       (moved from Downloads)
+```
+
+There's more than one right way to do each step. Use `ls` and `pwd` whenever you like to check your work.

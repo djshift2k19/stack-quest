@@ -1,0 +1,75 @@
+---
+id: add-and-commit
+title: "Your first commit: git add and git commit"
+type: terminal
+minutes: 9
+xp: 20
+goals:
+  - Stage files with git add.
+  - Save a snapshot with git commit -m.
+  - See the history with git log.
+terminal:
+  setup:
+    cwd: projects/recipes
+    repos: [projects/recipes]
+    files:
+      projects/recipes/pap.txt: "Maize meal\nWater\nSalt\n"
+  tasks:
+    - instruction: Check the status. Git should list pap.txt as "untracked".
+      check: { ran: git status }
+      hints:
+        - The "what's going on?" command.
+        - git, then status.
+        - "Type exactly: git status"
+      solution: [git status]
+      explain: '"Untracked" means Git sees the file but isn''t looking after it yet.'
+    - instruction: Stage pap.txt, meaning put it in the box for the next snapshot.
+      check: { gitStaged: { repo: ~/projects/recipes, paths: [~/projects/recipes/pap.txt] } }
+      hints:
+        - The command is git add, followed by the file name.
+        - git add pap.txt
+        - "Type exactly: git add pap.txt"
+      solution: [git add pap.txt]
+      explain: Run git status again. pap.txt is now under "Changes to be committed".
+    - instruction: 'Commit (save the snapshot) with the message "Add pap recipe".'
+      check: { gitCommits: { repo: ~/projects/recipes, atLeast: 1 } }
+      hints:
+        - The command is git commit, and -m introduces the message.
+        - Put the message in double quotes after -m.
+        - 'Type exactly: git commit -m "Add pap recipe"'
+      solution: ['git commit -m "Add pap recipe"']
+      explain: Your first commit! The 7 letters and numbers are its unique ID.
+    - instruction: Add a new recipe file, chakalaka.txt, containing the word Beans.
+      check: { fileContains: { path: ~/projects/recipes/chakalaka.txt, text: Beans } }
+      hints:
+        - echo with > writes text into a new file.
+        - echo, the word, >, then the file name.
+        - "Type exactly: echo Beans > chakalaka.txt"
+      solution: [echo Beans > chakalaka.txt]
+    - instruction: 'Stage it and commit it with the message "Add chakalaka recipe".'
+      check: { gitCommits: { repo: ~/projects/recipes, atLeast: 2 } }
+      hints:
+        - It's the same two steps as before, add then commit.
+        - git add chakalaka.txt, then git commit with -m and a message.
+        - 'Type: git add chakalaka.txt, press Enter, then: git commit -m "Add chakalaka recipe"'
+      solution: [git add chakalaka.txt, 'git commit -m "Add chakalaka recipe"']
+    - instruction: Look at your history.
+      check: { ran: git log }
+      hints:
+        - The history is called the log.
+        - git, then log. (Try git log --oneline for a short version.)
+        - "Type exactly: git log"
+      solution: [git log]
+      explain: Two save points, newest first. You can now always see (and return to) these versions.
+---
+
+Saving a snapshot takes **two steps**:
+
+1. **`git add <file>`**: choose what goes in the snapshot. This puts it in the <Term word="staging-area">staging area</Term>.
+2. **`git commit -m "message"`**: take the snapshot, with a message describing it.
+
+<Analogy title="Packing a box to post">
+`git add` puts items in the box. `git commit` seals it, labels it and puts it on the shelf with the date. You can pack items one at a time and seal the box when you're ready.
+</Analogy>
+
+Git is already switched on in this folder, and there's a recipe file waiting. Run `git status` after each step to watch things change.

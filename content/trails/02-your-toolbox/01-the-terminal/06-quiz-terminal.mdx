@@ -1,0 +1,57 @@
+---
+id: quiz-terminal
+title: Check your understanding
+type: quiz
+minutes: 5
+xp: 15
+goals:
+  - Choose the right command for a job.
+questions:
+  - prompt: The prompt shows "learner@mac Documents %". You type cd .. and press Enter. Where are you now?
+    options:
+      - text: In the folder above Documents (your home folder)
+        correct: true
+        why: .. means one level up.
+      - text: Still in Documents
+        why: cd .. moves you up one level.
+      - text: At the very top of the computer (/)
+        why: It's only one level up. To reach /, you'd type cd /.
+  - prompt: Which command creates a folder called recipes?
+    options:
+      - text: mkdir recipes
+        correct: true
+        why: mkdir means "make directory".
+      - text: touch recipes
+        why: touch creates an empty FILE, not a folder.
+      - text: cd recipes
+        why: cd moves into a folder that already exists.
+  - prompt: 'What does echo "Hi" > notes.txt do if notes.txt already contains a shopping list?'
+    options:
+      - text: It replaces the shopping list with "Hi"
+        correct: true
+        why: A single > overwrites. Use >> to add to the end.
+      - text: It adds "Hi" to the end
+        why: That's what >> does. A single > replaces everything.
+      - text: It shows an error
+        why: No error. It quietly replaces the file's contents, which is why you need to be careful.
+  - prompt: What's the difference between ~/projects and projects?
+    options:
+      - text: ~/projects always means the projects folder in your home folder. projects means "a projects folder wherever I am now".
+        correct: true
+        why: ~ makes the path start from home, so it works from anywhere.
+      - text: There's no difference
+        why: They're only the same when you're already in your home folder.
+      - text: ~/projects is a hidden folder
+        why: Hidden names start with a dot, like .git. The ~ just means home.
+  - prompt: Which is the safest habit before running rm?
+    options:
+      - text: Run pwd and ls to check exactly where you are and what's there
+        correct: true
+        why: Always look before you delete.
+      - text: Run it quickly so you don't change your mind
+        why: Speed causes accidents. rm has no undo.
+      - text: Add -r to be sure
+        why: -r deletes whole folders. That makes it more dangerous, not safer.
+---
+
+Five questions about terminal commands.

@@ -168,6 +168,7 @@ export const terminalSchema = z.object({
       cwd: z.string().optional(),
       dirs: z.array(z.string()).optional(),
       files: z.record(z.string(), z.string()).optional(),
+      repos: z.array(z.string()).optional(),
     })
     .default({}),
   tasks: z.array(terminalTaskSchema).min(1),
