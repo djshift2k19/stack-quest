@@ -1,26 +1,162 @@
 @import "tailwindcss";
 
+/*
+ * Colour "tokens": every colour in the app is named here once.
+ * Components use the names (e.g. bg-surface, text-muted), so switching
+ * between light and dark mode only means swapping these values.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --bg: #f7f7f4;
+  --surface: #ffffff;
+  --surface-2: #efeee9;
+  --text: #1b1b18;
+  --muted: #5c5b55;
+  --border: #dddcd5;
+  --accent: #0b6e4f; /* deep green */
+  --accent-soft: #d8efe6;
+  --accent-contrast: #ffffff;
+  --gold: #a86b00;
+  --gold-soft: #fbedd0;
+  --flame: #c2410c;
+  --focus: #2563eb;
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    --bg: #121311;
+    --surface: #1c1d1a;
+    --surface-2: #262724;
+    --text: #ecebe6;
+    --muted: #a7a69f;
+    --border: #363732;
+    --accent: #4fd1a1;
+    --accent-soft: #163a2e;
+    --accent-contrast: #0b1f18;
+    --gold: #f3b74f;
+    --gold-soft: #3a2c12;
+    --flame: #fb923c;
+    --focus: #93c5fd;
+    color-scheme: dark;
   }
 }
 
+:root[data-theme="dark"] {
+  --bg: #121311;
+  --surface: #1c1d1a;
+  --surface-2: #262724;
+  --text: #ecebe6;
+  --muted: #a7a69f;
+  --border: #363732;
+  --accent: #4fd1a1;
+  --accent-soft: #163a2e;
+  --accent-contrast: #0b1f18;
+  --gold: #f3b74f;
+  --gold-soft: #3a2c12;
+  --flame: #fb923c;
+  --focus: #93c5fd;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-flame: var(--flame);
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+/* A clearly visible outline for keyboard users. */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Lesson text. */
+.lesson {
+  line-height: 1.7;
+  font-size: 1.0625rem;
+}
+.lesson > * + * {
+  margin-top: 1rem;
+}
+.lesson h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-top: 2rem;
+}
+.lesson h3 {
+  font-size: 1.15rem;
+  font-weight: 650;
+  margin-top: 1.5rem;
+}
+.lesson ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+.lesson ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+}
+.lesson li + li {
+  margin-top: 0.35rem;
+}
+.lesson a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.lesson :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--surface-2);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  overflow-wrap: anywhere;
+}
+.lesson pre {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+/* A small, quick "pop" for celebrations. Turned off if you prefer less motion. */
+@keyframes pop {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

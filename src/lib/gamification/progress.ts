@@ -49,7 +49,8 @@ export const initialProgress: ProgressState = {
 export interface CompletionInput {
   unitKey: string;
   baseXp: number;
-  hintsUsed: number;
+  /** Hints used on a challenge. Leave out for units with no hints (readings). */
+  hintsUsed?: number;
 }
 
 export type Celebration =
@@ -83,7 +84,7 @@ export function completeUnit(
       firstCompletedAt: previous?.firstCompletedAt ?? nowIso,
       lastCompletedAt: nowIso,
       completions: (previous?.completions ?? 0) + 1,
-      fewestHints: Math.min(previous?.fewestHints ?? Infinity, input.hintsUsed),
+      fewestHints: Math.min(previous?.fewestHints ?? Infinity, input.hintsUsed ?? 0),
       xpEarned: Math.max(previous?.xpEarned ?? 0, earned),
     },
   };

@@ -45,7 +45,7 @@ export function recordActivity(
 ): { streak: StreakState; events: StreakEvent[] } {
   const today = dayKey(now);
   const events: StreakEvent[] = [];
-  let next = { ...streak };
+  const next = { ...streak };
 
   // Weekly free freeze.
   const week = weekKey(today);

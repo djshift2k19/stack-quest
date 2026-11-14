@@ -63,8 +63,8 @@ export function findModuleForUnit(
   unitKey: string,
 ): { trail: CatalogTrail; module: CatalogModule } | undefined {
   for (const trail of catalog.trails) {
-    for (const module of trail.modules) {
-      if (module.units.some((u) => u.key === unitKey)) return { trail, module };
+    for (const mod of trail.modules) {
+      if (mod.units.some((u) => u.key === unitKey)) return { trail, module: mod };
     }
   }
   return undefined;

@@ -129,10 +129,14 @@ function load(): Promise<LoadedContent> {
   return cache;
 }
 
+// "use cache" tells Next.js the result only changes when lesson files change,
+// so pages can be built ahead of time instead of on every visit.
 export async function getCatalog(): Promise<Catalog> {
+  "use cache";
   return (await load()).catalog;
 }
 
 export async function getUnit(trailId: string, moduleId: string, unitId: string): Promise<LoadedUnit | undefined> {
+  "use cache";
   return (await load()).units.get(`${trailId}/${moduleId}/${unitId}`);
 }

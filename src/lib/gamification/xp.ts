@@ -1,15 +1,16 @@
 /**
  * XP (experience points) and levels.
  *
- * Every unit is worth some XP. Finishing without using any hints earns a
- * 50% bonus. Redoing a unit never takes XP away: if you do better the
+ * Every unit is worth some XP. Finishing a challenge without using any
+ * hints earns a 50% bonus. (Readings have no hints, so `hintsUsed` is left
+ * out for them and there's no bonus.) Redoing a unit never takes XP away: if you do better the
  * second time (for example, no hints), you get the difference.
  */
 
 /** Extra XP, as a fraction of the unit's XP, for using no hints. */
 export const NO_HINT_BONUS = 0.5;
 
-export function xpForCompletion(baseXp: number, hintsUsed: number): number {
+export function xpForCompletion(baseXp: number, hintsUsed?: number): number {
   const bonus = hintsUsed === 0 ? Math.round(baseXp * NO_HINT_BONUS) : 0;
   return baseXp + bonus;
 }

@@ -20,7 +20,7 @@ Here's the actual code that decides how much XP you earn:
 ```ts
 export const NO_HINT_BONUS = 0.5;
 
-export function xpForCompletion(baseXp: number, hintsUsed: number): number {
+export function xpForCompletion(baseXp: number, hintsUsed?: number): number {
   const bonus = hintsUsed === 0 ? Math.round(baseXp * NO_HINT_BONUS) : 0;
   return baseXp + bonus;
 }
@@ -29,11 +29,11 @@ export function xpForCompletion(baseXp: number, hintsUsed: number): number {
 Reading it line by line, in English:
 
 1. `NO_HINT_BONUS = 0.5` means the no-hint bonus is half (50%).
-2. `function xpForCompletion(baseXp, hintsUsed)` is a <Term word="function">**function**</Term>: a named, reusable recipe. You give it two things, the unit's XP and how many hints you used.
+2. `function xpForCompletion(baseXp, hintsUsed?)` is a <Term word="function">**function**</Term>: a named, reusable recipe. You give it two things, the unit's XP and how many hints you used.
 3. `hintsUsed === 0 ? ... : 0` means "if no hints were used, the bonus is half the unit's XP, otherwise it's 0".
 4. `return baseXp + bonus` hands back the total.
 
-So a 10 XP unit done without hints earns **15 XP**.
+So a 10 XP challenge done without hints earns **15 XP**. Readings like this one have no hints, so they earn exactly their XP. (`hintsUsed` is left out for them, so `hintsUsed === 0` is false.)
 
 ## The level rule
 

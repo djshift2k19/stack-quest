@@ -3,7 +3,7 @@ import type { Catalog } from "@/lib/content/catalog";
 import { allBadges, qualifiedBadgeIds } from "./badges";
 import { dayKey, daysBetween, weekKey } from "./dates";
 import { completeUnit, initialProgress, normaliseProgress } from "./progress";
-import { displayedStreak, initialStreak, MAX_FREEZES, recordActivity } from "./streak";
+import { displayedStreak, initialStreak, MAX_FREEZES, recordActivity, type StreakState } from "./streak";
 import { levelFromXp, levelProgress, xpForCompletion, xpRequiredForLevel } from "./xp";
 
 describe("dates", () => {
@@ -29,6 +29,10 @@ describe("xp and levels", () => {
   it("adds a 50% bonus when no hints are used", () => {
     expect(xpForCompletion(10, 0)).toBe(15);
     expect(xpForCompletion(10, 2)).toBe(10);
+  });
+
+  it("gives no bonus for units without hints (readings)", () => {
+    expect(xpForCompletion(10)).toBe(10);
   });
 
   it("has gently growing level thresholds", () => {
@@ -70,7 +74,7 @@ describe("streaks", () => {
   });
 
   it("restarts at 1 when too many days are missed, but keeps the longest streak", () => {
-    let s = { ...initialStreak, current: 5, longest: 5, lastActiveDay: "2026-11-01", freezes: 1, lastFreezeGrantWeek: "2026-W46" };
+    let s: StreakState = { ...initialStreak, current: 5, longest: 5, lastActiveDay: "2026-11-01", freezes: 1, lastFreezeGrantWeek: "2026-W46" };
     s = recordActivity(s, at("2026-11-14T08:00:00Z")).streak;
     expect(s.current).toBe(1);
     expect(s.longest).toBe(5);
