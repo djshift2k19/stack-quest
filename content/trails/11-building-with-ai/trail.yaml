@@ -1,0 +1,15 @@
+id: building-with-ai
+title: Building with AI Responsibly
+summary: Use AI assistants to learn and build faster, while reviewing their work, spotting bugs and security holes, and knowing when not to trust them.
+status: coming-soon
+badge: { name: AI Wrangler, emoji: 🤖 }
+plannedModules:
+  - title: Prompting Well
+    goals: [Give AI tools the context they need to help.]
+    units: [How AI coding assistants work, Writing a good prompt, Asking for explanations, Iterating on answers, "Boss: prompt your way to a feature"]
+  - title: Reviewing AI-Written Code
+    goals: [Read and test AI output before trusting it.]
+    units: [Read every line, Run the tests, Spotting invented APIs, Spotting security holes, "Boss: review a suspicious pull request"]
+  - title: When Not to Trust AI
+    goals: [Know AI's limits and protect your data and your learning.]
+    units: [Confidently wrong answers, Secrets and private data, Licences and copied code, Learning versus copying, "Boss: the AI audit"]

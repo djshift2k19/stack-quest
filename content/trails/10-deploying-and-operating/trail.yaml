@@ -1,0 +1,18 @@
+id: deploying-and-operating
+title: Deploying and Operating
+summary: Put your app on the internet, keep secrets safe, deploy automatically, watch logs, back up data and keep costs under control.
+status: coming-soon
+badge: { name: Launch Controller, emoji: 🚀 }
+plannedModules:
+  - title: Going Live
+    goals: [Deploy an app and connect a domain name.]
+    units: [Environments (development, preview, production), Hosting options and costs, Your first deploy, Domains and DNS records, "Boss: launch your portfolio"]
+  - title: Secrets and Configuration
+    goals: [Keep keys and passwords out of code with environment variables.]
+    units: [What counts as a secret?, Environment variables, Setting secrets on your host, Rotating a leaked key, "Boss: fix the leaked key"]
+  - title: CI/CD
+    goals: [Run tests and deploy automatically on every push.]
+    units: [What CI/CD means, GitHub Actions basics, Blocking broken code, "Boss: a pipeline for your app"]
+  - title: Running in Production
+    goals: [Watch, back up and pay for a live app sensibly.]
+    units: [Logs, Monitoring and alerts, Backups and restoring, Cost awareness and limits, "Boss: the 2am incident"]

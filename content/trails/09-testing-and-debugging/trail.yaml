@@ -1,0 +1,15 @@
+id: testing-and-debugging
+title: Testing and Debugging
+summary: Write tests that catch mistakes automatically, read stack traces, and find bugs systematically instead of guessing.
+status: coming-soon
+badge: { name: Bug Hunter, emoji: 🐞 }
+plannedModules:
+  - title: Unit Tests
+    goals: [Write tests with Vitest for your own functions.]
+    units: [Why test?, Your first test, expect and matchers, Testing edge cases, "Boss: test the XP rules"]
+  - title: Debugging Systematically
+    goals: [Find the cause of a bug step by step.]
+    units: [Reproduce first, Reading stack traces, console.log and the debugger, Divide and conquer, "Boss: the mystery bug"]
+  - title: Testing Whole Apps
+    goals: [Check real user journeys with end-to-end tests.]
+    units: [What end-to-end tests are, Playwright basics, What to test (and what not to), "Boss: a smoke test for your app"]

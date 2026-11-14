@@ -1,0 +1,18 @@
+id: react
+title: Front End with React
+summary: Build interactive interfaces from reusable components, using the same tools Stack Quest is built with.
+status: coming-soon
+badge: { name: Component Crafter, emoji: ⚛️ }
+plannedModules:
+  - title: Thinking in Components
+    goals: [Build pages from small reusable components with props.]
+    units: [What React solves, JSX, Components, Props, Lists and keys, "Boss: a badge gallery"]
+  - title: State and Interaction
+    goals: [Make components respond to the user with state and events.]
+    units: [useState, Handling events, Forms in React, Lifting state up, "Boss: a to-do list"]
+  - title: Data and Effects
+    goals: [Load data from an API and handle loading and errors.]
+    units: [useEffect, Fetching data, Loading and error states, "Boss: a weather widget"]
+  - title: Next.js
+    goals: [Build multi-page apps with routing and server rendering.]
+    units: [Pages and routing, Server and client components, Layouts, "Boss: a mini Stack Quest"]

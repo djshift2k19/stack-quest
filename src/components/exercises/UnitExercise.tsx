@@ -13,7 +13,9 @@ const QuizExercise = dynamic(() => import("./QuizExercise").then((m) => m.QuizEx
 const PredictOutput = dynamic(() => import("./PredictOutput").then((m) => m.PredictOutput), { loading });
 const TypeTheCode = dynamic(() => import("./TypeTheCode").then((m) => m.TypeTheCode), { loading });
 const CodeChallenge = dynamic(() => import("./CodeChallenge").then((m) => m.CodeChallenge), { loading });
-const TerminalExercise = dynamic(() => import("./TerminalExercise").then((m) => m.TerminalExercise), { loading });
+// The terminal is a form: shown before its code is ready, pressing Enter would
+// reload the page. So it's only shown once it can respond (ssr: false).
+const TerminalExercise = dynamic(() => import("./TerminalExercise").then((m) => m.TerminalExercise), { loading, ssr: false });
 
 export function UnitExercise({
   unit,

@@ -1,0 +1,58 @@
+---
+id: fix-the-dot-dot
+title: "Fix the bug: cd .. goes nowhere"
+type: fix-the-bug
+minutes: 8
+xp: 25
+goals:
+  - Read failing tests to find a bug.
+  - Fix a function from the real practice terminal.
+challenge:
+  language: javascript
+  starter: |
+    // Tidies up a path: removes "." and handles ".." (go up one level).
+    function normalise(path) {
+      const out = [];
+      for (const part of path.split("/")) {
+        if (part === "" || part === ".") continue;
+        if (part === "..") continue;
+        out.push(part);
+      }
+      return "/" + out.join("/");
+    }
+  solution: |
+    // Tidies up a path: removes "." and handles ".." (go up one level).
+    function normalise(path) {
+      const out = [];
+      for (const part of path.split("/")) {
+        if (part === "" || part === ".") continue;
+        if (part === "..") {
+          out.pop();
+          continue;
+        }
+        out.push(part);
+      }
+      return "/" + out.join("/");
+    }
+  hints:
+    - Which check fails? The ones with "..". What should ".." do to the list of folders built so far?
+    - '".." means "go up one level", so it should remove the LAST folder from the out list. Arrays have a method that removes the last item: pop().'
+    - 'Change the line if (part === "..") continue; so that it calls out.pop() before continuing.'
+  tests:
+    - name: Plain paths stay the same
+      code: expect(normalise("/Users/learner/projects")).toBe("/Users/learner/projects")
+    - name: Single dots are removed
+      code: expect(normalise("/Users/./learner")).toBe("/Users/learner")
+    - name: '".." goes up one level'
+      code: expect(normalise("/Users/learner/Documents/..")).toBe("/Users/learner")
+    - name: '"../.." goes up two levels'
+      code: expect(normalise("/Users/learner/a/b/../..")).toBe("/Users/learner")
+    - name: You can't go above the very top
+      code: expect(normalise("/..")).toBe("/")
+---
+
+This is a slightly simplified copy of the real `normalise` function from `src/lib/terminal/shell.ts`. It turns messy paths like `/Users/learner/Documents/..` into tidy ones like `/Users/learner`.
+
+Someone broke it: `cd ..` no longer goes up a level. Run the checks first, then use the failing ones as clues.
+
+New piece of JavaScript you'll need: an **array** (`[]`) is a list, `out.push(x)` adds `x` to the end, and `out.pop()` removes the last item. You'll learn these properly in Trail 4.

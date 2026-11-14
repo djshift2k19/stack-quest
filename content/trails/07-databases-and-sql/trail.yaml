@@ -1,0 +1,18 @@
+id: databases-and-sql
+title: Databases and SQL (Postgres)
+summary: Store, query and connect data with real Postgres, right in your browser, then design databases of your own.
+status: coming-soon
+badge: { name: Query Ace, emoji: 🗄️ }
+plannedModules:
+  - title: Asking Questions with SELECT
+    goals: [Read data with SELECT, WHERE, ORDER BY and LIMIT.]
+    units: [Your first SELECT, Filtering with WHERE, Sorting and limiting, Counting and summing, "Boss: shop sales report"]
+  - title: Changing Data
+    goals: [Insert, update and delete rows safely.]
+    units: [INSERT, UPDATE, DELETE (carefully!), Transactions, "Boss: stock take"]
+  - title: Joining Tables
+    goals: [Combine data from related tables with joins.]
+    units: [Why separate tables?, Primary and foreign keys, INNER JOIN, LEFT JOIN, "Boss: orders with customer names"]
+  - title: Data Modelling
+    goals: [Design tables for a real app.]
+    units: [From idea to tables, One-to-many and many-to-many, Constraints, Indexes and speed, "Boss: design Gogo's shop database"]

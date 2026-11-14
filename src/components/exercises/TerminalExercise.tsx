@@ -123,17 +123,17 @@ export function TerminalExercise({
         >
           {screen.map((l, i) =>
             l.kind === "cmd" ? (
-              <div key={i} className="break-all whitespace-pre-wrap">
+              <div key={i} className="break-words whitespace-pre-wrap">
                 <span className="text-[#86efac]">{l.prompt}</span> {l.text}
               </div>
             ) : (
-              <div key={i} className={`break-all whitespace-pre-wrap ${l.tone ? TONE_CLASS[l.tone] : ""}`}>
+              <div key={i} className={`break-words whitespace-pre-wrap ${l.tone ? TONE_CLASS[l.tone] : ""}`}>
                 {l.text || " "}
               </div>
             ),
           )}
         </div>
-        <form onSubmit={submit} className="flex items-center gap-2 border-t border-white/10 px-3 py-2 font-mono text-sm">
+        <form onSubmit={submit} className="flex flex-wrap items-center gap-x-2 border-t border-white/10 px-3 py-1 font-mono text-sm">
           <label htmlFor="terminal-input" className="shrink-0 text-[#86efac]">
             {promptText(shell)}
             <span className="sr-only"> Type a command and press Enter</span>
@@ -149,7 +149,7 @@ export function TerminalExercise({
             autoCorrect="off"
             spellCheck={false}
             enterKeyHint="go"
-            className="min-h-11 min-w-0 flex-1 bg-transparent text-[#ece9e2] caret-[#86efac] outline-none"
+            className="min-h-11 min-w-0 flex-1 basis-40 bg-transparent text-[#ece9e2] caret-[#86efac] outline-none"
           />
         </form>
       </div>

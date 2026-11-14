@@ -1,0 +1,18 @@
+id: html-and-css
+title: HTML and CSS
+summary: Build and style your own personal profile page, then make it look great on every screen size.
+status: coming-soon
+badge: { name: Page Builder, emoji: 🎨 }
+plannedModules:
+  - title: Your First Web Page
+    goals: [Write an HTML document with headings, paragraphs, links and images.]
+    units: [Tags and elements, The skeleton of every page, Headings and paragraphs, Links and images, Lists, "Boss: a page about you"]
+  - title: Structure and Meaning
+    goals: [Use semantic HTML so pages are accessible and well organised.]
+    units: [Semantic elements (header, main, footer), Forms and inputs, Accessibility basics and alt text, "Boss: a contact form"]
+  - title: Styling with CSS
+    goals: [Select elements and style colour, text, spacing and borders.]
+    units: [Selectors, Colours and fonts, The box model, Classes and specificity, "Boss: style your profile page"]
+  - title: Layout and Responsive Design
+    goals: [Lay out pages with Flexbox and Grid that work on phones and laptops.]
+    units: [Flexbox, Grid, Mobile-first and media queries, Images that fit, "Boss: a responsive profile page"]

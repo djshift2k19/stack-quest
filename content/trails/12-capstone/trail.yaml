@@ -1,0 +1,15 @@
+id: capstone
+title: "Capstone: Your Own Full-Stack App"
+summary: Guided projects built on your own Mac. A to-do app grows into a full-stack app with an API, a database, logins and a live deployment, with a "check my work" script to guide you.
+status: coming-soon
+badge: { name: Full-Stack Developer, emoji: 🏆 }
+plannedModules:
+  - title: The To-Do App (Front End)
+    goals: [Build a working to-do app in React on your own machine.]
+    units: [Project setup checklist, Listing to-dos, Adding and completing to-dos, Saving in the browser, "Check my work: part 1"]
+  - title: Adding an API and Database
+    goals: [Move the to-dos into Postgres behind your own API.]
+    units: [Designing the tables, Building the API, Connecting the front end, "Check my work: part 2"]
+  - title: Logins and Deployment
+    goals: [Add accounts and put the app online.]
+    units: [Adding login, Each user sees only their to-dos, Deploying, "Check my work: final review"]

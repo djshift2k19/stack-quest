@@ -1,0 +1,15 @@
+id: auth-and-security
+title: Authentication and Security
+summary: Let people log in safely, protect their data, defend against common attacks, and respect POPIA.
+status: coming-soon
+badge: { name: Gatekeeper, emoji: 🔐 }
+plannedModules:
+  - title: Passwords and Logins
+    goals: [Explain hashing and why passwords are never stored as plain text.]
+    units: [Authentication versus authorisation, Hashing passwords, Sessions and cookies, Tokens, "Boss: a safe login flow"]
+  - title: Common Attacks (OWASP Basics)
+    goals: [Recognise and prevent the most common web attacks.]
+    units: [SQL injection, Cross-site scripting (XSS), Broken access control, Secrets in code, "Boss: find the security holes"]
+  - title: Privacy and POPIA
+    goals: [Handle personal information responsibly under South African law.]
+    units: [What POPIA requires, Collect only what you need, Consent and deletion, Data breaches, "Boss: a POPIA check of an app"]

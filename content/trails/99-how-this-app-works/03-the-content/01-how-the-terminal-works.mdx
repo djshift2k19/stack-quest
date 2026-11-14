@@ -1,0 +1,58 @@
+---
+id: how-the-terminal-works
+title: How the practice terminal works
+type: reading
+minutes: 7
+xp: 10
+goals:
+  - Explain how files and folders can be stored as plain data.
+  - Describe what happens when you press Enter.
+---
+
+<Analogy title="A doll's house">
+A doll's house has rooms, furniture and little doors, but nobody actually lives there. You can rearrange everything and nothing happens to your real house. The practice terminal is a doll's house of a Mac.
+</Analogy>
+
+## Folders as nested boxes
+
+The code is in `src/lib/terminal/shell.ts`. It stores the whole pretend computer as data, with folders inside folders:
+
+```json
+{
+  "type": "dir",
+  "children": {
+    "Users": {
+      "type": "dir",
+      "children": {
+        "learner": {
+          "type": "dir",
+          "children": {
+            "notes.txt": { "type": "file", "content": "Hello, world\n" }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+A folder is `{ type: "dir", children: … }` and a file is `{ type: "file", content: … }`. It's the same tree as Finder, written as <Term word="json">JSON</Term>-like data.
+
+## What happens when you press Enter
+
+1. **Split the line into words.** `tokenize()` turns `git commit -m "Add page"` into four words, keeping the quoted message together.
+2. **Look at the first word.** A big `switch` statement picks the code for `ls`, `cd`, `mkdir` and so on.
+3. **Work on a copy.** Each command copies the current state, changes the copy, and hands it back. The old state is never changed, which makes "Start again" and the tests simple.
+4. **Return output lines.** For example `{ text: "projects/", tone: "dir" }`, which the screen colours blue.
+
+## Git, in miniature
+
+The mini-Git keeps three things for each repository: the **working files** (what's in the folder), the **index** (the staging area) and a list of **commits** (snapshots). `git status` simply compares them. That's also how real Git works underneath.
+
+## Checking your tasks
+
+After each command, `checkTask()` asks questions such as "Does `~/projects` exist?" or "Are there at least 2 commits?". When all of them are true, the task is done.
+
+<KeyIdea>
+The practice terminal stores a whole pretend computer as **nested data**. Each command takes the old state and returns a **new copy** plus some output, so nothing ever touches your real Mac.
+</KeyIdea>

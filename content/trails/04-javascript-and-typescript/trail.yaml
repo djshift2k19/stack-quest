@@ -1,0 +1,21 @@
+id: javascript-and-typescript
+title: JavaScript Fundamentals, then TypeScript
+summary: Make pages come alive with JavaScript, then add TypeScript's safety labels, the way Stack Quest itself is written.
+status: coming-soon
+badge: { name: Script Smith, emoji: ⚡ }
+plannedModules:
+  - title: Values and Variables
+    goals: [Store and change values with let and const; use numbers, text and true/false.]
+    units: [Your first console.log, Variables, Numbers and maths, Strings (text), Booleans and comparisons, "Boss: a tip calculator"]
+  - title: Making Decisions and Repeating
+    goals: [Use if/else and loops to control what code does.]
+    units: [if and else, Loops, Arrays (lists), Looping over arrays, "Boss: a shopping list totaller"]
+  - title: Functions and Objects
+    goals: [Write reusable functions and group data into objects.]
+    units: [Functions, Parameters and return values, Objects, Arrays of objects, "Boss: the XP calculator"]
+  - title: JavaScript in the Browser
+    goals: [Change a page and respond to clicks with the DOM and events.]
+    units: [The DOM, Events, Forms in JavaScript, fetch and async/await, "Boss: a live search box"]
+  - title: TypeScript
+    goals: [Add types to catch mistakes before code runs.]
+    units: [Why types?, Basic types, Types for objects, Types for functions, "Boss: convert a JavaScript file to TypeScript"]

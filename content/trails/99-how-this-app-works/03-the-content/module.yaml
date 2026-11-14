@@ -1,0 +1,10 @@
+id: the-content
+title: "The Practice Terminal and the Lessons (built in Phase 3)"
+summary: How the pretend terminal works without touching your Mac, and how Stack Quest proves every lesson can actually be solved.
+goals:
+  - Explain how a pretend file system can be stored as data.
+  - Fix a real bug in path-handling code.
+  - Explain how automatic tests check every lesson.
+badge:
+  name: Lesson Mechanic
+  emoji: 🔧

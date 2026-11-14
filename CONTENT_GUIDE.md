@@ -155,7 +155,28 @@ Test code for **JavaScript, HTML and CSS** uses `expect(...)`, which can see the
 - **JavaScript** challenges can add a pretend API with `api:` (a list of `method`, `path`, `status` and `body`), which `fetch(...)` answers. Learner code can also act as the server: `server.get("/path/:id", (req, res) => res.status(200).json({...}))`.
 - **SQL** challenges need `setup` (statements that create and fill the tables). SQL tests are either `sameResultAs: <model query>` (with `orderMatters: true` if order is part of the task), or `check: <query>` with `expect: [[row values], ...]` to inspect the database after the learner's INSERT, UPDATE or DELETE.
 
-**Every challenge is tested automatically** (`tests/content-solutions.test.ts`): each solution must pass its own tests, and each starter must not. Run `npm test` after writing one.
+**`terminal`**: a mission in the practice terminal (pretend files and a mini Git, nothing real is touched). A `boss` can use `terminal:` too.
+
+```yaml
+type: terminal
+terminal:
+  setup:                         # optional starting state (paths are from the home folder)
+    cwd: projects/recipes        # where the terminal starts (default: home, ~)
+    dirs: [projects/recipes]
+    files:
+      projects/recipes/pap.txt: "Maize meal\nWater\n"
+    repos: [projects/recipes]    # folders where Git is already switched on
+  tasks:
+    - instruction: Stage pap.txt.
+      check: { gitStaged: { repo: ~/projects/recipes, paths: [~/projects/recipes/pap.txt] } }
+      hints: [Nudge…, Bigger hint…, Nearly the answer…]
+      solution: [git add pap.txt]     # commands that complete the task
+      explain: Shown when the task is done (optional).
+```
+
+Task checks (all the ones you list must be true): `ran` (a command name like `git status`, or an exact line like `ls Documents`; only commands that **succeed** count), `cwd`, `exists`, `missing`, `fileContains: { path, text }`, `gitRepo`, `gitCommits: { repo, atLeast }` and `gitStaged: { repo, paths }`. Supported commands: `help pwd ls cd mkdir touch cat echo (> and >>) rm mv cp clear history whoami code open git (init status add commit log)`.
+
+**Every challenge is tested automatically** (`tests/content-solutions.test.ts`): each solution must pass its own tests, and each starter must not. For terminal units, each task's `solution` commands must succeed and complete it, and no task may already be complete before it starts. Run `npm test` after writing one.
 
 ### Building blocks you can use
 
@@ -178,5 +199,5 @@ Test code for **JavaScript, HTML and CSS** uses `expect(...)`, which can see the
   `- "Name the three things: input, process, output."`
 - In MDX text, `{`, `}` and `<` have special meanings. Put code in backticks (`like this`) or code blocks.
 - Tables aren't supported yet (they need an extra library). Use lists.
-- In YAML, text that starts with `<`, `{`, `[` or a quote, or contains `: `, should be wrapped in quote marks.
+- In YAML, text that starts with `<`, `{`, `[` or a quote, or contains `: `, should be wrapped in quote marks. Inside single quotes, write an apostrophe as two: `'Gogo''s shop'`.
 - MDX can contain code, so the app only renders files from this folder, never text typed in by learners.

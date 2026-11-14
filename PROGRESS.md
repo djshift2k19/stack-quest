@@ -26,7 +26,7 @@ _Last updated: 14 November 2026_
 - Partial Prefetching is turned off so unknown addresses return a proper 404. We revisit this in Phase 4.
 - If two browser tabs are open, the last one to save wins. That's fine for one learner, and Phase 4 sync will handle it properly.
 
-## ✅ Phase 2: lesson engine (done, waiting for your "continue")
+## ✅ Phase 2: lesson engine (done)
 - Exercise types: quiz, predict the output, type the code, fix the bug, build it, and Boss Challenge (code or questions)
 - Three-step hint ladder on every challenge, then the full solution (no-hint bonus, never a penalty)
 - Plain-English error translator for JavaScript and SQL errors, with line numbers
@@ -42,8 +42,26 @@ _Last updated: 14 November 2026_
 - If a browser can't start a worker inside the sandbox, code runs in the sealed frame directly. It's still isolated, but an endless loop could then freeze the tab.
 - Partial Prefetching is still off (revisit in Phase 4).
 
-## Next: Phase 3 (content)
-Write Trails 1 and 2 in full, plus outlines for the other trails.
+### Fixed after Phase 2 (dev mode)
+- Lesson edits now show up straight away in `npm run dev`. The loader reads files directly instead of using "use cache".
+- No more "Blocking Route" warning for unknown addresses (`instant = false`), and no React warning about the theme script.
+
+## ✅ Phase 3: content (done, waiting for your "continue")
+- **Trail 1** (no code), 5 modules, 27 units: your computer · the web · URLs and DNS · HTTP, APIs and JSON · databases and the cloud. Every module ends in a Boss Challenge, and the trail ends with a Trail Boss.
+- **Trail 2**, 4 modules, 26 units: the terminal · VS Code · Git and GitHub · reading errors.
+- **Practice terminal** (new engine piece): a pretend Mac terminal with pretend files and a mini Git (init, status, add, commit, log). It uses the same messages as the real thing and comes with a terminal error translator.
+- **Outlines** for Trails 3–12, with module titles, goals and unit lists.
+- **"How This App Works"** module 3: how the practice terminal works, fixing a real path bug, and how every lesson is tested.
+- **Glossary** grown to 60 terms.
+- **Every exercise is tested automatically**: solutions pass, starters fail, and terminal missions complete with their model commands.
+
+### Known limitations (Phase 3)
+- VS Code itself can't be simulated, so that module is readings and quizzes plus "try it on your Mac" steps.
+- GitHub isn't connected. The lesson explains how, and we'll do it together when you choose.
+- The practice terminal supports the commands listed in CONTENT_GUIDE.md only (no pipes `|`, no `cd -`, no git branches yet).
+
+## Next: Phase 4 (accounts, sync and offline)
+Supabase login and progress sync, PWA offline caching, and an opt-in leaderboard. I'll ask before installing Serwist or Supabase, or creating any accounts.
 
 ## To resume
 Open this folder in VS Code, start Claude, and say **"continue"**.

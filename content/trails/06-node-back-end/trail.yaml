@@ -1,0 +1,15 @@
+id: node-back-end
+title: Back End with Node.js
+summary: Write your own server and REST API, sending JSON, using the right status codes and validating what comes in.
+status: coming-soon
+badge: { name: Server Starter, emoji: 🖥️ }
+plannedModules:
+  - title: Node.js Basics
+    goals: [Run JavaScript outside the browser with Node.js and npm.]
+    units: [What is Node.js?, Running a script, npm and packages, Modules and imports, "Boss: a command-line tool"]
+  - title: Building a REST API
+    goals: [Design and build API routes that send and receive JSON.]
+    units: [Routes and methods, Sending JSON, Reading request bodies, Status codes in practice, "Boss: a to-do API"]
+  - title: Validation and Errors
+    goals: [Never trust input; validate it and return helpful errors.]
+    units: [Why validate?, Validating with a schema, Error handling, Logging, "Boss: a bulletproof sign-up endpoint"]

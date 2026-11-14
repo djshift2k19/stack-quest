@@ -1,0 +1,36 @@
+---
+id: every-lesson-is-tested
+title: How we know every lesson can be solved
+type: reading
+minutes: 5
+xp: 10
+goals:
+  - Explain how automatic tests check the lessons themselves.
+---
+
+<Analogy title="Testing the answer key">
+Before a teacher hands out an exam, a good one checks the answer key: does each model answer actually get full marks? Stack Quest does this for every exercise, automatically, every time you run `npm test`.
+</Analogy>
+
+Open `tests/content-solutions.test.ts`. For every lesson in the `content` folder, it checks:
+
+- **Code challenges:** the model solution passes **all** its checks, and the starter code does **not**. Otherwise there'd be nothing to fix!
+- **Predict the output:** the "correct" answer really is what the code prints.
+- **Type the code:** the code you're asked to type runs without errors.
+- **Practice terminal:** for each task, the solution commands run without errors and complete the task. Each task also must **not** already be complete before you start.
+
+When writing Trail 2, this caught a real mistake. One task asked you to run a command that was **meant** to fail, but the checker only counts commands that succeed, so the task could never be completed. The test flagged it, and the lesson was rewritten before you ever saw it.
+
+## Try it
+
+In VS Code's terminal, run:
+
+```
+npx vitest run tests
+```
+
+You'll see one line per exercise. Then try breaking a lesson on purpose: change a `solution:` command in any terminal unit to something wrong, and run it again. Undo your change afterwards (⌘Z, then save).
+
+<KeyIdea>
+Stack Quest **tests its own lessons**: every model solution must pass and every starter must fail. That's how content can grow safely, and it's the same idea you'll use to test your own apps in Trail 9.
+</KeyIdea>
