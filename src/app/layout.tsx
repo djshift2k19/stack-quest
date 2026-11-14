@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import { InlineScript } from "@/components/InlineScript";
 import { ThemeToggle, themeScript } from "@/components/ThemeToggle";
 import { getCatalog } from "@/lib/content/loader";
 import { ProgressProvider } from "@/lib/progress/ProgressProvider";
@@ -27,7 +28,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        {/* Runs before the page appears, so dark-mode users never see a white flash. */}
+        <InlineScript html={themeScript} />
       </head>
       <body className="flex min-h-full flex-col">
         <a

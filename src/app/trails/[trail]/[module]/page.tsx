@@ -5,6 +5,11 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ModuleContinue, ModuleRing, UnitStatus } from "@/components/ProgressBits";
 import { getCatalog } from "@/lib/content/loader";
 
+// Real lessons are built ahead of time (generateStaticParams). Any other
+// address is checked when it's visited and gets the 404 page, so it's fine
+// for those to wait ("block") instead of showing a loading placeholder.
+export const instant = false;
+
 export async function generateStaticParams() {
   return (await getCatalog()).trails.flatMap((t) => t.modules.map((m) => ({ trail: t.id, module: m.id })));
 }

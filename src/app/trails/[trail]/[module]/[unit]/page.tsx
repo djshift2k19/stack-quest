@@ -7,6 +7,11 @@ import { CompletePanel } from "@/components/lesson/CompletePanel";
 import { getCatalog, getGlossary, getUnit } from "@/lib/content/loader";
 import { renderMdx } from "@/lib/content/render";
 
+// Real lessons are built ahead of time (generateStaticParams). Any other
+// address is checked when it's visited and gets the 404 page, so it's fine
+// for those to wait ("block") instead of showing a loading placeholder.
+export const instant = false;
+
 export async function generateStaticParams() {
   return (await getCatalog()).trails.flatMap((t) =>
     t.modules.flatMap((m) => m.units.map((u) => ({ trail: t.id, module: m.id, unit: u.id }))),

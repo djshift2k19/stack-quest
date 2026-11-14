@@ -11,7 +11,7 @@
  * never runs it: it receives the finished pages and the small catalog.
  */
 
-import { readdir, readFile } from "node:fs/promises";
+import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { parse as parseYaml } from "yaml";
 import type { z } from "zod";
@@ -53,9 +53,16 @@ export function splitFrontmatter(source: string, file: string): { data: unknown;
   return { data: parseYaml(match[1]), body: match[2] };
 }
 
+/*
+ * Files are read "synchronously" (one after another, waiting for each).
+ * There are only a few small files, it happens while pages are being
+ * built, and it means a lesson edit shows up as soon as you reload the
+ * page in development.
+ */
+
 /** Sorted folder entries, ignoring hidden files like .DS_Store. */
 async function list(dir: string, kind: "dir" | "file"): Promise<string[]> {
-  const entries = await readdir(dir, { withFileTypes: true });
+  const entries = readdirSync(dir, { withFileTypes: true });
   return entries
     .filter((e) => !e.name.startsWith(".") && (kind === "dir" ? e.isDirectory() : e.isFile()))
     .map((e) => e.name)
@@ -63,7 +70,7 @@ async function list(dir: string, kind: "dir" | "file"): Promise<string[]> {
 }
 
 async function readYaml(file: string): Promise<unknown> {
-  return parseYaml(await readFile(file, "utf8"));
+  return parseYaml(readFileSync(file, "utf8"));
 }
 
 export interface LoadedUnit {
@@ -106,7 +113,7 @@ async function loadEverything(): Promise<LoadedContent> {
       const catalogUnits: CatalogModule["units"] = [];
       for (const unitFile of (await list(modulePath, "file")).filter((f) => f.endsWith(".mdx"))) {
         const file = path.join(modulePath, unitFile);
-        const { data, body } = splitFrontmatter(await readFile(file, "utf8"), file);
+        const { data, body } = splitFrontmatter(readFileSync(file, "utf8"), file);
         const meta = check(unitFrontmatterSchema, data, file);
         const key = `${moduleKey}/${meta.id}`;
         if (units.has(key)) throw new ContentError(file, `  - unit id "${meta.id}" is used twice in this module`);
@@ -155,19 +162,14 @@ function load(): Promise<LoadedContent> {
   return cache;
 }
 
-// "use cache" tells Next.js the result only changes when lesson files change,
-// so pages can be built ahead of time instead of on every visit.
 export async function getCatalog(): Promise<Catalog> {
-  "use cache";
   return (await load()).catalog;
 }
 
 export async function getUnit(trailId: string, moduleId: string, unitId: string): Promise<LoadedUnit | undefined> {
-  "use cache";
   return (await load()).units.get(`${trailId}/${moduleId}/${unitId}`);
 }
 
 export async function getGlossary(): Promise<GlossaryEntry[]> {
-  "use cache";
   return (await load()).glossary;
 }
