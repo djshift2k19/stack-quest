@@ -1,0 +1,24 @@
+id: your-toolbox
+title: "Your Toolbox: Terminal, VS Code and Git"
+summary: Meet the tools every developer uses daily, in a safe practice terminal first.
+status: coming-soon
+badge:
+  name: Tool Wielder
+  emoji: 🧰
+plannedModules:
+  - title: The Terminal, Without Fear
+    goals:
+      - Move around folders and list files using typed commands.
+    units: [What is a terminal?, Where am I? (pwd and ls), Moving around (cd), Making and removing files safely]
+  - title: VS Code, Your Workshop
+    goals:
+      - Open a project, edit files and use the built-in terminal.
+    units: [What is a code editor?, Opening a folder, Useful shortcuts]
+  - title: Git and GitHub
+    goals:
+      - Save snapshots of your work and back them up online.
+    units: [Why version control?, Your first commit, Connecting to GitHub]
+  - title: Reading Error Messages
+    goals:
+      - Find the important line in an error and know what to search for.
+    units: [Errors are clues, not failures, Anatomy of an error message]

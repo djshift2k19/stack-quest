@@ -1,0 +1,52 @@
+---
+id: map-of-the-project
+title: A map of the project folder
+type: reading
+minutes: 6
+xp: 10
+goals:
+  - Name the main folders in Stack Quest and what each holds.
+  - Find the file behind a page you can see in the browser.
+---
+
+<Analogy title="A restaurant">
+A restaurant has a **menu** (what customers can order), a **kitchen** (where food is made), **recipes** (how each dish is made) and a **store room** (ingredients). Every software project is divided up in a similar way, so you always know where to look.
+</Analogy>
+
+Open the `stack-quest` folder in VS Code (or Finder) and you'll see this:
+
+```
+stack-quest/
+├── content/          ← the lessons you're reading (the "recipes")
+├── src/              ← "source code": the app's instructions
+│   ├── app/          ← one folder per page you can visit
+│   ├── components/   ← reusable pieces of screen: buttons, progress rings
+│   └── lib/          ← the "kitchen": logic with no screen of its own
+│       ├── content/      ← reads lesson files
+│       ├── progress/     ← saves your progress in the browser
+│       └── gamification/ ← XP, levels, streaks, badges
+├── tests/            ← robot checks that click through the app
+├── public/           ← images and icons sent to the browser as-is
+├── package.json      ← the shopping list of libraries the app needs
+└── README.md         ← how to install and run the project
+```
+
+## Pages are folders
+
+Stack Quest uses a <Term word="framework">framework</Term> called **Next.js**. One of its rules is that **folders inside `src/app` become web addresses**:
+
+- `src/app/page.tsx` is the dashboard at `/`
+- `src/app/profile/page.tsx` is the profile page at `/profile`
+- `src/app/trails/[trail]/page.tsx` is any trail page, e.g. `/trails/how-computers-work`
+
+The `[trail]` in square brackets is a **placeholder**. It means "any trail name goes here", so one file can show every trail.
+
+## Why split things up?
+
+Lessons live in `content/`, not inside the code. That means you can write or fix a lesson without touching any code, and a mistake in a lesson can't break the XP maths.
+
+<KeyIdea>
+**`content/`** holds the lessons, **`src/app/`** holds the pages (folder = web address), and **`src/lib/`** holds the logic. When you want to change something, first decide which of the three it belongs to.
+</KeyIdea>
+
+**Try it:** look at the address bar right now. It ends in `/trails/how-this-app-works/the-skeleton/map-of-the-project`. Can you find the folder in `src/app` that builds this page? (Hint: it's three placeholders deep.)

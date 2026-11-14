@@ -1,0 +1,10 @@
+id: the-skeleton
+title: "The Skeleton (built in Phase 1)"
+summary: How the project folder is organised, how lesson files become pages, and how your progress and XP are worked out.
+goals:
+  - Find your way around the Stack Quest project folder.
+  - Explain how a lesson file becomes a web page.
+  - Explain where your progress is stored and how XP and levels are calculated.
+badge:
+  name: Skeleton Key
+  emoji: 🗝️

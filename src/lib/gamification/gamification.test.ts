@@ -103,6 +103,7 @@ const catalog: Catalog = {
           id: "m1",
           title: "Module One",
           summary: "",
+          goals: [],
           badge: { name: "Module Badge", emoji: "🎖️" },
           units: [
             { key: "t1/m1/u1", id: "u1", title: "U1", type: "reading", minutes: 5, xp: 10 },

@@ -1,0 +1,56 @@
+---
+id: lesson-file-to-page
+title: How a lesson file becomes a page
+type: reading
+minutes: 6
+xp: 10
+goals:
+  - Describe the journey from a .mdx file to the page you see.
+  - Explain what frontmatter and a schema are.
+---
+
+<Analogy title="Sending a parcel">
+Before a courier accepts a parcel, they check the label: is there a name, an address, a postal code? If something's missing, they hand it back straight away, rather than losing it halfway across the country. Stack Quest checks every lesson file the same way.
+</Analogy>
+
+## Step 1: the lesson file
+
+This lesson is a file at:
+
+```
+content/trails/99-how-this-app-works/01-the-skeleton/02-lesson-file-to-page.mdx
+```
+
+The numbers at the start of each name (`99-`, `01-`, `02-`) set the order things appear in. The file starts with a header between two `---` lines:
+
+```yaml
+---
+id: lesson-file-to-page
+title: How a lesson file becomes a page
+type: reading
+minutes: 6
+xp: 10
+---
+```
+
+That header is called <Term word="frontmatter">**frontmatter**</Term>: facts *about* the lesson. Everything after it is the lesson itself, written in **MDX**: plain text with a few simple marks, such as `##` for a heading and `**bold**` for bold.
+
+## Step 2: the loader checks it
+
+The file `src/lib/content/loader.ts` walks through every folder in `content/`, reads each file and checks its frontmatter against a **schema**: a list of rules written in `src/lib/content/schema.ts`. For example:
+
+```ts
+minutes: z.number().int().min(1).max(10, "units must take 10 minutes or less"),
+```
+
+This rule says "minutes must be a whole number from 1 to 10". If a lesson said `minutes: 25`, the app would refuse to start and print the file name plus *"units must take 10 minutes or less"*. That's the courier handing the parcel back.
+
+## Step 3: the page is built
+
+The page file `src/app/trails/[trail]/[module]/[unit]/page.tsx` asks the loader for the lesson, turns the MDX into page elements, and adds the "Mark as complete" panel at the bottom.
+
+This all happens **before** you ever visit, when the app is *built*. Your browser receives a finished page, which is part of why pages load quickly on a slow connection.
+
+<KeyIdea>
+Lesson file, then the loader **checks** it against the schema, then the page file **builds** it into a page. Mistakes are caught at the checking step, with a clear message, instead of showing you a broken lesson.
+</KeyIdea>

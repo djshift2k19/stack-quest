@@ -1,0 +1,10 @@
+id: your-computer
+title: "Your Computer: Files and Programs"
+summary: What a computer really does, where your stuff is kept, and what a "program" is.
+goals:
+  - Explain in your own words what a computer does.
+  - Describe the difference between a file and a folder.
+  - Explain what a program is and how it differs from a file of data.
+badge:
+  name: Computer Whisperer
+  emoji: 💻

@@ -1,0 +1,7 @@
+id: how-this-app-works
+title: How This App Works
+summary: Stack Quest's own code is the textbook. Each time a part of the app is built, you learn how it works and make a small, safe change to it.
+status: available
+badge:
+  name: Behind the Curtain
+  emoji: 🔍

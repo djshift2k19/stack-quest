@@ -1,0 +1,62 @@
+---
+id: xp-and-levels-maths
+title: The XP and levels maths
+type: reading
+minutes: 7
+xp: 15
+goals:
+  - Read a short function and say what it does.
+  - Explain why the progress rules are tested automatically.
+---
+
+<Analogy title="A loyalty card">
+A coffee loyalty card has simple rules: one stamp per coffee, a free coffee at ten stamps. Stack Quest's rules are a loyalty card written in code, in `src/lib/gamification/xp.ts`.
+</Analogy>
+
+## The XP rule
+
+Here's the actual code that decides how much XP you earn:
+
+```ts
+export const NO_HINT_BONUS = 0.5;
+
+export function xpForCompletion(baseXp: number, hintsUsed: number): number {
+  const bonus = hintsUsed === 0 ? Math.round(baseXp * NO_HINT_BONUS) : 0;
+  return baseXp + bonus;
+}
+```
+
+Reading it line by line, in English:
+
+1. `NO_HINT_BONUS = 0.5` means the no-hint bonus is half (50%).
+2. `function xpForCompletion(baseXp, hintsUsed)` is a <Term word="function">**function**</Term>: a named, reusable recipe. You give it two things, the unit's XP and how many hints you used.
+3. `hintsUsed === 0 ? ... : 0` means "if no hints were used, the bonus is half the unit's XP, otherwise it's 0".
+4. `return baseXp + bonus` hands back the total.
+
+So a 10 XP unit done without hints earns **15 XP**.
+
+## The level rule
+
+```ts
+export function xpRequiredForLevel(level: number): number {
+  return 50 * level * (level - 1);
+}
+```
+
+This gives level 2 at 100 XP, level 3 at 300, level 4 at 600. Each level needs 100 XP more than the last, so early levels come quickly and later ones take a bit more effort.
+
+## Tests: a robot that checks the rules
+
+Next to it is `gamification.test.ts`, full of lines like:
+
+```ts
+expect(xpForCompletion(10, 0)).toBe(15);
+```
+
+That's a <Term word="test">**test**</Term>: it runs the function and checks the answer is what we expect. Typing `npm test` in the terminal runs all of them in under a second. If someone changes the rules by accident, a test fails and says exactly which rule broke.
+
+<KeyIdea>
+The game rules are small **functions** in `src/lib/gamification/`. Each has **tests** that check the answers automatically, so you can change things confidently and know straight away if something broke.
+</KeyIdea>
+
+Your "Your turn" task at the end of Phase 1 is to change one of these rules yourself and watch the tests react.

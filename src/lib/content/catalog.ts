@@ -26,6 +26,7 @@ export interface CatalogModule {
   id: string;
   title: string;
   summary: string;
+  goals: string[];
   badge: BadgeInfo;
   units: CatalogUnit[];
 }

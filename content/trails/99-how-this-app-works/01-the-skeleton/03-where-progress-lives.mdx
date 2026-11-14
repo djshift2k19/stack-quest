@@ -1,0 +1,54 @@
+---
+id: where-progress-lives
+title: Where your progress lives
+type: reading
+minutes: 5
+xp: 10
+goals:
+  - Explain what IndexedDB is and why Stack Quest uses it.
+  - Know what happens to your progress if you clear your browser data.
+---
+
+<Analogy title="A notebook in your bag">
+Some apps keep your progress in a notebook at head office (a server far away). Stack Quest, for now, keeps it in a notebook **in your own bag**: your browser. It's always with you, it works without signal, and nobody else can read it. But if you throw the bag away, the notebook goes with it.
+</Analogy>
+
+## IndexedDB: a small database in your browser
+
+Every modern browser has a built-in <Term word="database">database</Term> called **IndexedDB**. A database is simply an organised place to store information so you can find it again later.
+
+When you finish a unit, Stack Quest writes a record like this into IndexedDB:
+
+```json
+{
+  "xp": 25,
+  "units": {
+    "how-computers-work/your-computer/what-is-a-computer": {
+      "completions": 1,
+      "fewestHints": 0,
+      "xpEarned": 15
+    }
+  },
+  "streak": { "current": 1, "longest": 1, "freezes": 1 }
+}
+```
+
+The code that does the saving is in `src/lib/progress/storage.ts`. It's short. Have a look!
+
+## Why not use an account?
+
+Accounts need a server, sign-up forms and passwords, which is a lot to build and a lot to ask of you on day one. Keeping progress in the browser means:
+
+- **No sign-up**: open the app and start.
+- **Works offline**: nothing has to travel over the internet.
+- **Private**: your data stays on your device.
+
+The trade-off: progress lives in **this browser on this device**. Use a different browser, or clear your "site data", and it starts fresh. In Phase 4 you'll add optional accounts so progress can sync between your Mac and your phone.
+
+## Peek at it yourself
+
+In Chrome: open the menu **View → Developer → Developer Tools**, click the **Application** tab, then **IndexedDB → stack-quest → kv**. You're looking at the actual notebook.
+
+<KeyIdea>
+Your progress is stored in **IndexedDB**, a database inside your browser. It's fast, private and works offline, but it lives in one browser on one device until accounts arrive in Phase 4.
+</KeyIdea>

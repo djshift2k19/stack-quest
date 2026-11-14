@@ -1,0 +1,57 @@
+---
+id: files-and-folders
+title: Files and folders
+type: reading
+minutes: 5
+xp: 10
+goals:
+  - Explain what a file is and what a file extension tells you.
+  - Explain folders and read a simple file path.
+---
+
+<Analogy title="A filing cabinet">
+Think of your computer's storage as a huge filing cabinet. Each **document** inside is a file. The **drawers and hanging folders** that keep documents organised are, well, folders.
+</Analogy>
+
+## Files
+
+A <Term word="file">**file**</Term> is one named bundle of information kept in storage. A photo is a file. A song is a file. A Word document is a file. Stack Quest's lessons, including this one, are files too.
+
+Every file has a **name**, and usually an **extension**: the letters after the last dot.
+
+- `holiday.jpg`: the `.jpg` extension means a photo
+- `cv.pdf`: `.pdf` is a document that looks the same everywhere
+- `notes.txt`: `.txt` is plain text, nothing fancy
+- `index.html`: `.html` is a web page (you'll write these!)
+
+The extension is a label telling the computer which program should open the file. It doesn't change what's inside. Renaming `holiday.jpg` to `holiday.txt` doesn't turn the photo into text. It just confuses the computer about how to open it.
+
+## Folders
+
+A <Term word="folder">**folder**</Term> (also called a **directory**) is a container for files, and for other folders. Folders inside folders make a tree:
+
+```
+Users
+└── thandi
+    ├── Documents
+    │   └── cv.pdf
+    └── Projects
+        └── stack-quest
+            └── README.md
+```
+
+## File paths
+
+A <Term word="file-path">**file path**</Term> is the full address of a file: every folder you walk through to reach it, separated by `/` slashes.
+
+```
+/Users/thandi/Documents/cv.pdf
+```
+
+Read it like directions: start at the very top (`/`), go into `Users`, then `thandi`, then `Documents`, and there's `cv.pdf`.
+
+<KeyIdea>
+A **file** is a named bundle of information. A **folder** holds files and other folders. A **file path** is the address that says exactly where a file lives.
+</KeyIdea>
+
+Developers type file paths all the time, so getting comfortable reading them now will pay off in the Toolbox trail.
