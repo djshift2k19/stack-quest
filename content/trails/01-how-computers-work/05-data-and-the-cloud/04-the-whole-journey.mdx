@@ -1,0 +1,37 @@
+---
+id: the-whole-journey
+title: The whole journey of a web page
+type: reading
+minutes: 7
+xp: 15
+goals:
+  - Trace every step from typing a URL to seeing a page.
+---
+
+<Analogy title="Sending a letter and getting a parcel back">
+You write an address, the post office looks up the route, a courier carries your request, a warehouse packs your order from its stock room, and the parcel comes back to you. Here's that whole trip, using everything from this trail.
+</Analogy>
+
+You type `https://shop.example.co.za/products?colour=red` and press Enter.
+
+1. **Reading the URL.** The browser splits it up: protocol `https`, host `shop.example.co.za`, path `/products`, query `colour=red`.
+2. **DNS lookup.** "What's the IP address of shop.example.co.za?" The <Term word="dns">DNS</Term> answers: `104.18.32.7`.
+3. **Connecting securely.** The browser connects to that address over the <Term word="internet">internet</Term> and sets up <Term word="https">HTTPS</Term> encryption. 🔒
+4. **The request.** The browser (the <Term word="client">client</Term>) sends `GET /products?colour=red`.
+5. **The back end works.** The <Term word="server">server</Term> runs the shop's back-end code, which asks the <Term word="database">database</Term>: "all products where colour is red".
+6. **The response.** The server builds the page and replies `200 OK` with HTML.
+7. **More requests.** The browser reads the HTML and requests the CSS, JavaScript and images, often from the cloud.
+8. **Showing the page.** HTML gives structure, CSS gives looks, JavaScript adds behaviour. You see red shoes.
+9. **The app talks to the API.** You tap "Add to cart". JavaScript sends `POST /api/cart` with some <Term word="json">JSON</Term> and gets `201 Created` back. The cart icon updates.
+
+All of that usually takes under a second.
+
+## Where you'll build each part
+
+- **Steps 1–3:** you'll configure domains and HTTPS when you deploy (Trail 10).
+- **Steps 4–6:** you'll write back ends and databases (Trails 6–7).
+- **Steps 7–9:** you'll write front ends (Trails 3–5).
+
+<KeyIdea>
+URL → DNS → secure connection → request → back end and database → response → browser builds the page → JavaScript talks to the API. You now understand how the web works, end to end.
+</KeyIdea>

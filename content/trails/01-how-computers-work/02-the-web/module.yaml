@@ -1,0 +1,11 @@
+id: the-web
+title: "The Web: Browsers, Clients and Servers"
+summary: What actually happens when you open a website, and the difference between the internet and the web.
+goals:
+  - Explain the difference between the internet and the web.
+  - Describe what a browser does with a web page.
+  - Explain clients and servers using the restaurant analogy.
+  - Tell the front end of an app from the back end.
+badge:
+  name: Web Walker
+  emoji: 🕸️

@@ -1,0 +1,48 @@
+---
+id: boss-a-page-load
+title: "Boss Challenge: Follow a page load"
+type: boss
+minutes: 7
+xp: 50
+goals:
+  - Put clients, servers, browsers and the three languages together in one real scenario.
+questions:
+  - prompt: Lerato opens takealot.com on her phone. What happens first?
+    options:
+      - text: Her browser (the client) sends a request over the internet to Takealot's server
+        correct: true
+        why: Yes. Every page load starts with the client asking.
+      - text: Takealot's server sends her the page without being asked
+        why: Servers wait for requests. They don't push pages to people uninvited.
+      - text: Her phone builds the page from memory
+        why: The first time, the page has to come from Takealot's server.
+  - prompt: The server sends back an HTML file. What does Lerato's browser do next?
+    options:
+      - text: It reads the HTML, notices it also needs CSS, JavaScript and images, and requests those too
+        correct: true
+        why: Right. One page usually needs many requests.
+      - text: It shows the HTML file as plain text
+        why: Browsers turn HTML into a page. Plain text only shows up when you choose View Page Source.
+      - text: It sends the HTML back to check it
+        why: No need. The browser just starts building the page.
+  - prompt: Lerato taps "Add to cart" and the cart counter changes from 0 to 1 without the page reloading. Which language did that?
+    options:
+      - text: JavaScript
+        correct: true
+        why: Yes. Responding to taps is behaviour, and behaviour is JavaScript.
+      - text: HTML
+        why: HTML is structure. It doesn't react to taps by itself.
+      - text: CSS
+        why: CSS can change looks, but counting items is behaviour.
+  - prompt: The cart must still be there when Lerato opens the app tomorrow on her laptop. Where should it be saved?
+    options:
+      - text: In a database on Takealot's back end
+        correct: true
+        why: Exactly. Only the back end can share data between her phone and her laptop.
+      - text: In the CSS
+        why: CSS is about looks, not saving data.
+      - text: Only in her phone's browser
+        why: Her laptop can't see data stored in her phone's browser, so it belongs on the server.
+---
+
+Time to put the whole module together. Follow Lerato as she shops online and pick what really happens at each step.

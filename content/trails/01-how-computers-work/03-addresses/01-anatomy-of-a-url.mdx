@@ -1,0 +1,49 @@
+---
+id: anatomy-of-a-url
+title: Reading a URL, piece by piece
+type: reading
+minutes: 6
+xp: 10
+goals:
+  - Name the parts of a URL.
+  - Explain what the path and query do.
+---
+
+<Analogy title="A postal address">
+"Flat 4, 12 Long Street, Cape Town, 8001" goes from big to small, or small to big, and every part has a job. A <Term word="url">URL</Term> is a postal address for something on the web.
+</Analogy>
+
+Here's a full URL:
+
+```
+https://shop.example.co.za/products/shoes?colour=red&size=7#reviews
+```
+
+Let's take it apart:
+
+- **`https://`**: the <Term word="protocol">protocol</Term>, meaning the rules for the conversation. `https` means "use HTTP, encrypted". More on that in two units.
+- **`shop.example.co.za`**: the **host**: which computer to talk to.
+  - `example.co.za` is the <Term word="domain-name">domain name</Term>, the name the business rents.
+  - `shop.` is a **subdomain**, a section the owner can create for free, like `www.` or `mail.`.
+  - `.co.za` is the **ending** (top-level domain). `.za` means South Africa.
+- **`/products/shoes`**: the **path**: which page or thing on that computer. It looks like a file path because it started as one!
+- **`?colour=red&size=7`**: the **query**: extra details, as `name=value` pairs joined by `&`. Like telling the shop assistant "red, size 7".
+- **`#reviews`**: the **fragment**: jump to the "reviews" part of the page. It never even gets sent to the server.
+
+## Stack Quest's own URLs
+
+Look at your address bar now:
+
+```
+/trails/how-computers-work/addresses/anatomy-of-a-url
+```
+
+That path says: trail `how-computers-work`, module `addresses`, unit `anatomy-of-a-url`. The glossary page uses fragments: `/glossary#dns` jumps straight to DNS.
+
+## Staying safe
+
+Scammers rely on people not reading URLs. `fnb.co.za.secure-login.ru` is **not** FNB: the real domain name is the part just before the first single `/`, read from the right: `secure-login.ru`.
+
+<KeyIdea>
+A URL = **protocol** (how) + **host** (which computer) + **path** (which thing) + optional **query** (extra details) and **fragment** (which part of the page).
+</KeyIdea>

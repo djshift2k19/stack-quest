@@ -1,0 +1,48 @@
+---
+id: boss-debug-the-app
+title: "Boss Challenge: Debug a delivery app"
+type: boss
+minutes: 8
+xp: 50
+goals:
+  - Use requests, status codes and JSON to work out what went wrong in an app.
+questions:
+  - prompt: "The KasiEats app shows a blank menu. In the Network tab you see: GET /api/restaurants/77/menu → 404. What does this tell you?"
+    options:
+      - text: The server has nothing at that address. Maybe restaurant 77 doesn't exist, or the app is asking for the wrong path.
+        correct: true
+        why: Right. 404 is a client-side problem with the address being requested.
+      - text: The server crashed
+        why: A crash would be a 5xx code. 404 means "nothing here".
+      - text: The menu loaded fine
+        why: Success would be 200.
+  - prompt: "Placing an order gives: POST /api/orders → 400 with the body { \"error\": \"deliveryAddress is required\" }. What should the app's developer fix?"
+    options:
+      - text: Make the app include the delivery address in the order it sends
+        correct: true
+        why: Exactly. 400 plus that message says the request was missing something.
+      - text: Restart the server
+        why: The server is working fine. It even explained what's missing.
+      - text: Change POST to GET
+        why: Placing an order creates something, so POST is right. The problem is the missing field.
+  - prompt: "Later, every request gets 500 Internal Server Error, even ones that worked yesterday. Where should the team look first?"
+    options:
+      - text: The server's code and logs, because something broke on the back end
+        correct: true
+        why: 5xx points at the server. Its logs (Trail 10) will show what crashed.
+      - text: Every user's phone
+        why: When every request fails with 5xx, the common factor is the server.
+      - text: The CSS
+        why: CSS can't cause server errors.
+  - prompt: "The order-tracking API replies with: { \"status\": \"on the way\", \"driver\": { \"name\": \"Musa\", \"minutesAway\": 12 } }. What should the app show?"
+    options:
+      - text: Musa is 12 minutes away
+        correct: true
+        why: Perfect JSON reading. minutesAway is inside driver.
+      - text: Order status is 12
+        why: '"status" is "on the way". The 12 belongs to the driver.'
+      - text: The driver is called "on the way"
+        why: '"on the way" is the status. The driver''s name is Musa.'
+---
+
+You've been hired to help **KasiEats**, a delivery app with problems. You can see the requests in the Network tab. Work out what's wrong at each step.

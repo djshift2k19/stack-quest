@@ -1,0 +1,50 @@
+---
+id: ip-addresses-and-dns
+title: IP addresses and DNS, the internet's phone book
+type: reading
+minutes: 6
+xp: 10
+goals:
+  - Explain what an IP address is.
+  - Explain how DNS turns names into numbers.
+---
+
+<Analogy title="Contacts in your phone">
+You don't remember your friends' phone numbers. You tap "Mom" and the phone looks up the number for you. Computers do the same with websites.
+</Analogy>
+
+## IP addresses: the real addresses
+
+Computers on the internet find each other by number. Every device has an <Term word="ip-address">IP address</Term>, such as:
+
+```
+104.18.32.7
+```
+
+(There's a newer, longer kind too, like `2606:4700::6812:2007`, because the world ran out of the short ones.)
+
+Your phone has an IP address right now, and so does every server.
+
+## DNS: names to numbers
+
+Nobody wants to type `104.18.32.7`. So we use names like `example.co.za`, and the <Term word="dns">DNS</Term> (Domain Name System) translates names into numbers:
+
+1. You type `example.co.za`.
+2. Your device asks a DNS server: "What's the number for example.co.za?"
+3. The DNS server answers: "104.18.32.7."
+4. Your browser contacts that number.
+
+Your device remembers the answer for a while (this is called *caching*), so the next visit skips the lookup.
+
+## Why this matters to you as a developer
+
+When you put a project online (Trail 10), you'll:
+
+1. Rent a domain name (around R100 a year for a `.co.za`).
+2. Add a **DNS record** that points the name at your server's IP address.
+
+If a new site "isn't working" on day one, DNS changes taking time to spread is a very common reason. It can take minutes or hours.
+
+<KeyIdea>
+Computers find each other by **IP address** (a number). **DNS** is the phone book that turns a domain name into that number.
+</KeyIdea>

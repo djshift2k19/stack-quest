@@ -1,0 +1,37 @@
+---
+id: why-databases
+title: Why apps use databases
+type: reading
+minutes: 5
+xp: 10
+goals:
+  - Explain what a database does better than plain files.
+---
+
+<Analogy title="A shoebox versus a library">
+You could keep every receipt in a shoebox. It's fine for ten receipts. For ten million, with a thousand people reading and adding at once, you need a library: shelves, a catalogue, librarians and rules. A <Term word="database">database</Term> is that library for data.
+</Analogy>
+
+## Why not just save files?
+
+Imagine a shop app saving every order in one big text file. Problems arrive fast:
+
+- **Finding things**: "all orders from Durban last week" means reading the *whole* file every time.
+- **Two people at once**: two customers ordering in the same split-second could overwrite each other's orders.
+- **Rules**: nothing stops an order being saved with no price.
+- **Crashes**: if the power cuts out halfway through saving, the file can be corrupted.
+
+## What a database gives you
+
+A database is a program built to store data safely and find it quickly:
+
+- **Fast searching**, even across millions of records.
+- **Many users at once**, without mixing up their changes.
+- **Rules**, like "every order must have a price" or "no two users can share an email".
+- **Safety**: a change either happens completely or not at all, even during a power cut.
+
+You talk to most databases using <Term word="sql">SQL</Term>, which you already tried in the How This App Works trail. You'll learn it properly in Trail 7, using **Postgres**, one of the most popular databases in the world.
+
+<KeyIdea>
+Apps keep their data in a **database** because it's fast to search, safe with many users at once, enforces rules, and survives crashes.
+</KeyIdea>

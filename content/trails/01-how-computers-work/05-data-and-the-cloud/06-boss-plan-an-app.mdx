@@ -1,0 +1,57 @@
+---
+id: boss-plan-an-app
+title: "Trail Boss: Plan Gogo's spaza shop app"
+type: boss
+minutes: 9
+xp: 75
+goals:
+  - Use everything from this trail to plan a real app.
+questions:
+  - prompt: Gogo wants customers to see her spaza shop's prices on their phones. Which parts does she need?
+    options:
+      - text: A front end (the pages), a back end on a server, and a database of products
+        correct: true
+        why: That's the full stack. The pages show prices that the back end reads from the database.
+      - text: Just a database
+        why: Customers can't open a database on their phones. They need pages, and a server to deliver them.
+      - text: Just CSS
+        why: CSS only styles pages. There'd be no content or data.
+  - prompt: How should the products be stored?
+    options:
+      - text: A products table with columns like id, name, price and in_stock
+        correct: true
+        why: One row per product, one column per detail, and a unique id each.
+      - text: One table per product
+        why: A table holds many records of the same kind, so one table holds all the products.
+      - text: In the CSS file
+        why: CSS is for looks. Data belongs in the database.
+  - prompt: A customer orders bread for collection. What request does the app send?
+    options:
+      - text: "POST /api/orders with JSON like { \"productId\": 4, \"quantity\": 1 }"
+        correct: true
+        why: POST creates something new, and the details travel as JSON.
+      - text: GET /api/orders
+        why: GET reads. It would list orders, not create one.
+      - text: DELETE /api/bread
+        why: That would try to remove something.
+  - prompt: The app asks for customers' phone numbers so Gogo can send "your order is ready" messages. What two things must she get right?
+    options:
+      - text: Use HTTPS, and handle the numbers carefully under POPIA (only what's needed, kept safe)
+        correct: true
+        why: Encryption on the way, and responsible storage. Both matter.
+      - text: Put the numbers in the URL so they're easy to find
+        why: URLs end up in browser history and server logs, so personal data never belongs there.
+      - text: Nothing, because phone numbers aren't personal information
+        why: Under POPIA, phone numbers are personal information.
+  - prompt: Gogo's nephew offers to host it "in the cloud" for R0. What should she ask?
+    options:
+      - text: What are the free plan's limits, what happens if they're exceeded, and is there a spending cap?
+        correct: true
+        why: Exactly the right questions. Free tiers are great, but surprises are not.
+      - text: Is the cloud above Johannesburg?
+        why: The cloud is data centres, not the sky.
+      - text: Nothing. Free is free forever.
+        why: Free tiers have limits, and some charge once you pass them.
+---
+
+**This is the final challenge of Trail 1.** Gogo runs a spaza shop and wants a simple app. Use everything you've learned, from browsers and servers to URLs, APIs, JSON, databases and the cloud, to plan it with her.

@@ -1,0 +1,57 @@
+---
+id: requests-and-responses
+title: Requests and responses
+type: reading
+minutes: 7
+xp: 10
+goals:
+  - Name the parts of an HTTP request and response.
+  - Explain GET, POST, PUT and DELETE.
+---
+
+<Analogy title="Ordering at a takeaway counter">
+"One quarter chicken and chips, please, no salt." That order has an **action** (I want to buy), a **thing** (quarter chicken and chips) and **details** (no salt). The counter replies with a **result** ("Here you go!" or "Sorry, we're out of chicken") and maybe your food.
+</Analogy>
+
+<Term word="http">HTTP</Term> is the set of rules that every web conversation follows. It's surprisingly readable.
+
+## A request
+
+```
+GET /products/shoes HTTP/1.1
+Host: shop.example.co.za
+Accept: text/html
+```
+
+- **Method** (`GET`): the action you want.
+- **Path** (`/products/shoes`): the thing you want it done to.
+- **Headers** (`Host:`, `Accept:`): details, like "no salt".
+- Some requests also carry a **body**: data you're sending, such as a filled-in form.
+
+## The four most common methods
+
+- **GET**: "give me", as in reading a page or a list of products. It never changes anything.
+- **POST**: "here's something new", as in placing an order or signing up.
+- **PUT** (or **PATCH**): "update this", as in changing your delivery address.
+- **DELETE**: "remove this", as in deleting a comment.
+
+## A response
+
+```
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+<!doctype html><html>…the page…</html>
+```
+
+- **Status code** (`200 OK`): the result. More on these next unit.
+- **Headers**: details about the reply, such as what type of content it is.
+- **Body**: the content itself, like a page, an image or some data.
+
+## Seeing it for real
+
+In Chrome, open **View → Developer → Developer Tools**, choose the **Network** tab and reload a page. Every row is one request and response. Click one to see its method, status and headers. You'll use this tab constantly as a developer.
+
+<KeyIdea>
+An HTTP **request** = method + path + headers (+ optional body). A **response** = status code + headers + body. **GET** reads, **POST** creates, **PUT/PATCH** updates, **DELETE** removes.
+</KeyIdea>

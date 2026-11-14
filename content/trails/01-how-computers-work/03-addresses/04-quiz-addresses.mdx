@@ -1,0 +1,49 @@
+---
+id: quiz-addresses
+title: Check your understanding
+type: quiz
+minutes: 5
+xp: 15
+goals:
+  - Recall the key ideas from this module.
+questions:
+  - prompt: "In https://www.sanparks.org/parks/kruger?lang=en, what is the path?"
+    options:
+      - text: /parks/kruger
+        correct: true
+        why: Yes. The path comes after the host and before the ?.
+      - text: www.sanparks.org
+        why: That's the host (which computer). The path comes after it.
+      - text: lang=en
+        why: That's the query, the extra details after the ?.
+  - prompt: What does DNS do?
+    options:
+      - text: Turns a domain name into the IP address of the server
+        correct: true
+        why: Right. It's the phone book of the internet.
+      - text: Encrypts your password
+        why: That's HTTPS's job.
+      - text: Stores web pages
+        why: Servers store pages. DNS only tells you which server to contact.
+  - prompt: You get an SMS saying "Your account is locked, log in at https://absa.co.za.verify-now.info". What's the real domain?
+    options:
+      - text: verify-now.info, so this is a scam
+        correct: true
+        why: Exactly. Read the host from the right. The real domain is verify-now.info, which isn't the bank's.
+      - text: absa.co.za, so it's the bank
+        why: absa.co.za only appears as a subdomain here. The real domain is verify-now.info.
+      - text: It has https, so it's safe
+        why: HTTPS only means the connection is private. Scam sites can have padlocks too.
+    hint: Read the host part from the right-hand end.
+  - prompt: A site shows a padlock. What does that prove?
+    options:
+      - text: The connection between you and the site is encrypted
+        correct: true
+        why: That's exactly what it proves, and nothing more.
+      - text: The site is owned by an honest company
+        why: Unfortunately not. Anyone can get a padlock for free.
+      - text: The site has no bugs
+        why: The padlock is only about the connection being private.
+---
+
+Four questions about addresses on the internet.

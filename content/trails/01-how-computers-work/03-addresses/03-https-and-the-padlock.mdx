@@ -1,0 +1,36 @@
+---
+id: https-and-the-padlock
+title: HTTPS and the padlock
+type: reading
+minutes: 5
+xp: 10
+goals:
+  - Explain what HTTPS protects.
+  - Explain what the padlock does NOT prove.
+---
+
+<Analogy title="Postcards and sealed envelopes">
+A postcard can be read by every person who handles it on the way. A sealed, tamper-proof envelope can't. Plain HTTP is a postcard. <Term word="https">HTTPS</Term> is a sealed envelope.
+</Analogy>
+
+## What HTTPS does
+
+Data hops through many computers on its way: your Wi-Fi router, your internet provider, undersea cables. With plain <Term word="http">HTTP</Term>, any of them could read or change it, including passwords.
+
+HTTPS uses <Term word="encryption">encryption</Term> to scramble everything between your browser and the server. Only those two can unscramble it. It also checks the server really owns the domain name, using a digital certificate.
+
+That's what the padlock icon in the address bar means.
+
+## What the padlock does NOT mean
+
+The padlock means **the connection is private**. It does **not** mean the website is honest. Scam sites can get padlocks too, for free. Always check the **domain name** as well.
+
+## For developers
+
+- Every site you build should use HTTPS. Browsers warn people away from sites that don't.
+- When you deploy in Trail 10, hosting services set up HTTPS for you automatically and for free.
+- `localhost` (your own Mac) is the exception: the data never leaves your computer, so plain HTTP is fine there.
+
+<KeyIdea>
+**HTTPS** encrypts the conversation so nobody in between can read or change it. The padlock proves the connection is **private**, not that the site is **trustworthy**.
+</KeyIdea>

@@ -1,0 +1,10 @@
+id: conversations
+title: "Talking to Servers: HTTP, APIs and JSON"
+summary: The exact shape of the conversation between clients and servers, and how apps share data.
+goals:
+  - Describe an HTTP request and response, including methods.
+  - Interpret common status codes.
+  - Explain what an API is and read simple JSON.
+badge:
+  name: Protocol Pro
+  emoji: 📡

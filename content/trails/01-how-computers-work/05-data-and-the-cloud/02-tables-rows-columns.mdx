@@ -1,0 +1,56 @@
+---
+id: tables-rows-columns
+title: Tables, rows and columns
+type: reading
+minutes: 6
+xp: 10
+goals:
+  - Describe how data is arranged in tables.
+  - Explain what an ID is for.
+---
+
+<Analogy title="A spreadsheet with strict rules">
+If you've used Excel or Google Sheets, you already understand most of a database table. The difference is that a database is strict: each column only accepts one kind of value, and the rules are enforced.
+</Analogy>
+
+## Tables
+
+A database holds **tables**, one per kind of thing. A shop might have `customers`, `products` and `orders`. Here's `customers`:
+
+```
+ id | name    | city      | joined
+----+---------+-----------+------------
+  1 | Thandi  | Durban    | 2026-03-01
+  2 | Sipho   | Soweto    | 2026-03-04
+  3 | Aisha   | Cape Town | 2026-04-11
+```
+
+- Each **row** is one record: one customer.
+- Each **column** is one piece of information about every record. Each column has a **type**: `name` is text, `joined` is a date, `id` is a whole number.
+
+## IDs
+
+Two customers could both be called "Thandi". So every row gets a unique **id**, like an ID number. Other tables refer to rows by id:
+
+```
+ id | customer_id | total
+----+-------------+--------
+ 10 |           1 | 249.00
+ 11 |           3 |  89.50
+```
+
+Order 10 belongs to customer **1** (Thandi). Linking tables through ids is the heart of "relational" databases like Postgres. You'll learn to combine tables with **joins** in Trail 7.
+
+## Asking questions
+
+You ask the database questions in SQL:
+
+```sql
+SELECT name FROM customers WHERE city = 'Durban';
+```
+
+Read it like English: "select the name from customers where the city is Durban." The answer comes back as a little table of its own.
+
+<KeyIdea>
+Databases store data in **tables**: **rows** are records, **columns** are their details, and each row has a unique **id** that other tables can point to.
+</KeyIdea>

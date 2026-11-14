@@ -1,0 +1,41 @@
+---
+id: clients-and-servers
+title: Clients and servers
+type: reading
+minutes: 6
+xp: 10
+goals:
+  - Explain what a client and a server are.
+  - Describe one round trip between them.
+---
+
+<Analogy title="A restaurant">
+You sit at a table and order from the menu. The waiter takes your order to the kitchen, the kitchen prepares it, and the waiter brings it back. You never go into the kitchen, and you don't need to know how it works.
+
+You are the **client**. The kitchen is the **server**.
+</Analogy>
+
+## Client and server
+
+- A <Term word="client">client</Term> **asks** for things. Your browser is a client, and so is the WhatsApp app on your phone.
+- A <Term word="server">server</Term> **waits for requests and answers them**. It's a computer (usually in a <Term word="data-centre">data centre</Term>) running a program that never sleeps, ready for orders from anywhere in the world.
+
+"Server" is just a job, not a special kind of machine. Your own MacBook can be a server. When you run `npm run dev` for Stack Quest, your Mac serves the app to your browser at `localhost`, which means "this computer".
+
+## One round trip
+
+When you open `news24.com`:
+
+1. Your browser (**client**) sends a message: "Please send me the home page." That's a <Term word="request">request</Term>.
+2. The news site's **server** receives it, finds or builds the page, and sends it back. That's a <Term word="response">response</Term>.
+3. Your browser displays it, then usually sends more requests for the images, CSS and JavaScript.
+
+A single page can involve dozens of these round trips, each taking a few hundredths of a second.
+
+## Many clients, one server
+
+One server handles thousands of clients at once, like one kitchen feeding a whole restaurant. If too many people order at the same moment, the kitchen slows down. That's why some sites crash on Black Friday.
+
+<KeyIdea>
+A **client** (like your browser) sends a **request**. A **server** sends back a **response**. Almost everything on the internet is built from this simple conversation.
+</KeyIdea>

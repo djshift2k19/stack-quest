@@ -1,0 +1,48 @@
+---
+id: quiz-data-and-cloud
+title: Check your understanding
+type: quiz
+minutes: 5
+xp: 15
+goals:
+  - Recall the key ideas from this module.
+questions:
+  - prompt: Why would a shop with thousands of orders a day use a database rather than a text file?
+    options:
+      - text: It's fast to search, handles many people at once, enforces rules and survives crashes
+        correct: true
+        why: All four, exactly.
+      - text: Text files can't hold numbers
+        why: They can, but they're slow and unsafe at scale.
+      - text: Databases look nicer
+        why: It's not about looks. It's about speed, safety and rules.
+  - prompt: In a customers table, what is one row?
+    options:
+      - text: One customer, with all their details
+        correct: true
+        why: Each row is one record.
+      - text: One detail (like "city") for every customer
+        why: That's a column.
+      - text: The whole database
+        why: A database holds many tables, and tables hold many rows.
+  - prompt: An orders table has a column customer_id. What is it for?
+    options:
+      - text: It points to which customer placed the order, using that customer's unique id
+        correct: true
+        why: Right. Ids link tables together.
+      - text: It's the order's price
+        why: Price would be its own column. customer_id links to the customers table.
+      - text: It's the customer's password
+        why: Passwords never belong in an orders table (and are never stored as plain text, as Trail 8 explains).
+  - prompt: You build an app on a cloud service that charges per request. What should you do on day one?
+    options:
+      - text: Set a spending limit and a billing alert
+        correct: true
+        why: Always. A bug can make thousands of requests by accident.
+      - text: Nothing, because the cloud is free
+        why: Many services have free tiers, but limits and charges still apply.
+      - text: Buy your own server instead
+        why: You can, but the cloud is fine. Just protect yourself with limits.
+---
+
+Four questions about data and the cloud.

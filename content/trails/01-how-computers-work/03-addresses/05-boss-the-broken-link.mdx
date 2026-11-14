@@ -1,0 +1,39 @@
+---
+id: boss-the-broken-link
+title: "Boss Challenge: The case of the missing website"
+type: boss
+minutes: 7
+xp: 50
+goals:
+  - Use URLs, DNS and HTTPS knowledge to solve real problems.
+questions:
+  - prompt: "Your friend Sipho launched his barbershop site yesterday at sipho-cuts.co.za. You see 'This site can't be reached: server IP address could not be found'. What's the most likely cause?"
+    options:
+      - text: The DNS record pointing the domain at his server hasn't spread yet, or is missing
+        correct: true
+        why: '"IP address could not be found" means the DNS lookup failed, the phone book step.'
+      - text: His CSS has a mistake
+        why: A CSS mistake would make the page look wrong, but it would still load.
+      - text: Your phone's screen is broken
+        why: The error message is coming from your browser, which works fine.
+  - prompt: "Sipho's booking page is at http://sipho-cuts.co.za/book (no s). Customers will type their phone numbers there. What should he change?"
+    options:
+      - text: Switch to https so the phone numbers are encrypted on the way
+        correct: true
+        why: Right. Any personal information should only travel over HTTPS.
+      - text: Nothing, because http is fine for forms
+        why: Over plain http, anyone in between could read the phone numbers.
+      - text: Change the path to /secure-book
+        why: The path name doesn't add any encryption. Only https does.
+  - prompt: "Sipho wants a link that opens his price list already filtered to 'fades'. Which URL does that?"
+    options:
+      - text: https://sipho-cuts.co.za/prices?style=fades
+        correct: true
+        why: The query (after ?) carries extra details like a filter.
+      - text: https://fades.sipho-cuts.co.za/prices
+        why: That's a separate subdomain, which he'd have to set up as its own section.
+      - text: https://sipho-cuts.co.za/prices#fades
+        why: A fragment only jumps to a part of the page. It never reaches the server, so it can't filter.
+---
+
+Your friend Sipho just launched his first website and everything's going wrong. Use what you know about addresses to help him.

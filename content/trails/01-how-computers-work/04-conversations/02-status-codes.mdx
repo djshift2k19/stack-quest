@@ -1,0 +1,41 @@
+---
+id: status-codes
+title: Status codes, the server's mood in three digits
+type: reading
+minutes: 5
+xp: 10
+goals:
+  - Group status codes by their first digit.
+  - Recognise 200, 201, 301, 400, 401, 403, 404 and 500.
+---
+
+<Analogy title="Traffic lights with extra detail">
+Green, amber, red: you know instantly how things stand. A <Term word="status-code">status code</Term> does the same for every response, and its **first digit** tells you most of the story.
+</Analogy>
+
+## The five families
+
+- **1xx**: "Hold on…" (rare, you can ignore these)
+- **2xx**: ✅ **it worked**
+- **3xx**: ↪️ **look somewhere else** (redirects)
+- **4xx**: 🙋 **the client made a mistake**: the request was wrong
+- **5xx**: 🔥 **the server made a mistake**: it broke while trying
+
+The 4xx/5xx split is gold when debugging: it tells you whose side the problem is on.
+
+## The ones you'll meet every week
+
+- **200 OK**: here's what you asked for.
+- **201 Created**: your new thing was made (after a POST).
+- **301 Moved Permanently**: this lives at a new address now, and the browser follows automatically.
+- **400 Bad Request**: what you sent doesn't make sense (for example, a missing field).
+- **401 Unauthorized**: please log in first.
+- **403 Forbidden**: you're logged in, but you're not allowed to do this.
+- **404 Not Found**: there's nothing at this address. Try `/trails/typo` in Stack Quest to see our friendly 404 page!
+- **500 Internal Server Error**: the server's code crashed. It's not your fault as the visitor.
+
+You already met 200 and 404 in the "A tiny XP API" Boss Challenge in the How This App Works trail.
+
+<KeyIdea>
+**2xx** = success, **3xx** = go elsewhere, **4xx** = the request was wrong (client's side), **5xx** = the server broke (server's side).
+</KeyIdea>

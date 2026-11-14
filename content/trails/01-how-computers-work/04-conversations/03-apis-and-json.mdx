@@ -1,0 +1,54 @@
+---
+id: apis-and-json
+title: APIs and JSON, how apps share data
+type: reading
+minutes: 7
+xp: 10
+goals:
+  - Explain what an API is.
+  - Read simple JSON.
+---
+
+<Analogy title="A restaurant menu">
+A menu lists exactly what you can order and how to ask for it. You don't need to know the kitchen's recipes. You just order "number 4". An <Term word="api">API</Term> is a menu for programs.
+</Analogy>
+
+## APIs
+
+So far, servers have sent **web pages** to people. But servers also send **data** to other programs. An API is the list of requests a server accepts and what it sends back. For example:
+
+- A weather app asks a weather API: `GET /forecast?city=Durban`
+- A banking app asks its bank's API: `GET /accounts/123/balance`
+- When you pay online, the shop's back end asks a payment company's API: `POST /payments`
+
+Most modern apps are a front end that talks to a back end through an API. Stack Quest will too, once accounts arrive in Phase 4.
+
+## JSON: the language of APIs
+
+APIs usually send data as <Term word="json">JSON</Term>, a simple text format:
+
+```json
+{
+  "name": "Thandi",
+  "city": "Durban",
+  "xp": 320,
+  "isLearning": true,
+  "badges": ["First Step", "Web Walker"],
+  "streak": { "current": 5, "longest": 12 }
+}
+```
+
+How to read it:
+
+- `{ }` curly brackets hold an **object**: a group of named values, like a form with labelled boxes.
+- `"name": "Thandi"` is a **name and its value**, separated by a colon.
+- Text goes in **double quotes**. Numbers (`320`) and `true`/`false` don't.
+- `[ ]` square brackets hold a **list** (an *array*), in order.
+- Objects can contain objects: `streak` has its own `current` and `longest`.
+- Commas separate items, and there's no comma after the last one.
+
+JSON is fussy: one missing quote or an extra comma and the whole thing can't be read.
+
+<KeyIdea>
+An **API** is a menu of requests a server accepts, so programs can talk to each other. They usually exchange data as **JSON**: named values in `{ }`, lists in `[ ]`.
+</KeyIdea>

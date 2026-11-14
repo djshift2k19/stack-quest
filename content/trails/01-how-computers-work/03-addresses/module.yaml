@@ -1,0 +1,10 @@
+id: addresses
+title: "Finding Things: URLs, Domains and DNS"
+summary: How your browser finds the right computer among billions, and what the padlock really means.
+goals:
+  - Read every part of a URL.
+  - Explain IP addresses and DNS with the phone book analogy.
+  - Explain what HTTPS protects and what it doesn't.
+badge:
+  name: Address Expert
+  emoji: 📮

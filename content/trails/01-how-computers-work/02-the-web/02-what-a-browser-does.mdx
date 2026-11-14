@@ -1,0 +1,44 @@
+---
+id: what-a-browser-does
+title: What a browser actually does
+type: reading
+minutes: 6
+xp: 10
+goals:
+  - Name the three languages a browser understands.
+  - Describe how a browser turns a web page into what you see.
+---
+
+<Analogy title="Building flat-pack furniture">
+A web page doesn't arrive as a finished picture. It arrives like flat-pack furniture: a list of parts, some paint instructions, and instructions for the moving parts. Your <Term word="browser">browser</Term> assembles it in front of you, in a fraction of a second.
+</Analogy>
+
+## The three layers of every web page
+
+Every page you've ever visited is built from three languages. You'll learn all three in Stack Quest:
+
+1. <Term word="html">HTML</Term>, **the structure**: "here's a heading, a paragraph, a photo, a button." It's like the frame and planks of the furniture.
+2. <Term word="css">CSS</Term>, **the looks**: colours, sizes, fonts, spacing and layout. It's the paint and the finish.
+3. <Term word="javascript">JavaScript</Term>, **the behaviour**: what happens when you click, type or scroll. It's the hinges and drawers that move.
+
+Take a "Like" button: HTML puts the button on the page, CSS makes it blue and round, and JavaScript adds one to the count when you tap it.
+
+## What the browser does, step by step
+
+When you open a page, the browser:
+
+1. **Downloads** the HTML file.
+2. **Reads** it and spots what else it needs: CSS files, JavaScript files, images and fonts. Then it downloads those too.
+3. **Builds** the page's structure from the HTML.
+4. **Paints** it on screen using the CSS.
+5. **Runs** the JavaScript, so the page responds to you.
+
+Every one of those downloads uses data. That's why Stack Quest works hard to keep its own files small.
+
+## Try it
+
+In Chrome, right-click any page and choose **View Page Source**. That's the raw HTML the browser received. It looks messy now, but by Trail 3 you'll be able to read it.
+
+<KeyIdea>
+A browser downloads **HTML** (structure), **CSS** (looks) and **JavaScript** (behaviour), then assembles them into the page you see.
+</KeyIdea>

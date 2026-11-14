@@ -1,0 +1,11 @@
+id: data-and-the-cloud
+title: "Where Data Lives: Databases and the Cloud"
+summary: Why apps use databases instead of files, what tables are, and what "the cloud" really means (including its costs).
+goals:
+  - Explain why apps store data in databases.
+  - Describe tables, rows and columns.
+  - Explain what the cloud is, and its trade-offs.
+  - Trace the full journey of a web page from typing a URL to seeing it.
+badge:
+  name: Cloud Spotter
+  emoji: ☁️

@@ -1,0 +1,61 @@
+---
+id: quiz-conversations
+title: Check your understanding
+type: quiz
+minutes: 6
+xp: 15
+goals:
+  - Recall methods, status codes and JSON.
+questions:
+  - prompt: You fill in a sign-up form and press "Create account". Which method is most likely used?
+    options:
+      - text: POST
+        correct: true
+        why: Yes. POST sends something new to be created.
+      - text: GET
+        why: GET only reads. It shouldn't create anything.
+      - text: DELETE
+        why: DELETE removes things. You're adding an account.
+  - prompt: An app shows "Error 503". Whose side is the problem probably on?
+    options:
+      - text: The server's (it starts with 5)
+        correct: true
+        why: Right. 5xx means the server had trouble, so it's not your fault.
+      - text: Yours (the client's)
+        why: Client mistakes are 4xx. 5xx is the server.
+      - text: It worked fine
+        why: Success codes start with 2.
+    hint: Look at the first digit.
+  - prompt: You ask for a page that requires login, without being logged in. Which status code fits best?
+    options:
+      - text: "401"
+        correct: true
+        why: 401 means "please log in first".
+      - text: "404"
+        why: 404 means nothing exists at that address.
+      - text: "201"
+        why: 201 means something was created successfully.
+  - prompt: In this JSON, what is the value of "current"?
+    code: |
+      { "name": "Sipho", "streak": { "current": 3, "longest": 9 } }
+    language: javascript
+    options:
+      - text: "3"
+        correct: true
+        why: '"current" is inside "streak", and its value is 3.'
+      - text: "9"
+        why: 9 belongs to "longest".
+      - text: Sipho
+        why: That's the value of "name".
+  - prompt: Which of these is valid JSON?
+    options:
+      - text: '{ "city": "Pretoria", "xp": 40 }'
+        correct: true
+        why: Names in double quotes, text in double quotes, a number without quotes, and no trailing comma.
+      - text: "{ city: Pretoria, xp: 40 }"
+        why: In JSON, names and text values must be in double quotes.
+      - text: '{ "city": "Pretoria", "xp": 40, }'
+        why: There's an extra comma after the last item, which JSON doesn't allow.
+---
+
+Five questions about how clients and servers talk.
