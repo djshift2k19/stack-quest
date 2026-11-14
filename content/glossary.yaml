@@ -1,0 +1,128 @@
+# Every technical term in Stack Quest. Lessons link to these with
+#   <Term word="file-path">file path</Term>
+# Keep definitions to one or two plain sentences, and give an everyday example.
+
+- id: api
+  term: API
+  definition: Short for "application programming interface". A set of agreed requests one program can make to another, like a menu that lists what you can order.
+  example: A weather app asks a weather API "what's the forecast for Durban?" and gets an answer back.
+
+- id: browser
+  term: Browser
+  definition: The program you use to visit websites, such as Chrome or Safari. It downloads web pages and draws them on your screen.
+  example: You're reading this in a browser right now.
+
+- id: bug
+  term: Bug
+  definition: A mistake in code that makes a program do something different from what was intended.
+  example: A shop's checkout adds VAT twice. That's a bug.
+
+- id: code
+  term: Code
+  definition: Instructions for a computer, written in a programming language that humans can read.
+  example: "console.log(\"Hello\") is a line of JavaScript code."
+
+- id: console
+  term: Console
+  definition: A text area where a program can print messages. Developers use it to see what their code is doing.
+  example: "console.log(2 + 2) prints 4 in the console."
+
+- id: css
+  term: CSS
+  definition: Short for "Cascading Style Sheets". The language that controls how a web page looks, including colours, sizes, spacing and layout.
+  example: "h1 { color: green; } makes every main heading green."
+
+- id: database
+  term: Database
+  definition: An organised place to store information so it can be found, changed and searched quickly.
+  example: A bank's database holds every account and every transaction.
+
+- id: error-message
+  term: Error message
+  definition: A message a program shows when it can't do what it was asked. It's a clue, not a telling-off. It usually says what went wrong and where.
+  example: "ReferenceError: total is not defined means the code used a name it doesn't know."
+
+- id: file
+  term: File
+  definition: One named bundle of information kept in storage, such as a photo, a song or a document.
+  example: holiday.jpg is a file.
+
+- id: file-path
+  term: File path
+  definition: The full address of a file. It lists every folder you go through to reach it, separated by / slashes.
+  example: /Users/thandi/Documents/cv.pdf
+
+- id: folder
+  term: Folder
+  definition: A container for files and other folders. Also called a directory.
+  example: Your Documents folder.
+
+- id: framework
+  term: Framework
+  definition: A ready-made skeleton for building a type of program, with rules about where things go so you don't start from scratch.
+  example: Stack Quest is built with the Next.js framework.
+
+- id: frontmatter
+  term: Frontmatter
+  definition: A small block of facts at the top of a file, between two --- lines, that describes the file.
+  example: "Each Stack Quest lesson starts with frontmatter such as title: and minutes:."
+
+- id: function
+  term: Function
+  definition: A named, reusable set of instructions. You give it some inputs, and it does a job and often hands back a result.
+  example: "xpForCompletion(10, 0) is a function call that hands back 15."
+
+- id: html
+  term: HTML
+  definition: Short for "HyperText Markup Language". The language that describes what's on a web page, such as headings, paragraphs, images and links.
+  example: "<h1>Hello</h1> is HTML for a main heading."
+
+- id: javascript
+  term: JavaScript
+  definition: The programming language that runs in every web browser. It makes pages interactive, and with Node.js it can also run on servers.
+  example: Showing a celebration when you finish a unit is done with JavaScript.
+
+- id: memory
+  term: Memory (RAM)
+  definition: The computer's fast, short-term workspace for whatever it's busy with right now. It's cleared when the power goes off.
+  example: An open browser tab uses memory.
+
+- id: program
+  term: Program
+  definition: A set of instructions that a computer can run. Also called an app or software.
+  example: WhatsApp, Safari and Stack Quest are programs.
+
+- id: sandbox
+  term: Sandbox
+  definition: A sealed-off area where code can run without being able to touch anything outside it.
+  example: Your practice code in Stack Quest runs in a sandbox, so it can't affect your saved progress.
+
+- id: schema
+  term: Schema
+  definition: A set of rules describing what shape some information must have, used to check it.
+  example: The lesson schema says every unit must have a title and take 10 minutes or less.
+
+- id: server
+  term: Server
+  definition: A computer (or program) that waits for requests and sends back answers, such as web pages or data.
+  example: When you open a website, a server somewhere sends your browser the page.
+
+- id: sql
+  term: SQL
+  definition: Short for "Structured Query Language". The language used to ask a database questions and change what's stored in it.
+  example: "SELECT name FROM learners; asks for every learner's name."
+
+- id: storage
+  term: Storage
+  definition: Where a computer keeps files long term, even when it's switched off, for example an SSD (disk).
+  example: Your photos are kept in storage.
+
+- id: test
+  term: Test
+  definition: A small piece of code that checks other code gives the expected answer, automatically.
+  example: "expect(add(2, 3)).toBe(5) checks that add works."
+
+- id: variable
+  term: Variable
+  definition: A name that holds a value so you can use it later, like a labelled jar.
+  example: "let score = 10; creates a variable called score holding 10."

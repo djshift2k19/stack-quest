@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { allUnits } from "./catalog";
-import { getCatalog, getUnit, splitFrontmatter } from "./loader";
+import { getCatalog, getGlossary, getUnit, splitFrontmatter } from "./loader";
 import { unitFrontmatterSchema } from "./schema";
 
 describe("content loader (real lesson files)", () => {
@@ -22,6 +22,12 @@ describe("content loader (real lesson files)", () => {
     const [trail, mod, unit] = keys[0].split("/");
     const loaded = await getUnit(trail, mod, unit);
     expect(loaded?.body.trim().length).toBeGreaterThan(50);
+  });
+
+  it("loads the glossary in alphabetical order", async () => {
+    const terms = (await getGlossary()).map((g) => g.term);
+    expect(terms.length).toBeGreaterThan(10);
+    expect([...terms].sort((a, b) => a.localeCompare(b))).toEqual(terms);
   });
 
   it("returns undefined for a unit that doesn't exist", async () => {

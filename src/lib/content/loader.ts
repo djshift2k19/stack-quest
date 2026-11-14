@@ -16,9 +16,17 @@ import path from "node:path";
 import { parse as parseYaml } from "yaml";
 import type { z } from "zod";
 import type { Catalog, CatalogModule, CatalogTrail } from "./catalog";
-import { moduleSchema, trailSchema, unitFrontmatterSchema, type UnitFrontmatter } from "./schema";
+import {
+  glossarySchema,
+  moduleSchema,
+  trailSchema,
+  unitFrontmatterSchema,
+  type GlossaryEntry,
+  type UnitFrontmatter,
+} from "./schema";
 
 export const CONTENT_DIR = path.join(process.cwd(), "content", "trails");
+export const GLOSSARY_FILE = path.join(process.cwd(), "content", "glossary.yaml");
 
 export class ContentError extends Error {
   constructor(file: string, problem: string) {
@@ -68,6 +76,7 @@ export interface LoadedUnit {
 interface LoadedContent {
   catalog: Catalog;
   units: Map<string, LoadedUnit>;
+  glossary: GlossaryEntry[];
 }
 
 let cache: Promise<LoadedContent> | undefined;
@@ -119,7 +128,24 @@ async function loadEverything(): Promise<LoadedContent> {
     trails.push({ ...trail, modules });
   }
 
-  return { catalog: { trails }, units };
+  const glossary = check(glossarySchema, await readYaml(GLOSSARY_FILE), GLOSSARY_FILE);
+  const seenTerms = new Set<string>();
+  for (const entry of glossary) {
+    if (seenTerms.has(entry.id)) throw new ContentError(GLOSSARY_FILE, `  - glossary id "${entry.id}" is used twice`);
+    seenTerms.add(entry.id);
+  }
+
+  // Every <Term word="..."> in a lesson must have a glossary entry.
+  for (const unit of units.values()) {
+    for (const match of unit.body.matchAll(/<Term\s+word="([^"]+)"/g)) {
+      if (!seenTerms.has(match[1])) {
+        throw new ContentError(unit.file, `  - <Term word="${match[1]}"> has no entry in content/glossary.yaml`);
+      }
+    }
+  }
+
+  glossary.sort((a, b) => a.term.localeCompare(b.term));
+  return { catalog: { trails }, units, glossary };
 }
 
 function load(): Promise<LoadedContent> {
@@ -139,4 +165,9 @@ export async function getCatalog(): Promise<Catalog> {
 export async function getUnit(trailId: string, moduleId: string, unitId: string): Promise<LoadedUnit | undefined> {
   "use cache";
   return (await load()).units.get(`${trailId}/${moduleId}/${unitId}`);
+}
+
+export async function getGlossary(): Promise<GlossaryEntry[]> {
+  "use cache";
+  return (await load()).glossary;
 }
