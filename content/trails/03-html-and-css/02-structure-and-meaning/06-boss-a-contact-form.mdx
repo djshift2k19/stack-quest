@@ -1,0 +1,96 @@
+---
+id: boss-a-contact-form
+title: "Boss: a contact form"
+type: boss
+minutes: 10
+goals:
+  - Build an accessible page with semantic structure and a complete form.
+challenge:
+  language: html
+  starter: |
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Contact Lerato's Hair Studio</title>
+      </head>
+      <body>
+        <!-- Build the page here -->
+
+      </body>
+    </html>
+  solution: |
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Contact Lerato's Hair Studio</title>
+      </head>
+      <body>
+        <header>
+          <h1>Lerato's Hair Studio</h1>
+        </header>
+        <main>
+          <h2>Book an appointment</h2>
+          <form>
+            <label for="name">Your name</label>
+            <input id="name" type="text" required>
+
+            <label for="email">Your email</label>
+            <input id="email" type="email" required>
+
+            <label for="message">What would you like done?</label>
+            <textarea id="message"></textarea>
+
+            <button type="submit">Send</button>
+          </form>
+        </main>
+        <footer>
+          <p>Shop 4, Maponya Mall, Soweto</p>
+        </footer>
+      </body>
+    </html>
+  hints:
+    - Build the outline first (header, main, footer), then put the form inside main. Add one field at a time, each with its own label.
+    - Every input and the textarea needs an id, and a label whose for matches it. Use type="email" for the email box, and required on the name and email.
+    - "Inside main: a form with label for=\"name\" + input id=\"name\" type=\"text\" required, label for=\"email\" + input id=\"email\" type=\"email\" required, label for=\"message\" + textarea id=\"message\", then <button type=\"submit\">Send</button>."
+  tests:
+    - name: The page has a header with the h1, a main and a footer
+      code: |
+        expect(document.querySelector("header h1")).toBeTruthy();
+        expect(document.querySelectorAll("main")).toHaveLength(1);
+        expect(document.querySelector("footer")).toBeTruthy();
+    - name: The form is inside main
+      code: expect(document.querySelector("main form")).toBeTruthy()
+    - name: There's a required text input for the name
+      code: expect(document.querySelector('form input[type="text"][required]')).toBeTruthy()
+    - name: There's a required email input
+      code: expect(document.querySelector('form input[type="email"][required]')).toBeTruthy()
+    - name: There's a textarea for the message
+      code: expect(document.querySelector("form textarea")).toBeTruthy()
+    - name: Every input and textarea has a linked label
+      code: |
+        const fields = [...document.querySelectorAll("form input, form textarea")];
+        expect(fields.length).toBeGreaterThan(2);
+        for (const f of fields) {
+          expect(f.id).toBeTruthy();
+          expect(document.querySelector(`label[for="${f.id}"]`)).toBeTruthy();
+        }
+    - name: There's a submit button with words on it
+      code: |
+        const b = document.querySelector("form button");
+        expect(b?.type).toBe("submit");
+        expect(b.textContent.trim().length).toBeGreaterThan(0);
+---
+
+Lerato runs a hair studio in Soweto and wants a contact page that **everyone** can use. Build it from scratch:
+
+1. A **header** with a main heading (the studio's name)
+2. A **main** section containing a **form** with:
+   - a **name** box (text, required)
+   - an **email** box (email, required)
+   - a **message** box (a `textarea`)
+   - a **submit button**
+3. A **footer** with the address
+
+Every box needs its own **label**, linked with `for` and `id`.

@@ -1,0 +1,88 @@
+---
+id: grid
+title: CSS Grid
+type: build-it
+minutes: 9
+xp: 20
+goals:
+  - Lay out a gallery in rows and columns with CSS Grid.
+  - Use repeat and the fr unit.
+challenge:
+  language: css
+  fixture: |
+    <!doctype html>
+    <html lang="en">
+      <head><title>Garden Route photos</title></head>
+      <body>
+        <h1>Garden Route road trip</h1>
+        <div class="gallery">
+          <p class="photo">Knysna Heads</p>
+          <p class="photo">Wilderness beach</p>
+          <p class="photo">Tsitsikamma bridge</p>
+          <p class="photo">Plettenberg Bay</p>
+          <p class="photo">Mossel Bay</p>
+          <p class="photo">George</p>
+        </div>
+      </body>
+    </html>
+  starter: |
+    .photo {
+      background-color: #a8dadc;
+      padding: 24px;
+      margin: 0;
+    }
+
+    .gallery {
+
+    }
+  solution: |
+    .photo {
+      background-color: #a8dadc;
+      padding: 24px;
+      margin: 0;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+  hints:
+    - The grid goes on the container (.gallery), not on the photos.
+    - "You need three declarations: display: grid, grid-template-columns (three equal columns), and gap."
+    - "In .gallery, write display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;"
+  tests:
+    - name: The gallery uses Grid
+      code: expect(getComputedStyle(document.querySelector(".gallery")).display).toBe("grid")
+    - name: The gallery has three columns
+      code: expect(getComputedStyle(document.querySelector(".gallery")).gridTemplateColumns.split(" ")).toHaveLength(3)
+    - name: The three columns are the same width
+      code: |
+        const widths = getComputedStyle(document.querySelector(".gallery")).gridTemplateColumns.split(" ").map(parseFloat);
+        expect(Math.max(...widths) - Math.min(...widths)).toBeLessThan(1);
+    - name: There's space between the photos
+      code: expect(parseFloat(getComputedStyle(document.querySelector(".gallery")).columnGap)).toBeGreaterThan(0)
+---
+
+<Analogy title="An egg box">
+An egg box has a fixed number of rows and columns, and each egg drops into the next free hole. <Term word="css-grid">CSS Grid</Term> works the same way: you describe the holes, and the children drop into them in order.
+</Analogy>
+
+Flexbox lines things up in **one** direction, a row *or* a column. Grid handles **two** directions at once, rows *and* columns, which is perfect for galleries and card layouts.
+
+```css
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+```
+
+- `display: grid` goes on the **container**, just like Flexbox.
+- `grid-template-columns` describes the columns. `repeat(3, 1fr)` means "three columns, each one **fr**". `fr` is a *fraction* of the free space, so three `1fr` columns get a third each. `1fr 2fr` would make the second column twice as wide as the first.
+- You don't say how many **rows**: the grid adds as many as it needs. Six photos in three columns make two rows.
+- `gap` is the space between the holes, just like in Flexbox.
+
+## Your turn
+
+Turn the Garden Route photos into a gallery with **three equal columns** and some **space between** the photos.

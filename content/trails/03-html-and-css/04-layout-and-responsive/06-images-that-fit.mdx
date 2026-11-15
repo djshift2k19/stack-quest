@@ -1,0 +1,85 @@
+---
+id: images-that-fit
+title: Images that fit
+type: fix-the-bug
+minutes: 7
+xp: 20
+goals:
+  - Stop images from spilling out of their container.
+  - Keep an image's shape when it shrinks.
+challenge:
+  language: css
+  fixture: |
+    <!doctype html>
+    <html lang="en">
+      <head><title>Drakensberg hike</title></head>
+      <body>
+        <article class="card">
+          <h1>Amphitheatre hike</h1>
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='1200' height='600' fill='%232a9d8f'/%3E%3Cpath d='M0 600 L300 150 L520 420 L760 90 L1200 600 Z' fill='%23264653'/%3E%3C/svg%3E" alt="Mountain peaks of the Drakensberg against a green sky">
+          <p>A 12 km hike to the top of the Tugela Falls.</p>
+        </article>
+      </body>
+    </html>
+  starter: |
+    .card {
+      width: 300px;
+      padding: 16px;
+      border: 1px solid #cccccc;
+    }
+
+    img {
+      width: 1200px;
+      height: 600px;
+    }
+  solution: |
+    .card {
+      width: 300px;
+      padding: 16px;
+      border: 1px solid #cccccc;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  hints:
+    - The image is told to be exactly 1200px wide, but the card is only 300px wide. Instead of a fixed width, give it a maximum.
+    - "max-width: 100% means \"never wider than my container\". And if the width shrinks but the height stays at 600px, the picture gets squashed, so let the height work itself out."
+    - "Replace the img rule's two lines with max-width: 100%; and height: auto;"
+  tests:
+    - name: The image fits inside the card
+      code: |
+        const img = document.querySelector("img").getBoundingClientRect();
+        const card = document.querySelector(".card").getBoundingClientRect();
+        expect(img.right).toBeLessThan(card.right + 1);
+    - name: The image keeps its shape (twice as wide as it is tall)
+      code: |
+        const img = document.querySelector("img");
+        expect(Math.abs(img.offsetWidth / img.offsetHeight - 2)).toBeLessThan(0.05);
+    - name: The image still fills the card's width
+      code: |
+        expect(document.querySelector("img").offsetWidth).toBeGreaterThan(290);
+---
+
+<Analogy title="A poster and a frame">
+If you try to hang a huge poster in a small frame, it sticks out over the edges. You need to **shrink it to fit**, and shrink it evenly, or the mountains end up looking squashed.
+</Analogy>
+
+Photos are often much bigger than the space they're shown in. On a phone, a big photo can stick out past the edge of the screen and make the whole page scroll sideways (Stack Quest's own tests check for exactly that problem).
+
+Professionals add this rule to almost every stylesheet:
+
+```css
+img {
+  max-width: 100%;
+  height: auto;
+}
+```
+
+- `max-width: 100%` means "be your natural size, but **never wider than your container**".
+- `height: auto` means "work out the height from the width", so the picture keeps its shape instead of being squashed.
+
+## Fix the bug
+
+The hike photo is forced to be 1200px wide, so it spills right out of its 300px card. Make it fit the card **and** keep its shape.

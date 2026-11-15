@@ -1,0 +1,59 @@
+---
+id: quiz-first-web-page
+title: Check your understanding
+type: quiz
+minutes: 5
+xp: 15
+goals:
+  - Recall the basic HTML elements and how they're written.
+questions:
+  - prompt: In this code, what is the whole thing, from the first < to the last >, called?
+    code: <h1>Sawubona</h1>
+    language: html
+    options:
+      - text: An element
+        correct: true
+        why: Yes. The opening tag, the content and the closing tag together make an element.
+      - text: A tag
+        why: Close! A tag is just one of the labels, <h1> or </h1>. The whole thing is an element.
+      - text: An attribute
+        why: Attributes are extra information inside an opening tag, like href="...".
+  - prompt: Where do the words people actually see on the page go?
+    options:
+      - text: Inside the body
+        correct: true
+        why: The body is the letter in the envelope, the part people read.
+      - text: Inside the head
+        why: The head is the envelope. It holds information about the page, like the tab title.
+      - text: Before the doctype
+        why: The doctype always comes first, and nothing visible goes before it.
+  - prompt: Which link is the most helpful, for everyone including screen reader users?
+    options:
+      - text: <a href="https://www.sars.gov.za">SARS eFiling</a>
+        correct: true
+        why: The words say exactly where the link goes.
+      - text: <a href="https://www.sars.gov.za">Click here</a>
+        why: '"Click here" doesn''t say where it goes. Read on its own, in a list of links, it means nothing.'
+      - text: <a>https://www.sars.gov.za</a>
+        why: Without an href attribute, this isn't a working link at all.
+  - prompt: You're writing the steps to change a car tyre. Which list should you use?
+    options:
+      - text: A numbered list (ol), because the order matters
+        correct: true
+        why: You must loosen the nuts before you jack up the car, so number the steps.
+      - text: A bulleted list (ul)
+        why: Bullets are for when order doesn't matter, like a packing list.
+      - text: Lots of paragraphs starting with "1.", "2." and so on
+        why: That works visually, but ol is better. The browser numbers the steps for you, and screen readers announce it as a list.
+  - prompt: What is the alt attribute on an image for?
+    options:
+      - text: A description of the picture, read aloud by screen readers and shown if it can't load
+        correct: true
+        why: Exactly. Write what the picture shows.
+      - text: The file name of the picture
+        why: That's src, the source.
+      - text: An alternative picture to show on phones
+        why: alt is text, not another picture.
+---
+
+Five quick questions about what you've learned in this module. Wrong answers explain themselves, so there's nothing to lose by guessing.

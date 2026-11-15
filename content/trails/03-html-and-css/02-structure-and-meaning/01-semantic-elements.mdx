@@ -1,0 +1,63 @@
+---
+id: semantic-elements
+title: "Semantic elements: header, main, footer"
+type: reading
+minutes: 6
+goals:
+  - Name the main semantic elements and what each is for.
+  - Explain why meaning matters more than looks.
+---
+
+<Analogy title="Signs in a shopping mall">
+A mall puts up signs: "Entrance", "Food court", "Toilets", "Exit". You could find your way without them, eventually. But the signs let *everyone* find things quickly, including someone who's visiting for the first time.
+</Analogy>
+
+## Boxes with names
+
+There's an HTML element called `div` (short for "division"). It's a plain box that means nothing. For years, people built whole pages out of `div`s:
+
+```html
+<div class="top">...</div>
+<div class="menu">...</div>
+<div class="content">...</div>
+```
+
+That works, but the browser has no idea what each box is *for*. Modern HTML gives you boxes with **names** that say what they mean. This is called <Term word="semantic-html">semantic HTML</Term> ("semantic" means "to do with meaning"):
+
+- `header`: the top part, usually the site name or logo.
+- `nav`: the main menu of links (navigation).
+- `main`: the main content of this page. Use only **one**.
+- `section`: a group of related content, normally with its own heading.
+- `article`: a piece that makes sense on its own, like a news story or a blog post.
+- `footer`: the bottom part, with contact details, copyright and so on.
+
+```html
+<body>
+  <header>
+    <h1>Mama Joy's Kitchen</h1>
+    <nav>
+      <a href="/menu">Menu</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Today's special</h2>
+    <p>Chicken curry with rice.</p>
+  </main>
+  <footer>
+    <p>Open Monday to Saturday, 8am to 5pm.</p>
+  </footer>
+</body>
+```
+
+## Why bother, if it looks the same?
+
+On screen, a `header` looks exactly like a `div`. The difference is for:
+
+1. **People using a <Term word="screen-reader">screen reader</Term>.** They can jump straight to the `main` content or the `nav`, instead of listening to the whole page from the top.
+2. **Search engines**, which understand what your page is about.
+3. **Other developers**, including you in six months. `footer` explains itself; `div class="box3"` doesn't.
+
+<KeyIdea>
+Choose elements for what the content **means**, not how it looks: `header`, `nav`, `main`, `section`, `article` and `footer`. Use a plain `div` only when nothing else fits.
+</KeyIdea>

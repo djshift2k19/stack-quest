@@ -301,3 +301,95 @@
   term: GitHub
   definition: A website that stores Git repositories online, as a backup and so people can work together. Git is the tool; GitHub is a place to keep the results.
   example: Many open-source projects, like VS Code itself, live on GitHub.
+
+# ---------- Trail 3: HTML and CSS ----------
+
+- id: tag
+  term: Tag
+  definition: A label in angle brackets that marks where a piece of a web page starts or ends. Most come in pairs, an opening tag and a closing tag with a slash.
+  example: "<p> opens a paragraph and </p> closes it."
+
+- id: element
+  term: Element
+  definition: One complete piece of a web page, an opening tag, its contents and its closing tag together. Elements can sit inside other elements.
+  example: "<h1>Sawubona</h1> is a heading element."
+
+- id: attribute
+  term: Attribute
+  definition: Extra information written inside an opening tag, as a name and a value. It changes or describes the element.
+  example: In <a href="https://example.com">, href is an attribute that says where the link goes.
+
+- id: semantic-html
+  term: Semantic HTML
+  definition: Choosing HTML elements by what the content means (a header, a list, a button) rather than how it looks. It helps screen readers, search engines and other developers.
+  example: Using <nav> for a menu instead of a plain <div>.
+
+- id: form
+  term: Form
+  definition: The part of a page where people type or choose information and send it, made of inputs, labels and a button.
+  example: A sign-up page with boxes for your email and password is a form.
+
+- id: accessibility
+  term: Accessibility
+  definition: Making apps and pages usable by everyone, including people who are blind, deaf, colour-blind or who can't use a mouse. Often shortened to "a11y".
+  example: Adding a text description to a photo so a screen reader can read it aloud.
+
+- id: screen-reader
+  term: Screen reader
+  definition: A program that reads the screen aloud (or on a braille display) for people who can't see it. It relies on well-written HTML.
+  example: VoiceOver, built into every Mac and iPhone, is a screen reader.
+
+- id: alt-text
+  term: Alt text
+  definition: A short written description of an image, given in the alt attribute. Screen readers read it aloud, and it shows if the image can't load.
+  example: alt="Table Mountain covered in cloud"
+
+- id: selector
+  term: Selector
+  definition: The first part of a CSS rule. It picks which elements on the page the rule styles.
+  example: h1 selects every main heading. .card selects everything with class="card".
+
+- id: css-property
+  term: CSS property
+  definition: One thing about an element that CSS can change, such as its colour, size or spacing. It's written as a name, a colon, a value and a semicolon.
+  example: "color: green;"
+
+- id: class
+  term: Class
+  definition: A name you give to HTML elements with the class attribute, so CSS can style all of them together. In CSS, a class selector starts with a dot.
+  example: <p class="note"> is styled by the CSS rule .note { }
+
+- id: box-model
+  term: Box model
+  definition: The idea that every element is a rectangle made of four layers, the content, then padding, then a border, then a margin on the outside.
+  example: A framed photo has the photo (content), the mount (padding), the frame (border) and the gap to the next frame on the wall (margin).
+
+- id: specificity
+  term: Specificity
+  definition: The rule a browser uses to decide which CSS wins when two rules style the same thing. An id beats a class, and a class beats an element name.
+  example: "#welcome { color: black } beats .note { color: green } on the same paragraph."
+
+- id: flexbox
+  term: Flexbox
+  definition: A CSS layout tool that lines elements up in a row or a column and shares out the space between them.
+  example: A menu bar with links spread evenly across the top of a page.
+
+- id: css-grid
+  term: CSS Grid
+  definition: A CSS layout tool that arranges elements into rows and columns, like a table you control.
+  example: A photo gallery with three pictures per row.
+
+- id: media-query
+  term: Media query
+  definition: A CSS condition that applies some rules only when it's true, usually depending on the screen width.
+  example: "@media (min-width: 600px) { } only applies on screens 600 pixels wide or more."
+
+- id: responsive-design
+  term: Responsive design
+  definition: Building pages that rearrange themselves to fit any screen, from a small phone to a wide laptop.
+  example: Cards that stack in one column on a phone and sit side by side on a laptop.
+
+- id: pixel
+  term: Pixel
+  definition: One tiny dot of light on a screen. CSS measures many sizes in pixels, written px.
+  example: "padding: 16px; leaves 16 dots of space."

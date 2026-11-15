@@ -1,0 +1,74 @@
+---
+id: flex-a-header
+title: Lay out a header with Flexbox
+type: build-it
+minutes: 8
+xp: 20
+goals:
+  - Use Flexbox to put a logo and a menu on one line.
+challenge:
+  language: css
+  fixture: |
+    <!doctype html>
+    <html lang="en">
+      <head><title>Kasi Kicks</title></head>
+      <body>
+        <header>
+          <h1>Kasi Kicks</h1>
+          <nav>
+            <a href="/sneakers">Sneakers</a>
+            <a href="/sale">Sale</a>
+            <a href="/contact">Contact</a>
+          </nav>
+        </header>
+      </body>
+    </html>
+  starter: |
+    header {
+
+    }
+
+    nav {
+
+    }
+  solution: |
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav {
+      display: flex;
+      gap: 16px;
+    }
+  hints:
+    - Both the header and the nav need display flex. The header has two children (the h1 and the nav), and the nav has three (the links).
+    - "In header, use justify-content: space-between and align-items: center. In nav, use gap: 16px."
+    - "header { display: flex; justify-content: space-between; align-items: center; } nav { display: flex; gap: 16px; }"
+  tests:
+    - name: The header uses Flexbox
+      code: expect(getComputedStyle(document.querySelector("header")).display).toBe("flex")
+    - name: The logo and menu are pushed to opposite ends (space-between)
+      code: expect(getComputedStyle(document.querySelector("header")).justifyContent).toBe("space-between")
+    - name: The logo and menu are centred vertically
+      code: expect(getComputedStyle(document.querySelector("header")).alignItems).toBe("center")
+    - name: The menu links are in a row with 16px gaps
+      code: |
+        const nav = getComputedStyle(document.querySelector("nav"));
+        expect(nav.display).toBe("flex");
+        expect(nav.columnGap).toBe("16px");
+    - name: The logo and the menu really are on the same line
+      code: |
+        const h1 = document.querySelector("h1").getBoundingClientRect();
+        const nav = document.querySelector("nav").getBoundingClientRect();
+        expect(nav.left).toBeGreaterThan(h1.right);
+---
+
+Kasi Kicks sells sneakers, and its header has the shop name on one line and the menu stacked below. Make it look like a real shop's header:
+
+1. Put the **shop name on the left** and the **menu on the right**, on the same line (on the `header`)
+2. **Centre** them vertically, so they line up nicely
+3. Put the **three menu links in a row**, with **16px** between them (on the `nav`)
+
+You'll need Flexbox in **two** places, because there are two containers: the header holds the name and the nav, and the nav holds the links.

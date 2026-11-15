@@ -1,0 +1,61 @@
+---
+id: quiz-structure-and-meaning
+title: Check your understanding
+type: quiz
+minutes: 5
+xp: 15
+goals:
+  - Recall semantic elements, form labels and good alt text.
+questions:
+  - prompt: Which element should hold a website's main menu of links?
+    options:
+      - text: nav
+        correct: true
+        why: nav is short for navigation, the main way to move around the site.
+      - text: footer
+        why: The footer is for the bottom of the page, like contact details. Some sites put extra links there too, but the main menu belongs in nav.
+      - text: div class="menu"
+        why: That works visually, but it means nothing to a screen reader. nav says what it is.
+  - prompt: A label and an input aren't linked. What do you need to make match?
+    code: |
+      <label for="cell">Cellphone</label>
+      <input id="phone" type="tel">
+    language: html
+    options:
+      - text: The label's for and the input's id
+        correct: true
+        why: They say "cell" and "phone". Make them the same word and they're linked.
+      - text: The label's words and the input's type
+        why: The words can be anything. The link is made by for and id.
+      - text: Nothing, they're linked because they're next to each other
+        why: Being next to each other isn't enough. Browsers and screen readers need for and id to match.
+  - prompt: Which is the best alt text for a photo on a news story about load shedding?
+    options:
+      - text: alt="A street in Pretoria in darkness, lit only by car headlights"
+        correct: true
+        why: It describes what the photo actually shows.
+      - text: alt="Image of load shedding photo"
+        why: Don't start with "Image of"; the screen reader already says it's an image. And it doesn't describe the picture.
+      - text: alt="photo_2024_03.jpg"
+        why: A file name tells a listener nothing.
+  - prompt: What should the alt text be for a purely decorative swirl between two sections?
+    options:
+      - text: Empty, written alt=""
+        correct: true
+        why: Empty alt text tells screen readers to skip it, which is what you want for decoration.
+      - text: Leave out the alt attribute completely
+        why: With no alt at all, some screen readers read out the file name. Write alt="" instead.
+      - text: alt="Decorative swirl"
+        why: It's not wrong exactly, but listeners would hear about every swirl on the page. Empty alt skips it.
+  - prompt: A form says "Fields marked in red are required." Who does this fail?
+    options:
+      - text: People who are colour-blind or using a screen reader
+        correct: true
+        why: Colour alone isn't enough. Add the required attribute and a word or symbol, like "(required)".
+      - text: Nobody; red is clear
+        why: About 1 in 12 men are colour-blind, and screen readers don't announce colours.
+      - text: Only people on phones
+        why: Phones show red fine. The problem is for people who can't see the colour.
+---
+
+Five questions on meaning, forms and accessibility.

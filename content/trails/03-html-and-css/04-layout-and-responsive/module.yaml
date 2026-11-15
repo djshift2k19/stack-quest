@@ -1,0 +1,11 @@
+id: layout-and-responsive
+title: Layout and Responsive Design
+summary: Arrange things in rows, columns and grids with Flexbox and Grid, and make pages that fit any screen from a phone to a laptop.
+goals:
+  - Line things up in a row or column with Flexbox.
+  - Build a grid of cards with CSS Grid.
+  - Design mobile-first and adapt with media queries.
+  - Make images shrink to fit their space.
+badge:
+  name: Layout Legend
+  emoji: 📐

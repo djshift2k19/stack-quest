@@ -1,0 +1,73 @@
+---
+id: selectors
+title: Selectors
+type: build-it
+minutes: 8
+xp: 20
+goals:
+  - Style elements by their tag name.
+  - Write several rules in one stylesheet.
+challenge:
+  language: css
+  fixture: |
+    <!doctype html>
+    <html lang="en">
+      <head><title>Joburg Jazz Night</title></head>
+      <body>
+        <h1>Joburg Jazz Night</h1>
+        <p>Live music every Friday from 7pm.</p>
+        <p>Tickets are R120 at the door.</p>
+        <a href="/tickets">Book your tickets</a>
+      </body>
+    </html>
+  starter: |
+    h1 {
+
+    }
+  solution: |
+    h1 {
+      color: teal;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    a {
+      color: darkorange;
+    }
+  hints:
+    - You need three rules, one for each kind of element. The h1 rule is started for you.
+    - "Each rule is selector { property: value; }. The properties are color (American spelling, no u) and font-size."
+    - "Write h1 { color: teal; }, then p { font-size: 18px; }, then a { color: darkorange; }."
+  tests:
+    - name: The h1 is teal
+      code: expect(getComputedStyle(document.querySelector("h1")).color).toBe("rgb(0, 128, 128)")
+    - name: Both paragraphs are 18px
+      code: |
+        for (const p of document.querySelectorAll("p")) expect(getComputedStyle(p).fontSize).toBe("18px");
+    - name: The link is dark orange
+      code: expect(getComputedStyle(document.querySelector("a")).color).toBe("rgb(255, 140, 0)")
+---
+
+The simplest <Term word="selector">selector</Term> is just a tag name. `p` selects **every** paragraph on the page, so one rule styles them all:
+
+```css
+p {
+  color: grey;
+}
+```
+
+You can write as many rules as you like, one after another.
+
+**Spelling:** CSS uses American spelling, so it's `color`, not "colour". Writing `colour: teal;` does nothing, and the browser won't tell you why.
+
+## Your turn
+
+Style the jazz night page:
+
+1. Make the **h1** `teal`
+2. Make **every paragraph** `18px` (use `font-size`)
+3. Make the **link** `darkorange`
+
+CSS knows about 140 colour names, like `teal`, `tomato` and `darkorange`.

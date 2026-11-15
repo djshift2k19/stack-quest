@@ -1,0 +1,148 @@
+---
+id: boss-a-responsive-profile
+title: "Trail Boss: a responsive profile page"
+type: boss
+minutes: 10
+xp: 75
+goals:
+  - Combine Flexbox, Grid, a media query and fitting images in one page.
+challenge:
+  language: css
+  fixture: |
+    <!doctype html>
+    <html lang="en">
+      <head><title>Thabo's portfolio</title></head>
+      <body>
+        <header>
+          <h1>Thabo Mokoena</h1>
+          <nav>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </header>
+        <main>
+          <h2 id="projects">My projects</h2>
+          <div class="cards">
+            <article class="card">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23e9c46a'/%3E%3C/svg%3E" alt="Screenshot of a recipe website">
+              <h3>Recipe site</h3>
+              <p>My family's favourite recipes.</p>
+            </article>
+            <article class="card">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23f4a261'/%3E%3C/svg%3E" alt="Screenshot of a football club page">
+              <h3>Football club page</h3>
+              <p>Fixtures and results for my local team.</p>
+            </article>
+            <article class="card">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%232a9d8f'/%3E%3C/svg%3E" alt="Screenshot of a budget calculator">
+              <h3>Budget calculator</h3>
+              <p>Tracks where my money goes each month.</p>
+            </article>
+            <article class="card">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23e76f51'/%3E%3C/svg%3E" alt="Screenshot of this profile page">
+              <h3>This page!</h3>
+              <p>Built with HTML and CSS.</p>
+            </article>
+          </div>
+        </main>
+      </body>
+    </html>
+  starter: |
+    /* Phones first */
+
+    /* Wider screens */
+  solution: |
+    /* Phones first */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav {
+      display: flex;
+      gap: 16px;
+    }
+
+    .cards {
+      display: grid;
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid #cccccc;
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Wider screens */
+    @media (min-width: 600px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  hints:
+    - "Work in order: the header (Flexbox), then the nav (Flexbox), then the cards (Grid with one column), then the images, and finally a media query that switches the cards to two columns."
+    - "You need header { display: flex; justify-content: space-between; }, nav { display: flex; gap: ... }, .cards { display: grid; gap: ... }, img { max-width: 100%; height: auto; } and a @media (min-width: 600px) block."
+    - "Inside @media (min-width: 600px) { }, write .cards { grid-template-columns: repeat(2, 1fr); }. Outside it, .cards only needs display: grid and a gap, which gives one column."
+  tests:
+    - name: The name and menu are at opposite ends of the header (Flexbox)
+      code: |
+        const h = getComputedStyle(document.querySelector("header"));
+        expect(h.display).toBe("flex");
+        expect(h.justifyContent).toBe("space-between");
+    - name: The menu links are in a row with a gap
+      code: |
+        const n = getComputedStyle(document.querySelector("nav"));
+        expect(n.display).toBe("flex");
+        expect(parseFloat(n.columnGap)).toBeGreaterThan(0);
+    - name: The cards are in a grid with gaps
+      code: |
+        const c = getComputedStyle(document.querySelector(".cards"));
+        expect(c.display).toBe("grid");
+        expect(parseFloat(c.rowGap)).toBeGreaterThan(0);
+    - name: Every image fits inside its card and keeps its shape
+      code: |
+        for (const card of document.querySelectorAll(".card")) {
+          const img = card.querySelector("img");
+          expect(img.getBoundingClientRect().right).toBeLessThan(card.getBoundingClientRect().right + 1);
+          expect(Math.abs(img.offsetWidth / img.offsetHeight - 2)).toBeLessThan(0.05);
+        }
+    - name: On phones, the cards are in one column (no columns set outside a media query)
+      code: |
+        const rules = [...document.styleSheets].flatMap((s) => [...s.cssRules]);
+        const outside = rules.filter((r) => r instanceof CSSStyleRule && r.selectorText === ".cards");
+        for (const r of outside) expect(r.style.gridTemplateColumns.split(" ").length < 2 || r.style.gridTemplateColumns === "").toBe(true);
+    - name: There's a min-width media query
+      code: |
+        const rules = [...document.styleSheets].flatMap((s) => [...s.cssRules]);
+        expect(rules.some((r) => r instanceof CSSMediaRule && /min-width/.test(r.conditionText))).toBe(true);
+    - name: On wider screens, the cards are in two columns
+      code: expect(getComputedStyle(document.querySelector(".cards")).gridTemplateColumns.split(" ")).toHaveLength(2)
+---
+
+This is the **Trail Boss**: everything from Trail 3 in one page. Thabo's portfolio has all its HTML. Make it **responsive**, mobile-first:
+
+**Phones first** (outside any media query):
+
+1. In the **header**, put the name on the left and the menu on the right
+2. Put the **menu links** in a row with a gap
+3. Put the **cards** in a **grid** with a gap, in **one column**
+4. Make the **images** fit their cards and keep their shape
+
+**Wider screens** (inside a media query, `min-width` of your choice up to 800px):
+
+5. Show the cards in **two columns**
+
+Then add any extra styling you like: colours, fonts and rounded corners. The checks look at the page at 800px wide, like a small laptop. Make your browser window narrow to see your phone layout.
+
+Finish this, and you've built a real responsive web page from scratch. 🎉

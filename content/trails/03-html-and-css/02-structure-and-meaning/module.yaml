@@ -1,0 +1,10 @@
+id: structure-and-meaning
+title: Structure and Meaning
+summary: Use HTML elements that say what things are, so your pages work for everyone, including people using screen readers.
+goals:
+  - Organise a page with header, nav, main and footer.
+  - Build forms with labelled inputs and a button.
+  - Write pages that work with a screen reader.
+badge:
+  name: Meaning Maker
+  emoji: 🧭

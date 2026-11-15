@@ -1,0 +1,80 @@
+---
+id: use-semantic-elements
+title: Replace the div soup
+type: fix-the-bug
+minutes: 8
+xp: 20
+goals:
+  - Swap meaningless div elements for semantic ones.
+challenge:
+  language: html
+  starter: |
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Soweto Spaza</title>
+      </head>
+      <body>
+        <div class="header">
+          <h1>Soweto Spaza</h1>
+          <div class="nav">
+            <a href="/specials">Specials</a>
+            <a href="/hours">Opening hours</a>
+          </div>
+        </div>
+        <div class="main">
+          <h2>This week's specials</h2>
+          <p>2 litre Coke and a loaf of bread for R45.</p>
+        </div>
+        <div class="footer">
+          <p>Vilakazi Street, Orlando West</p>
+        </div>
+      </body>
+    </html>
+  solution: |
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Soweto Spaza</title>
+      </head>
+      <body>
+        <header>
+          <h1>Soweto Spaza</h1>
+          <nav>
+            <a href="/specials">Specials</a>
+            <a href="/hours">Opening hours</a>
+          </nav>
+        </header>
+        <main>
+          <h2>This week's specials</h2>
+          <p>2 litre Coke and a loaf of bread for R45.</p>
+        </main>
+        <footer>
+          <p>Vilakazi Street, Orlando West</p>
+        </footer>
+      </body>
+    </html>
+  hints:
+    - Each div's class name says what it really is. There's an element with that exact name.
+    - Replace both the opening and the closing tag. For example, <div class="header"> becomes <header>, and its matching </div> becomes </header>.
+    - "Change the four divs to header, nav, main and footer. Be careful to change the right closing </div> each time: the nav's closes first, inside the header."
+  tests:
+    - name: The top part is a header element
+      code: expect(document.querySelector("header h1")).toBeTruthy()
+    - name: The links are inside a nav element, inside the header
+      code: expect(document.querySelectorAll("header nav a")).toHaveLength(2)
+    - name: The specials are inside a main element
+      code: expect(document.querySelector("main h2")).toBeTruthy()
+    - name: The address is inside a footer element
+      code: expect(document.querySelector("footer p")).toBeTruthy()
+    - name: No divs are left
+      code: expect(document.querySelectorAll("div")).toHaveLength(0)
+---
+
+This spaza shop's page is all plain `div`s. A screen reader user can't jump to the specials, because nothing says which box is the main content.
+
+Each `div` already has a class name that says what it **should** be. Replace every `div` with the matching semantic element: `header`, `nav`, `main` and `footer`.
+
+The page will look exactly the same in the preview. That's the point: the change is in the **meaning**, which the tests can check.

@@ -1,0 +1,87 @@
+---
+id: colours-and-fonts
+title: Colours and fonts
+type: build-it
+minutes: 9
+xp: 20
+goals:
+  - Write colours as hex codes.
+  - Set a font family with a fallback.
+challenge:
+  language: css
+  fixture: |
+    <!doctype html>
+    <html lang="en">
+      <head><title>Durban Surf School</title></head>
+      <body>
+        <h1>Durban Surf School</h1>
+        <p>Learn to surf at North Beach. Boards and wetsuits included.</p>
+        <p>Lessons start at R250.</p>
+      </body>
+    </html>
+  starter: |
+    body {
+
+    }
+
+    h1 {
+
+    }
+  solution: |
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf6e3;
+    }
+
+    h1 {
+      color: #1d3557;
+    }
+  hints:
+    - The body rule needs two declarations (font-family and background-color), and the h1 rule needs one (color).
+    - "Hex colours start with #. The font family is a list separated by commas, with sans-serif last as the fallback."
+    - "In body, write font-family: Arial, sans-serif; and background-color: #fdf6e3; and in h1, write color: #1d3557;"
+  tests:
+    - name: The page uses Arial, falling back to sans-serif
+      code: |
+        const font = getComputedStyle(document.body).fontFamily;
+        expect(font).toMatch(/Arial/);
+        expect(font).toMatch(/sans-serif\s*$/);
+    - name: The page background is sand (#fdf6e3)
+      code: expect(getComputedStyle(document.body).backgroundColor).toBe("rgb(253, 246, 227)")
+    - name: The h1 is ocean blue (#1d3557)
+      code: expect(getComputedStyle(document.querySelector("h1")).color).toBe("rgb(29, 53, 87)")
+---
+
+<Analogy title="Mixing paint at the hardware store">
+At the paint counter, every colour has a code like "Desert Sand 0473" so it can be mixed exactly the same every time. Web colours have codes too.
+</Analogy>
+
+## Hex colours
+
+Colour names are handy, but there are only about 140 of them. Designers use **hex codes**, which can describe over 16 million colours:
+
+```css
+h1 {
+  color: #1d3557;
+}
+```
+
+A hex code is a `#` and six characters. They're three pairs: how much **red**, **green** and **blue** light to mix, from `00` (none) to `ff` (full). So `#ff0000` is pure red, `#000000` is black and `#ffffff` is white. You don't need to work them out yourself. Design tools and colour pickers give you the codes, and you copy them in.
+
+## Fonts
+
+```css
+body {
+  font-family: Arial, sans-serif;
+}
+```
+
+`font-family` is a **list**. The browser uses the first font it has. If it doesn't have Arial, it falls back to any `sans-serif` font (a clean font without little "feet" on the letters). Always end the list with `sans-serif` or `serif` as a safety net.
+
+Styling `body` styles the whole page, because the elements inside **inherit** the font and text colour from the body, like children inheriting their parents' surname. (Background colours don't inherit, but you'll see the body's background behind everything anyway.)
+
+## Your turn
+
+1. Give the whole page the font `Arial, sans-serif`
+2. Give the page the sandy background `#fdf6e3`
+3. Make the h1 ocean blue: `#1d3557`

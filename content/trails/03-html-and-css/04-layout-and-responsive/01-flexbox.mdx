@@ -1,0 +1,65 @@
+---
+id: flexbox
+title: Flexbox
+type: reading
+minutes: 7
+goals:
+  - Explain what Flexbox does.
+  - Use display flex, gap, justify-content and align-items.
+---
+
+<Analogy title="Taxis at the rank">
+At a taxi rank, the marshal lines the taxis up in a row, decides how much space to leave between them, and makes sure they all face the same way. <Term word="flexbox">Flexbox</Term> is a marshal for the elements on your page.
+</Analogy>
+
+## The problem
+
+By default, block elements like `div`, `section` and `p` stack **on top of each other**, each one on its own line. But menus, toolbars and rows of cards need things **side by side**.
+
+## Switching Flexbox on
+
+You put `display: flex` on the **parent** (the container), and its **children** line up in a row:
+
+```css
+nav {
+  display: flex;
+  gap: 16px;
+}
+```
+
+```html
+<nav>
+  <a href="/">Home</a>
+  <a href="/menu">Menu</a>
+  <a href="/contact">Contact</a>
+</nav>
+```
+
+The three links now sit in a row with 16px between them. `gap` is the space **between** children, but not around the outside.
+
+## Controlling the line-up
+
+- `flex-direction: row` (the default) or `column` lines the children up across or down.
+- `justify-content` shares out the space **along** the line:
+  - `flex-start`: everything bunched at the start (the default)
+  - `center`: bunched in the middle
+  - `space-between`: first at the start, last at the end, the rest spread evenly
+- `align-items` lines them up **across** the line. `center` is the famous one: it centres things vertically, which used to be surprisingly hard in CSS.
+
+A common header layout: the logo on the left and the menu on the right:
+
+```css
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+```
+
+## Practise for fun
+
+Search for **"Flexbox Froggy"**, a free browser game where you move frogs onto lily pads by writing Flexbox CSS.
+
+<KeyIdea>
+Put `display: flex` on a **container** to line up its **children** in a row (or a column). Use `gap` for space between them, `justify-content` along the line and `align-items` across it.
+</KeyIdea>

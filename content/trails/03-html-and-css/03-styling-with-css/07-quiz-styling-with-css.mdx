@@ -1,0 +1,71 @@
+---
+id: quiz-styling-with-css
+title: Check your understanding
+type: quiz
+minutes: 5
+xp: 15
+goals:
+  - Recall CSS rules, the box model and specificity.
+questions:
+  - prompt: In this rule, which part is the selector?
+    code: |
+      .price {
+        color: red;
+      }
+    language: css
+    options:
+      - text: .price
+        correct: true
+        why: The selector picks which elements to style, here everything with class="price".
+      - text: color
+        why: color is the property, the thing being changed.
+      - text: red
+        why: red is the value.
+  - prompt: This style isn't working. What's wrong?
+    code: |
+      h1 {
+        colour: navy;
+      }
+    language: css
+    options:
+      - text: CSS uses American spelling, so it must be color
+        correct: true
+        why: The browser doesn't know "colour", so it silently ignores that line.
+      - text: navy isn't a real colour
+        why: navy is one of CSS's colour names. The property name is the problem.
+      - text: It needs a # before h1
+        why: The # is for ids. h1 is an element selector, which needs no symbol.
+  - prompt: Which layer of the box model is space OUTSIDE the border?
+    options:
+      - text: Margin
+        correct: true
+        why: Margin pushes other elements away, like the gap between frames on a wall.
+      - text: Padding
+        why: Padding is space inside the border, between it and the content.
+      - text: Content
+        why: Content is the text or image in the middle.
+  - prompt: A paragraph has both rules. What colour is it?
+    code: |
+      #intro { color: blue; }
+      .lead { color: purple; }
+    language: css
+    options:
+      - text: Blue, because an id is more specific than a class
+        correct: true
+        why: Id beats class, even though the class rule comes later.
+      - text: Purple, because it comes last
+        why: '"Later wins" only applies when the selectors are equally specific. An id beats a class.'
+      - text: A mix of the two
+        why: CSS picks one winner per property. It doesn't blend.
+  - prompt: You want ten product cards to share the same style. What should you use?
+    options:
+      - text: A class, like class="card", styled with .card
+        correct: true
+        why: Classes are made for styling groups of elements.
+      - text: An id on each one, like id="card"
+        why: An id must be unique, used once per page, so it can't be shared by ten cards.
+      - text: Write the same rule ten times
+        why: One class rule styles all ten, and you only need to change it in one place.
+---
+
+Five questions on CSS rules, the box model and specificity.

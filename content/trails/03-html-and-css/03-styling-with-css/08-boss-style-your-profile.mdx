@@ -1,0 +1,94 @@
+---
+id: boss-style-your-profile
+title: "Boss: style your profile page"
+type: boss
+minutes: 10
+goals:
+  - Style a whole page using element and class selectors and the box model.
+challenge:
+  language: css
+  fixture: |
+    <!doctype html>
+    <html lang="en">
+      <head><title>Naledi's profile</title></head>
+      <body>
+        <header>
+          <h1>Naledi Dlamini</h1>
+          <p>Learning to build web apps in Bloemfontein</p>
+        </header>
+        <main>
+          <section class="card">
+            <h2>About me</h2>
+            <p>I used to work in retail. Now I'm learning HTML and CSS, one evening at a time.</p>
+          </section>
+          <section class="card">
+            <h2>Find me online</h2>
+            <p><a href="https://github.com">My projects on GitHub</a></p>
+          </section>
+        </main>
+      </body>
+    </html>
+  starter: |
+    /* Style Naledi's profile page here */
+  solution: |
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1faee;
+      color: #1d3557;
+    }
+
+    h1 {
+      color: #e63946;
+    }
+
+    .card {
+      background-color: white;
+      padding: 16px;
+      border: 1px solid #a8dadc;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    a {
+      color: #457b9d;
+    }
+  hints:
+    - Work through the list one rule at a time, checking the preview after each. You'll need rules for body, h1, .card and a.
+    - "body needs font-family and background-color. .card needs padding (at least 16px), a border and border-radius. Change h1's and a's color."
+    - "Try: body { font-family: Arial, sans-serif; background-color: #f1faee; } h1 { color: #e63946; } .card { padding: 16px; border: 1px solid #a8dadc; border-radius: 12px; margin-bottom: 16px; } a { color: #457b9d; }"
+  tests:
+    - name: The page uses a sans-serif font
+      code: expect(getComputedStyle(document.body).fontFamily).toMatch(/sans-serif/)
+    - name: The page has a background colour that isn't plain white
+      code: |
+        const bg = getComputedStyle(document.body).backgroundColor;
+        expect(bg).not.toBe("rgba(0, 0, 0, 0)");
+        expect(bg).not.toBe("rgb(255, 255, 255)");
+    - name: The h1 has a colour other than black
+      code: expect(getComputedStyle(document.querySelector("h1")).color).not.toBe("rgb(0, 0, 0)")
+    - name: Each card has at least 16px of padding
+      code: |
+        for (const c of document.querySelectorAll(".card")) expect(parseFloat(getComputedStyle(c).paddingTop)).toBeGreaterThan(15);
+    - name: Each card has a border
+      code: |
+        for (const c of document.querySelectorAll(".card")) expect(getComputedStyle(c).borderTopStyle).not.toBe("none");
+    - name: Each card has rounded corners
+      code: |
+        for (const c of document.querySelectorAll(".card")) expect(parseFloat(getComputedStyle(c).borderTopLeftRadius)).toBeGreaterThan(0);
+    - name: There's space between the two cards
+      code: |
+        const [a, b] = document.querySelectorAll(".card");
+        expect(b.getBoundingClientRect().top - a.getBoundingClientRect().bottom).toBeGreaterThan(0);
+    - name: The link isn't the browser's default blue
+      code: expect(getComputedStyle(document.querySelector("a")).color).not.toBe("rgb(0, 0, 238)")
+---
+
+Naledi's profile page works, but it looks like it's from 1995. Give it some style. You choose the colours!
+
+1. Give the page a **sans-serif font** and a **background colour** (not plain white)
+2. Give the **h1** a colour other than black
+3. Make each **card** (class `card`) look like a card: at least **16px of padding**, a **border** and **rounded corners**
+4. Leave **space between** the two cards (hint: margin)
+5. Give the **link** a colour other than the default blue
+
+Need colour ideas? Try `#264653`, `#2a9d8f`, `#e9c46a`, `#f4a261` and `#e76f51`, which all look good together.

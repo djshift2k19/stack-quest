@@ -1,0 +1,11 @@
+id: styling-with-css
+title: Styling with CSS
+summary: Use CSS to choose colours, fonts and spacing, and learn how the browser decides which style wins.
+goals:
+  - Write CSS rules with selectors, properties and values.
+  - Style colours, fonts and text.
+  - Explain the box model (content, padding, border and margin).
+  - Use classes, and fix rules that lose to more specific ones.
+badge:
+  name: Style Setter
+  emoji: 🖌️

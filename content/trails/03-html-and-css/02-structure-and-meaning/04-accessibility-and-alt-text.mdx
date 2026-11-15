@@ -1,0 +1,53 @@
+---
+id: accessibility-and-alt-text
+title: Accessibility basics and alt text
+type: reading
+minutes: 7
+goals:
+  - Explain what accessibility means and who it helps.
+  - Write good alt text, and know when to leave it empty.
+  - List five habits that make pages accessible.
+---
+
+<Analogy title="A ramp next to the stairs">
+A ramp at a building's entrance was built for wheelchair users. But it also helps parents with prams, delivery people with trolleys and anyone with a sore knee. Building for people with disabilities usually makes things better for **everyone**.
+</Analogy>
+
+## What accessibility means
+
+<Term word="accessibility">Accessibility</Term> (often written "a11y": an "a", then 11 letters, then a "y") means making pages that everyone can use, including people who:
+
+- are blind or have low vision, and use a <Term word="screen-reader">screen reader</Term> or zoom in a lot
+- are colour-blind (about 1 in 12 men)
+- can't use a mouse, and move around with the keyboard (Tab key) instead
+- are deaf, and need captions on videos
+
+Good news: most of it comes free with **good HTML**. A real `button` can be reached with the Tab key and pressed with Enter. A `div` made to look like a button can't, unless you do a lot of extra work.
+
+## Writing good alt text
+
+Ask: "If I described this picture to a friend on the phone, what would I say?"
+
+- Weak: `alt="image"` or `alt="photo1.jpg"`. These tell the listener nothing.
+- Better: `alt="Dog"`.
+- Good: `alt="A brown dog catching a frisbee on Clifton beach"`.
+
+Don't start with "Image of…". The screen reader already says it's an image.
+
+**Decorative pictures**, like a pretty divider line, add nothing for a listener. Give them **empty** alt text, `alt=""`, and the screen reader skips them. Empty is different from missing: with no alt at all, some screen readers read out the file name instead.
+
+## Five habits to keep
+
+1. **Use the right element**: `button` for buttons, `a` for links, headings in order.
+2. **Label every input** (you did this in the last unit).
+3. **Write alt text** for every meaningful image.
+4. **Don't rely on colour alone.** "Fields in red are required" fails for colour-blind people. Add a word or a symbol too.
+5. **Make link words describe the destination**, never just "click here".
+
+## Try it on your Mac
+
+Press **⌘F5** to turn on VoiceOver, the Mac's built-in screen reader. Visit any website and listen for a minute, then press **⌘F5** again to turn it off. Notice how much it depends on headings, labels and alt text.
+
+<KeyIdea>
+Accessibility means pages that everyone can use. Most of it comes from **good HTML**: the right elements, labelled inputs, descriptive alt text (or `alt=""` for decoration), and never using colour alone.
+</KeyIdea>

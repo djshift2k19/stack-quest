@@ -44,9 +44,9 @@ test("the profile lists badges and progress can be reset", async ({ page }) => {
 });
 
 test("coming-soon trails show their outline", async ({ page }) => {
-  await page.goto("/trails/html-and-css");
+  await page.goto("/trails/javascript-and-typescript");
   await expect(page.getByText("Coming soon.")).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Your First Web Page" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Values and Variables" })).toBeVisible();
 });
 
 test("the theme switch changes and remembers dark mode", async ({ page }) => {

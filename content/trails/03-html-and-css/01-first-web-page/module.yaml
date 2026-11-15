@@ -1,0 +1,10 @@
+id: first-web-page
+title: Your First Web Page
+summary: Write real HTML, the language that gives every web page its structure, and build a page about you.
+goals:
+  - Explain what tags and elements are.
+  - Write the skeleton that every HTML page starts with.
+  - Add headings, paragraphs, links, images and lists.
+badge:
+  name: Page Maker
+  emoji: 📄

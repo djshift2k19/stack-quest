@@ -1,0 +1,82 @@
+---
+id: add-a-media-query
+title: Add a media query
+type: build-it
+minutes: 8
+xp: 20
+goals:
+  - Write a media query that changes the layout on wider screens.
+challenge:
+  language: css
+  fixture: |
+    <!doctype html>
+    <html lang="en">
+      <head><title>Choose a plan</title></head>
+      <body>
+        <h1>Choose your data bundle</h1>
+        <div class="cards">
+          <section class="card"><h2>1 GB</h2><p>R99 for 30 days</p></section>
+          <section class="card"><h2>5 GB</h2><p>R249 for 30 days</p></section>
+          <section class="card"><h2>20 GB</h2><p>R499 for 30 days</p></section>
+        </div>
+      </body>
+    </html>
+  starter: |
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card {
+      border: 2px solid #2a9d8f;
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    /* Add your media query below this line */
+  solution: |
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card {
+      border: 2px solid #2a9d8f;
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    /* Add your media query below this line */
+    @media (min-width: 600px) {
+      .cards {
+        flex-direction: row;
+      }
+    }
+  hints:
+    - Leave the phone styles as they are. Add a new block at the bottom that only applies to wider screens.
+    - "The block starts with @media (min-width: 600px) and has its own curly brackets. Inside it, write a .cards rule that changes flex-direction."
+    - "At the bottom, add: @media (min-width: 600px) { .cards { flex-direction: row; } }"
+  tests:
+    - name: On phones, the cards still stack in a column
+      code: |
+        const rules = [...document.styleSheets].flatMap((s) => [...s.cssRules]);
+        const phone = rules.find((r) => r instanceof CSSStyleRule && r.selectorText === ".cards");
+        expect(phone?.style.flexDirection).toBe("column");
+    - name: There's a media query for screens at least 600px wide
+      code: |
+        const rules = [...document.styleSheets].flatMap((s) => [...s.cssRules]);
+        expect(rules.some((r) => r instanceof CSSMediaRule && /min-width:\s*600px/.test(r.conditionText))).toBe(true);
+    - name: On wider screens, the cards sit side by side in a row
+      code: |
+        expect(getComputedStyle(document.querySelector(".cards")).flexDirection).toBe("row");
+        const [a, b] = document.querySelectorAll(".card");
+        expect(b.getBoundingClientRect().left).toBeGreaterThan(a.getBoundingClientRect().right - 1);
+---
+
+These data bundle cards are written mobile-first: on a phone, they stack in one column. But on a laptop, three tall cards stacked on top of each other waste the screen.
+
+Add a **media query** so that on screens **600px or wider**, the cards sit **side by side** in a row.
+
+The checks look at the page in an 800px-wide window, like a small laptop, so the cards should be in a row there. To see the phone layout, make your browser window narrow, or open this page on your phone.

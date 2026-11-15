@@ -1,0 +1,101 @@
+---
+id: lists
+title: Lists
+type: fix-the-bug
+minutes: 7
+xp: 20
+goals:
+  - Choose between numbered (ol) and bulleted (ul) lists.
+  - Put every list item inside its list.
+challenge:
+  language: html
+  starter: |
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Making rooibos</title>
+      </head>
+      <body>
+        <h1>How to make rooibos tea</h1>
+        <ul>
+          <li>Boil the kettle.</li>
+          <li>Put a rooibos tea bag in a mug.</li>
+          <li>Pour in the hot water.</li>
+        </ul>
+        <li>Wait three minutes, then add milk and honey.</li>
+      </body>
+    </html>
+  solution: |
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Making rooibos</title>
+      </head>
+      <body>
+        <h1>How to make rooibos tea</h1>
+        <ol>
+          <li>Boil the kettle.</li>
+          <li>Put a rooibos tea bag in a mug.</li>
+          <li>Pour in the hot water.</li>
+          <li>Wait three minutes, then add milk and honey.</li>
+        </ol>
+      </body>
+    </html>
+  hints:
+    - There are two problems. The steps happen in order, so they should be numbered. And one step has escaped from its list.
+    - Numbered lists use ol (ordered list) instead of ul. Every li must sit between the list's opening and closing tags.
+    - "Change <ul> to <ol> and </ul> to </ol>, then move the last <li>...</li> line up so it sits just above </ol>."
+  tests:
+    - name: The steps are in a numbered list (ol)
+      code: expect(document.querySelector("ol")).toBeTruthy()
+    - name: There's no bulleted list (ul) left
+      code: expect(document.querySelector("ul")).toBeFalsy()
+    - name: All four steps are inside the numbered list
+      code: expect(document.querySelectorAll("ol > li")).toHaveLength(4)
+    - name: No list item is outside a list
+      code: expect(document.querySelectorAll("body > li")).toHaveLength(0)
+---
+
+<Analogy title="A shopping list and a recipe">
+A **shopping list** has bullets: the order doesn't matter, you can grab the milk before the bread. A **recipe's method** has numbers: you must boil the water *before* you pour it.
+</Analogy>
+
+## Two kinds of list
+
+**Bulleted list** (`ul`, an "unordered list"), for when order doesn't matter:
+
+```html
+<ul>
+  <li>Milk</li>
+  <li>Bread</li>
+  <li>Mielie meal</li>
+</ul>
+```
+
+**Numbered list** (`ol`, an "ordered list"), for when order matters:
+
+```html
+<ol>
+  <li>Boil the water.</li>
+  <li>Stir in the mielie meal.</li>
+</ol>
+```
+
+Both use `li` (list item) for each item, and **every `li` must sit inside a `ul` or an `ol`**. A list item on its own is like a shopping item written on the fridge door instead of on the list.
+
+The browser adds the bullets or numbers for you. You never type "1." yourself. That means if you add a step in the middle, the numbers update automatically.
+
+## Fix the bug
+
+This rooibos recipe has two problems:
+
+1. Its steps happen in order, but it uses a bulleted list.
+2. The last step has escaped from the list.
+
+Fix both. The preview will show numbers 1 to 4 when it's right.
+
+<KeyIdea>
+Use **`ol`** when order matters and **`ul`** when it doesn't. Every **`li`** goes inside one of them.
+</KeyIdea>

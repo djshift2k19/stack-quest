@@ -1,0 +1,71 @@
+---
+id: quiz-layout
+title: Check your understanding
+type: quiz
+minutes: 5
+xp: 15
+goals:
+  - Recall Flexbox, Grid, media queries and fitting images.
+questions:
+  - prompt: You put display flex on a nav. What lines up in a row?
+    options:
+      - text: The nav's children, such as its links
+        correct: true
+        why: display flex goes on the container, and its children line up.
+      - text: The nav and the elements next to it
+        why: Flexbox arranges what's inside the container, not the container's neighbours.
+      - text: The letters of each link
+        why: Text inside each link isn't affected. The links themselves are lined up.
+  - prompt: Which layout tool fits a photo gallery with rows AND columns best?
+    options:
+      - text: CSS Grid
+        correct: true
+        why: Grid handles two directions at once, rows and columns.
+      - text: Flexbox
+        why: Flexbox is best for one direction, a single row or column. Grid is made for rows and columns together.
+      - text: Lots of br line breaks
+        why: Line breaks can't make columns, and they'd break on different screen sizes.
+  - prompt: When do the rules inside this media query apply?
+    code: |
+      @media (min-width: 800px) {
+        .menu { display: flex; }
+      }
+    language: css
+    options:
+      - text: On screens 800px wide or wider
+        correct: true
+        why: min-width means "at least this wide".
+      - text: On screens narrower than 800px
+        why: That would be max-width. min-width means at least 800px.
+      - text: Only on screens exactly 800px wide
+        why: min-width covers 800px and everything wider.
+  - prompt: What does "mobile-first" mean?
+    options:
+      - text: Write the CSS for phones first, then add media queries for wider screens
+        correct: true
+        why: Start small and simple, then add more as the space grows.
+      - text: Build a separate website for phones
+        why: Responsive design means one website that adapts to every screen.
+      - text: Test on a phone only after the laptop version is finished
+        why: That's the opposite. Mobile-first starts with the phone.
+  - prompt: A photo spills out of its card on phones. Which rule fixes it, keeping its shape?
+    options:
+      - text: "img { max-width: 100%; height: auto; }"
+        correct: true
+        why: It can't be wider than its container, and the height follows the width.
+      - text: "img { width: 300px; height: 300px; }"
+        why: That stretches every photo into a square and doesn't adapt to the screen.
+      - text: "img { display: none; }"
+        why: That hides the photo completely!
+  - prompt: What does 1fr mean in grid-template-columns 1fr 2fr?
+    options:
+      - text: One share of the free space. The second column gets two shares, so it's twice as wide.
+        correct: true
+        why: fr means "fraction". Here the space is split into three shares, one for the first column and two for the second.
+      - text: One frame
+        why: fr is short for fraction, not frame.
+      - text: Exactly 1 pixel
+        why: Pixels are written px. fr shares out the free space.
+---
+
+Six questions on layout and responsive design, the last check before the Trail Boss.

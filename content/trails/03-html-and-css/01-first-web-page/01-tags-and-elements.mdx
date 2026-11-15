@@ -1,0 +1,51 @@
+---
+id: tags-and-elements
+title: Tags and elements
+type: reading
+minutes: 6
+goals:
+  - Explain what a tag and an element are.
+  - Read a simple piece of HTML.
+---
+
+<Analogy title="Labelling boxes when you move house">
+When you pack to move, you write on each box: "kitchen", "books", "fragile". The labels don't change what's inside. They tell the movers what each box **is**, so it ends up in the right place. HTML does the same for the words on a web page.
+</Analogy>
+
+## HTML labels content
+
+<Term word="html">HTML</Term> (HyperText Markup Language) is how you tell the <Term word="browser">browser</Term> what each piece of a page is: "this is a heading", "this is a paragraph", "this is a link". It isn't a programming language. It doesn't calculate anything. It **marks up** text.
+
+The labels are called <Term word="tag">tags</Term>. A tag is a word inside angle brackets:
+
+```html
+<p>Braai at Thandi's house on Saturday.</p>
+```
+
+- `<p>` is the **opening tag**. `p` stands for paragraph.
+- `</p>` is the **closing tag**. It's the same word with a slash in front.
+- Everything between them is the **content**.
+
+The whole thing, opening tag, content and closing tag, is called an <Term word="element">element</Term>.
+
+## Elements inside elements
+
+Elements can sit inside other elements, like smaller boxes packed inside a big one:
+
+```html
+<p>The braai starts at <strong>4 o'clock</strong>.</p>
+```
+
+Here a `strong` element (important text, shown in bold) sits **inside** the paragraph. The inner element must close before the outer one does. Think of it as closing the small box before you close the big one.
+
+## A few tags don't close
+
+Some elements have no content, so they have no closing tag. A line break is just `<br>`, and an image is `<img>`. You'll meet these soon.
+
+## Try it
+
+Right-click this page and choose **View Page Source**. Find a `<p>` or an `<h1>`. That's HTML, and you're about to write your own.
+
+<KeyIdea>
+HTML labels each piece of a page with **tags**. An **element** is an opening tag, its content and a closing tag, and elements can sit inside each other.
+</KeyIdea>

@@ -1,0 +1,32 @@
+---
+id: predict-the-width
+title: How wide is the box?
+type: predict-output
+minutes: 5
+xp: 15
+goals:
+  - Work out an element's full width from its width, padding and border.
+language: css
+code: |
+  .card {
+    width: 200px;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 30px;
+  }
+options:
+  - text: 250px
+    correct: true
+  - text: 200px
+  - text: 310px
+  - text: 225px
+explanation: "The width (200px) is for the content only. Padding adds 20px on the left and 20px on the right (40px), and the border adds 5px on each side (10px): 200 + 40 + 10 = 250px. The margin is space outside the box, so it isn't part of its width."
+hints:
+  - The 200px is only the content, in the middle. What gets added on the left and right sides?
+  - Padding and border are added on BOTH sides. Margin is outside the box, so leave it out.
+  - "200 + 20 + 20 (padding) + 5 + 5 (border) = ?"
+---
+
+From edge to edge of its border, how wide is this card on the screen?
+
+Many developers find this rule annoying, so they add `box-sizing: border-box;`, which makes `width` include the padding and border. You'll see that line at the top of lots of real stylesheets, including the styles Stack Quest uses.

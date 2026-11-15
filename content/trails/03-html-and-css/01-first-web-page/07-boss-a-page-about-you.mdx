@@ -1,0 +1,77 @@
+---
+id: boss-a-page-about-you
+title: "Boss: a page about you"
+type: boss
+minutes: 10
+goals:
+  - Build a complete web page from an empty skeleton.
+challenge:
+  language: html
+  starter: |
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>About me</title>
+      </head>
+      <body>
+
+      </body>
+    </html>
+  solution: |
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>About me</title>
+      </head>
+      <body>
+        <h1>Hi, I'm Sipho</h1>
+        <p>I live in Gqeberha and I'm learning to build web apps.</p>
+        <img src="me.jpg" alt="Sipho smiling on the beach at Summerstrand">
+        <h2>Things I love</h2>
+        <ul>
+          <li>Rugby</li>
+          <li>My gogo's cooking</li>
+          <li>Learning new things</li>
+        </ul>
+        <h2>Find me online</h2>
+        <p><a href="https://github.com">My projects on GitHub</a></p>
+      </body>
+    </html>
+  hints:
+    - Work down the checklist one item at a time. Start with the h1 and the paragraph, then add the image, then the list, then the link.
+    - "You'll need: h1, p, img (with src and alt), h2, ul with three li, and an a with an href starting https://."
+    - "Write <h1>Hi, I'm ...</h1>, a <p>, an <img src=\"me.jpg\" alt=\"...\">, <h2>Things I love</h2>, a <ul> with three <li> items, and a link like <a href=\"https://github.com\">My projects on GitHub</a>."
+  tests:
+    - name: There's exactly one main heading (h1) with words in it
+      code: |
+        expect(document.querySelectorAll("h1")).toHaveLength(1);
+        expect(document.querySelector("h1").textContent.trim().length).toBeGreaterThan(0);
+    - name: There's at least one paragraph about you
+      code: expect([...document.querySelectorAll("p")].some((p) => p.textContent.trim().length > 10)).toBe(true)
+    - name: There's an image with descriptive alt text (at least 10 letters)
+      code: expect((document.querySelector("img")?.getAttribute("alt") ?? "").trim().length).toBeGreaterThan(9)
+    - name: There's at least one smaller heading (h2)
+      code: expect(document.querySelector("h2")).toBeTruthy()
+    - name: There's a list with at least three items
+      code: expect(document.querySelectorAll("ul > li, ol > li").length).toBeGreaterThan(2)
+    - name: There's a link to an https:// address with describing words
+      code: |
+        const a = document.querySelector("a");
+        expect(a?.getAttribute("href") ?? "").toMatch(/^https:\/\//);
+        expect(a.textContent.trim().length).toBeGreaterThan(3);
+---
+
+Time to put it all together. Build a page **about you** (or a made-up person, if you'd rather) inside the empty body.
+
+Your page needs:
+
+1. **One main heading** with your name
+2. **A paragraph** about you
+3. **An image** with alt text that describes it (any file name)
+4. **A smaller heading**, like "Things I love"
+5. **A list** with at least three items
+6. **A link** to a web address starting with `https://`, with words that say where it goes
+
+There's no single right answer. Make it yours! In the next module you'll add meaning to it, and in module 3 you'll make it look good.

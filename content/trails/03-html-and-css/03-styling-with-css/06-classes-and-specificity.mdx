@@ -1,0 +1,100 @@
+---
+id: classes-and-specificity
+title: Classes and specificity
+type: fix-the-bug
+minutes: 10
+xp: 20
+goals:
+  - Style groups of elements with classes.
+  - Explain why an id rule beats a class rule.
+  - Fix a style that isn't being applied.
+challenge:
+  language: css
+  fixture: |
+    <!doctype html>
+    <html lang="en">
+      <head><title>Matric results</title></head>
+      <body>
+        <h1>Matric results are out!</h1>
+        <p id="welcome" class="note">Well done to the class of 2026.</p>
+        <p class="note">Collect your certificate from the school office.</p>
+        <p>The office is open from 8am.</p>
+      </body>
+    </html>
+  starter: |
+    #welcome {
+      color: black;
+    }
+
+    .note {
+      color: green;
+    }
+
+    .notice {
+      font-weight: bold;
+    }
+  solution: |
+    .note {
+      color: green;
+      font-weight: bold;
+    }
+  hints:
+    - There are two separate problems. One rule has a name that doesn't match anything on the page, and another rule is beating .note on the first paragraph.
+    - The HTML uses class="note", but one rule is written .notice. And #welcome is an id selector, which always beats a class selector, so the first paragraph stays black.
+    - "Delete the whole #welcome rule, and change .notice to .note (or move font-weight: bold; into the .note rule)."
+  tests:
+    - name: Both notes are green
+      code: |
+        for (const p of document.querySelectorAll(".note")) expect(getComputedStyle(p).color).toBe("rgb(0, 128, 0)");
+    - name: Both notes are bold
+      code: |
+        for (const p of document.querySelectorAll(".note")) expect(getComputedStyle(p).fontWeight).toBe("700");
+    - name: The last paragraph (not a note) stays normal
+      code: |
+        const last = document.querySelector("p:not(.note)");
+        expect(getComputedStyle(last).fontWeight).toBe("400");
+        expect(getComputedStyle(last).color).not.toBe("rgb(0, 128, 0)");
+---
+
+<Analogy title="School uniforms and name badges">
+A school says "everyone in Grade 12 wears a blue tie". That's a **class**: a group rule. One learner has a **name badge** with a special instruction. That's an **id**: it's for exactly one person, and it's more specific, so it wins.
+</Analogy>
+
+## Classes: styling a group
+
+Add a <Term word="class">class</Term> to any HTML elements you want to style together:
+
+```html
+<p class="note">Bring your ID.</p>
+<p class="note">Arrive by 8.</p>
+```
+
+In CSS, a class selector starts with a **dot**:
+
+```css
+.note {
+  color: green;
+}
+```
+
+An **id** is written `id="welcome"` and must be **unique**: one per page. In CSS it starts with a **hash**: `#welcome`.
+
+## Who wins? Specificity
+
+When two rules give the same element different values, the browser uses <Term word="specificity">specificity</Term>: the more *specific* selector wins.
+
+1. **id** (`#welcome`): the most specific. It's for exactly one element.
+2. **class** (`.note`): in the middle.
+3. **element** (`p`): the least specific. It's for every element of that type.
+
+If two rules are **equally** specific, the one written **later** in the stylesheet wins.
+
+Because ids win so strongly, most developers style with classes and avoid id selectors. That's exactly what causes the bug below.
+
+## Fix the bug
+
+The school wants **both** notes green and bold, and the last paragraph left normal. But the first note is black, and neither note is bold. Find the two problems.
+
+<KeyIdea>
+Style groups with **classes** (`.name`). When rules disagree, **id beats class beats element**, and if they're equal, the later rule wins.
+</KeyIdea>

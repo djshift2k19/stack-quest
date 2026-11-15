@@ -1,0 +1,52 @@
+---
+id: how-css-works
+title: How CSS works
+type: reading
+minutes: 6
+goals:
+  - Read a CSS rule and name its parts.
+  - Explain how CSS is connected to an HTML page.
+---
+
+<Analogy title="Painting the furniture">
+In Trail 1 you learned that a web page is like flat-pack furniture. HTML is the planks and the frame. <Term word="css">CSS</Term> (Cascading Style Sheets) is the **paint and finish**: the same table can be painted bright yellow or left as plain wood, without changing a single plank.
+</Analogy>
+
+## A CSS rule
+
+CSS is a list of **rules**. Each rule says *which* things to style and *how*:
+
+```css
+h1 {
+  color: teal;
+  font-size: 32px;
+}
+```
+
+- `h1` is the <Term word="selector">selector</Term>: it picks **which** elements to style. Here, every `h1` on the page.
+- Inside the curly brackets `{ }` are the **declarations**. Each one is a <Term word="css-property">CSS property</Term>, a colon, a **value** and a semicolon: `color: teal;`
+- `px` means <Term word="pixel">pixels</Term>, the tiny dots that make up your screen.
+
+Forgetting the semicolon is the most common CSS mistake. The browser then ignores that line and sometimes the next one too, **without** showing an error. If a style "isn't working", check the semicolons first.
+
+## Connecting CSS to a page
+
+CSS usually lives in its own file, like `style.css`. The HTML page links to it from the `head`:
+
+```html
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+```
+
+One stylesheet can style a whole website, so changing a colour in one place changes it on every page.
+
+In Stack Quest's CSS exercises, the editor **is** the stylesheet. The HTML is already written, and you'll see your styles appear in the preview as you type.
+
+## "Cascading"?
+
+When several rules apply to the same element, they **cascade** like water down steps: the browser combines them, and when two disagree, one wins. You'll learn exactly who wins later in this module.
+
+<KeyIdea>
+A CSS rule is a **selector** (which elements) plus **declarations** (`property: value;`) inside curly brackets. Pages load CSS with a `link` in the head.
+</KeyIdea>

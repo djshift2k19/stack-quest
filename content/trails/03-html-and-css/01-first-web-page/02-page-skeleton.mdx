@@ -1,0 +1,42 @@
+---
+id: page-skeleton
+title: The skeleton of every page
+type: type-the-code
+minutes: 7
+language: html
+goals:
+  - Write the basic structure every HTML page starts with.
+  - Explain what the head and body are for.
+target: |
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>My first page</title>
+    </head>
+    <body>
+      <h1>Hello, world!</h1>
+    </body>
+  </html>
+---
+
+<Analogy title="A letter in an envelope">
+A posted letter has two parts. The **envelope** carries information *about* the letter (who it's for, the stamp), which isn't the message itself. The **letter inside** is what the person actually reads. An HTML page has the same two parts: the **head** and the **body**.
+</Analogy>
+
+Every HTML page you'll ever write starts with the same skeleton. Here's what each line does:
+
+- `<!doctype html>` tells the browser "this is a modern HTML page". It always comes first.
+- `<html lang="en">` wraps the whole page. `lang="en"` says the page is in English, so a <Term word="screen-reader">screen reader</Term> pronounces it properly. The `lang="en"` part is an <Term word="attribute">attribute</Term>: extra information written inside the opening tag, as a name, `=`, and a value in quote marks.
+- `<head>` is the envelope: information **about** the page.
+  - `<meta charset="utf-8">` lets the page show any letter or emoji, from "é" to "🇿🇦".
+  - `<title>` is the text shown on the browser tab.
+- `<body>` is the letter: everything people actually **see** on the page.
+
+Notice the **indenting**: each element inside another is pushed in by two spaces. The browser doesn't care, but it makes the boxes-inside-boxes easy for **you** to see.
+
+Type the skeleton below exactly. It's worth typing rather than copying, because your fingers learn it.
+
+<KeyIdea>
+Every page is `<!doctype html>`, then `<html>` containing a **head** (information about the page) and a **body** (what people see).
+</KeyIdea>

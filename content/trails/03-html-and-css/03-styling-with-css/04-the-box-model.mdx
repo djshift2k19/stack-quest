@@ -1,0 +1,52 @@
+---
+id: the-box-model
+title: The box model
+type: reading
+minutes: 7
+goals:
+  - Name the four layers of the box model.
+  - Use padding, border and margin to space things out.
+---
+
+<Analogy title="A framed photo on the wall">
+Picture a framed photo. There's the **photo** itself, a white **mount** around it, the wooden **frame**, and a **gap** on the wall before the next frame. Every element on a web page is built exactly like that.
+</Analogy>
+
+## Every element is a box
+
+The browser draws every element as a rectangle with four layers. This is called the <Term word="box-model">box model</Term>. From the inside out:
+
+1. **Content**: the text or image itself (the photo).
+2. **Padding**: space *inside* the box, between the content and the edge (the mount). The background colour fills it.
+3. **Border**: a line around the edge (the frame).
+4. **Margin**: space *outside* the box, pushing other things away (the gap on the wall). It's always see-through.
+
+```css
+.card {
+  padding: 16px;
+  border: 2px solid #264653;
+  margin: 24px;
+}
+```
+
+`border` takes three values: thickness, style (`solid`, `dashed` or `dotted`) and colour.
+
+## One side at a time
+
+`padding: 16px` adds space on all four sides. You can also set one side, like `padding-top`, `margin-bottom` and `border-left`. Or give two values: `padding: 8px 16px` means 8px top and bottom, 16px left and right.
+
+## Rounded corners
+
+`border-radius: 12px;` rounds the corners. It's how most buttons and cards on modern sites get their soft look.
+
+## Seeing the boxes
+
+In Chrome, right-click anything and choose **Inspect**. The developer tools show a diagram of that element's content, padding, border and margin, with the exact sizes. Professionals use this every day to work out why something sits where it does.
+
+## The surprise about width
+
+If you write `width: 200px`, that's the width of the **content only**. Padding and border are added **on top**. You'll work out what that means in the next unit.
+
+<KeyIdea>
+Every element is a box: **content**, then **padding** (inside space), then **border** (the edge), then **margin** (outside space).
+</KeyIdea>

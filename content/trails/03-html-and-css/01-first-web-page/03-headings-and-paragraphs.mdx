@@ -1,0 +1,93 @@
+---
+id: headings-and-paragraphs
+title: Headings and paragraphs
+type: build-it
+minutes: 8
+xp: 20
+goals:
+  - Use h1 and h2 headings to organise a page.
+  - Write paragraphs of text.
+challenge:
+  language: html
+  starter: |
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Bunny chow</title>
+      </head>
+      <body>
+        <!-- Build the recipe page below this line -->
+
+      </body>
+    </html>
+  solution: |
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Bunny chow</title>
+      </head>
+      <body>
+        <h1>Bunny chow</h1>
+        <p>A hollowed-out loaf of bread filled with curry, first made in Durban.</p>
+        <h2>You will need</h2>
+        <p>A loaf of white bread and a pot of curry.</p>
+      </body>
+    </html>
+  hints:
+    - The page needs one main heading (h1), then a paragraph (p), then a smaller heading (h2), then another paragraph.
+    - "Each one is an opening tag, your text, then the closing tag with a slash: <h2>Your text</h2>"
+    - "Inside the body, write: <h1>Bunny chow</h1>, then <p>...</p> with any sentence, then <h2>You will need</h2>, then another <p>...</p>."
+  tests:
+    - name: There's exactly one main heading (h1)
+      code: expect(document.querySelectorAll("h1")).toHaveLength(1)
+    - name: The main heading says "Bunny chow"
+      code: expect(document.querySelector("h1")?.textContent.trim()).toBe("Bunny chow")
+    - name: There's a smaller heading (h2) that says "You will need"
+      code: expect(document.querySelector("h2")?.textContent.trim()).toBe("You will need")
+    - name: There are at least two paragraphs with words in them
+      code: |
+        const words = [...document.querySelectorAll("p")].filter((p) => p.textContent.trim().length > 0);
+        expect(words.length).toBeGreaterThan(1);
+---
+
+<Analogy title="A newspaper page">
+A newspaper has one big headline, then smaller headings for each section, then paragraphs of text. Your eye uses the headings to jump to what you want. Web pages work the same way.
+</Analogy>
+
+## Six sizes of heading
+
+HTML has six heading levels, from `h1` (the most important) to `h6` (the least):
+
+```html
+<h1>Recipes from home</h1>
+<h2>Main meals</h2>
+<h3>Curries</h3>
+```
+
+Two rules that professionals follow:
+
+1. **One `h1` per page.** It's the page's headline.
+2. **Don't skip levels.** Go from `h1` to `h2` to `h3`, like chapters and sub-chapters. Pick headings for their **meaning**, not their size. You'll change sizes later with CSS.
+
+## Paragraphs
+
+Each block of text goes in its own `p` element. The browser adds a little space between paragraphs automatically.
+
+One surprise: pressing Enter inside your HTML **doesn't** start a new line on the page. The browser squashes all spaces and line breaks into a single space. To start a new paragraph, start a new `p`.
+
+## Your turn
+
+Build the start of a recipe page for bunny chow, with:
+
+1. A main heading that says **Bunny chow**
+2. A paragraph describing it (write whatever you like)
+3. A smaller heading that says **You will need**
+4. Another paragraph underneath
+
+Watch the live preview as you type.
+
+<KeyIdea>
+Use **one `h1`** as the page headline, then `h2`, `h3` and so on in order. Put each block of text in its own **`p`**.
+</KeyIdea>

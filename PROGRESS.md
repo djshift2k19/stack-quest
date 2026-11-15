@@ -77,5 +77,20 @@ _Last updated: 15 November 2026_
 - Free Supabase projects go to sleep after a week without use. Wake it up in the dashboard if sign-in stops working.
 - Partial Prefetching is still off.
 
+## ✅ Trail 3: HTML and CSS (written 15 November 2026)
+You chose to write all the lessons before putting the app online, so content comes next, one trail at a time.
+- **4 modules, 29 units**: your first web page · structure and meaning (semantic HTML, forms, accessibility) · styling with CSS (selectors, colours, fonts, the box model, specificity) · layout and responsive design (Flexbox, Grid, media queries, images that fit). Each module ends in a Boss, and the trail ends with a Trail Boss: a responsive portfolio page.
+- 18 new glossary terms (78 in total)
+- **New test**: every HTML and CSS exercise is now checked in a real browser (solutions pass, starters don't). Before this, only the JavaScript, SQL and terminal exercises were checked automatically.
+- **Fixed**: the HTML/CSS checker could measure the page before its preview window had a size, on a busy computer or a slow phone. Layout and media-query checks could then wrongly fail a correct answer.
+
+### Known limitations (Trail 3)
+- The practice preview doesn't download real images (to save data), so exercises show alt text or simple built-in pictures instead.
+- The preview is sealed, so forms never send anything, and the browser's "please fill in this field" message doesn't appear there.
+- Checks measure the page at 800px wide. To see a phone layout, make the browser window narrow or open the lesson on your phone.
+
+## Next: Trail 4 (JavaScript, then TypeScript)
+Running TypeScript needs an extra library, a TypeScript-to-JavaScript translator. I'll ask before adding it.
+
 ## To resume
 Open this folder in VS Code, start Claude, and say **"continue"**.

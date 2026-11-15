@@ -1,0 +1,65 @@
+---
+id: mobile-first
+title: Mobile-first and media queries
+type: reading
+minutes: 7
+goals:
+  - Explain responsive design and why to start with phones.
+  - Read a media query.
+  - Explain what the viewport meta tag does.
+---
+
+<Analogy title="Packing a suitcase">
+If you pack for a small carry-on bag first, you only take what matters, and it all fits. Moving it into a big suitcase later is easy. Starting with the big suitcase and then squeezing into a carry-on is painful. Designing web pages works the same way.
+</Analogy>
+
+## One page, every screen
+
+In South Africa, most people browse the internet on a **phone**. The same page also has to look good on a tablet and a laptop. Pages that rearrange themselves to fit any screen use <Term word="responsive-design">responsive design</Term>.
+
+## Mobile-first
+
+**Mobile-first** means you write your CSS for a **phone** first: usually one simple column, big enough to tap. Then you **add** rules for wider screens, where there's room for things side by side.
+
+## Media queries
+
+A <Term word="media-query">media query</Term> is a condition: "only use these rules **if** the screen is at least this wide":
+
+```css
+/* Phones first: cards stack in one column */
+.cards {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Screens 600px wide or more: cards side by side */
+@media (min-width: 600px) {
+  .cards {
+    flex-direction: row;
+  }
+}
+```
+
+- `@media (min-width: 600px)` means "when the screen is **600 pixels wide or more**".
+- The rules inside its curly brackets only apply then. On a narrow phone, the browser skips them.
+- Notice the **two** sets of curly brackets: one for the media query and one for each rule inside it. Forgetting the last `}` is a very common mistake.
+
+The width where the layout changes, here 600px, is called a **breakpoint**. Common choices are around 600px (big phones and small tablets) and 1000px (laptops).
+
+## The viewport tag
+
+There's one more piece. Phones normally pretend to be a wide screen and shrink the whole page down to fit, so everything becomes tiny. This line in the `head` stops that:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
+
+It says "use the phone's real width". **Every** responsive page needs it. Stack Quest's practice preview adds it for you.
+
+## Try it
+
+On this page in Chrome, press **⌥⌘I** to open the developer tools, then click the little phone-and-tablet icon at the top. You can now drag the page to any width and watch Stack Quest rearrange itself.
+
+<KeyIdea>
+Write CSS for **phones first**, then add `@media (min-width: ...)` rules for wider screens. Every responsive page needs the **viewport** meta tag.
+</KeyIdea>

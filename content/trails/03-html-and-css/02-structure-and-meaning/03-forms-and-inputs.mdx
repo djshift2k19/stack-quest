@@ -1,0 +1,117 @@
+---
+id: forms-and-inputs
+title: Forms and inputs
+type: build-it
+minutes: 10
+xp: 20
+goals:
+  - Build a form with labelled inputs and a submit button.
+  - Choose the right input type for the job.
+challenge:
+  language: html
+  starter: |
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Join the book club</title>
+      </head>
+      <body>
+        <h1>Join the book club</h1>
+        <form>
+          <label for="name">Your name</label>
+          <input id="name" type="text">
+
+          <!-- Add the email label, email input and button below -->
+
+        </form>
+      </body>
+    </html>
+  solution: |
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Join the book club</title>
+      </head>
+      <body>
+        <h1>Join the book club</h1>
+        <form>
+          <label for="name">Your name</label>
+          <input id="name" type="text">
+
+          <label for="email">Your email</label>
+          <input id="email" type="email" required>
+
+          <button type="submit">Join</button>
+        </form>
+      </body>
+    </html>
+  hints:
+    - Copy the pattern of the name field. You need a label, an input, and then a button at the end.
+    - The label's for and the input's id must be the same word, like "email". The input's type should be email, and add required so it can't be left empty.
+    - "Add <label for=\"email\">Your email</label>, then <input id=\"email\" type=\"email\" required>, then <button type=\"submit\">Join</button>."
+  tests:
+    - name: There's an email input (type="email")
+      code: expect(document.querySelector('input[type="email"]')).toBeTruthy()
+    - name: The email input has a label linked to it (for matches id)
+      code: |
+        const input = document.querySelector('input[type="email"]');
+        expect(input?.id).toBeTruthy();
+        expect(document.querySelector(`label[for="${input.id}"]`)).toBeTruthy();
+    - name: The email input is required
+      code: expect(document.querySelector('input[type="email"]')?.required).toBe(true)
+    - name: There's a submit button with words on it, inside the form
+      code: |
+        const button = document.querySelector("form button");
+        expect(button).toBeTruthy();
+        expect(button.type).toBe("submit");
+        expect(button.textContent.trim().length).toBeGreaterThan(0);
+---
+
+<Analogy title="A paper form at the clinic">
+At a clinic you fill in a paper form: each box has a printed **label** next to it ("Name", "ID number", "Date of birth"), and you hand it in at the counter when you're done. A web <Term word="form">form</Term> is the same: labels, boxes to fill in, and a button to hand it in.
+</Analogy>
+
+## The pieces of a form
+
+```html
+<form>
+  <label for="phone">Cellphone number</label>
+  <input id="phone" type="tel">
+  <button type="submit">Send</button>
+</form>
+```
+
+- `form` wraps everything that gets sent together.
+- `input` is a box to fill in. It has no closing tag.
+- `label` is the printed words next to the box. Its `for` attribute must match the input's `id`. That **links** them: tapping the label puts the cursor in the box, and a <Term word="screen-reader">screen reader</Term> reads the label aloud when you reach the box. Never leave an input without a label.
+- `button type="submit"` hands the form in.
+
+## Choose the right type
+
+The `type` attribute changes how an input behaves, especially on phones:
+
+- `type="text"`: any text (the default).
+- `type="email"`: the phone keyboard shows **@**, and the browser checks it looks like an email address.
+- `type="tel"`: shows a number pad for phone numbers.
+- `type="password"`: hides what you type behind dots.
+- `type="number"`: only numbers.
+
+Add `required` to an input and the browser won't let the form be sent while it's empty.
+
+For longer text, like a message, use `textarea` instead. Unlike `input`, it has a closing tag: `<textarea id="msg"></textarea>`.
+
+## Your turn
+
+The book club form has a name field. Add:
+
+1. A **label** that says "Your email"
+2. An **email input** that's **required**, linked to the label
+3. A **submit button** that says "Join"
+
+The practice preview is sealed, so its forms never send anything anywhere, and it won't show the "please fill in this field" message. On a real website, pressing the button with the email box empty would stop you with that message.
+
+<KeyIdea>
+Every `input` needs a `label` whose `for` matches the input's `id`. Pick the `type` that fits the information, and add `required` when it can't be left empty.
+</KeyIdea>

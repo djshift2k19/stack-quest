@@ -1,0 +1,94 @@
+---
+id: links-and-images
+title: Links and images
+type: build-it
+minutes: 9
+xp: 20
+goals:
+  - Make a link with the a element and its href attribute.
+  - Add an image with src and alt.
+challenge:
+  language: html
+  starter: |
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Kruger trip</title>
+      </head>
+      <body>
+        <h1>Our Kruger trip</h1>
+        <p>We saw four of the Big Five!</p>
+        <!-- Add your image and link below this line -->
+
+      </body>
+    </html>
+  solution: |
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Kruger trip</title>
+      </head>
+      <body>
+        <h1>Our Kruger trip</h1>
+        <p>We saw four of the Big Five!</p>
+        <img src="elephants.jpg" alt="Three elephants drinking at a waterhole">
+        <p><a href="https://en.wikipedia.org/wiki/Kruger_National_Park">Read about Kruger National Park</a></p>
+      </body>
+    </html>
+  hints:
+    - You need two new elements, an img (it has no closing tag) and an a (a link), and each needs attributes.
+    - "An image looks like <img src=\"file.jpg\" alt=\"what it shows\">. A link looks like <a href=\"https://...\">words to click</a>."
+    - "Add <img src=\"elephants.jpg\" alt=\"Three elephants drinking at a waterhole\">, then <a href=\"https://en.wikipedia.org/wiki/Kruger_National_Park\">Read about Kruger National Park</a>."
+  tests:
+    - name: There's an image (img) with a src
+      code: expect(document.querySelector("img")?.getAttribute("src")?.trim()).toBeTruthy()
+    - name: The image has alt text that describes it (at least 10 letters)
+      code: expect((document.querySelector("img")?.getAttribute("alt") ?? "").trim().length).toBeGreaterThan(9)
+    - name: There's a link (a) to a web address starting with https://
+      code: expect(document.querySelector("a")?.getAttribute("href") ?? "").toMatch(/^https:\/\//)
+    - name: The link has words to click, and they aren't "click here"
+      code: |
+        const text = document.querySelector("a")?.textContent.trim().toLowerCase() ?? "";
+        expect(text.length).toBeGreaterThan(3);
+        expect(text).not.toBe("click here");
+---
+
+<Analogy title="A signpost and a photo frame">
+A **link** is a signpost: it says "go this way" and names the place. An **image** is a photo frame with a little card underneath describing the photo, for anyone who can't see it.
+</Analogy>
+
+## Links: the a element
+
+Links are what make the web a *web*. They use the `a` element (short for "anchor"):
+
+```html
+<a href="https://www.gov.za">South African Government</a>
+```
+
+- `href` is an <Term word="attribute">attribute</Term> that holds the address the link goes to. It's short for "hypertext reference".
+- The words between the tags are what people tap. Make them describe where the link goes. "Click here" tells nobody anything, especially someone using a <Term word="screen-reader">screen reader</Term>, which can read out a list of every link on a page.
+
+## Images: the img element
+
+```html
+<img src="table-mountain.jpg" alt="Table Mountain with a cloud on top">
+```
+
+- `src` (source) is the image file to show.
+- `alt` is the <Term word="alt-text">alt text</Term>: a short description of what the picture shows. Screen readers read it aloud, and it appears if the picture can't load.
+- `img` has **no closing tag**. There's no content to wrap; the picture is the content.
+
+**In this practice area**, the preview doesn't download pictures from the internet (to save your data), so you'll see your alt text where the picture would be. That's a good test of whether your alt text makes sense on its own!
+
+## Your turn
+
+Under the paragraph, add:
+
+1. An **image** with any file name (like `elephants.jpg`) and **alt text** describing the picture
+2. A **link** to a web address that starts with `https://`, with words that say where it goes
+
+<KeyIdea>
+A link is `<a href="address">words</a>`. An image is `<img src="file" alt="description">`. Always write alt text, and make link words describe the destination.
+</KeyIdea>
