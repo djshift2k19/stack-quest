@@ -98,3 +98,11 @@ test("no page scrolls sideways (important on phones)", async ({ page }, testInfo
     }
   }
 });
+
+test("without Supabase settings, the account page explains that accounts are optional", async ({ page }) => {
+  test.skip(Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL), "Supabase is configured in this environment");
+  await page.goto("/account");
+  await expect(page.getByTestId("accounts-not-configured")).toBeVisible();
+  await page.goto("/leaderboard");
+  await expect(page.getByText("The leaderboard is for signed-in learners")).toBeVisible();
+});

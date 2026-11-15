@@ -5,6 +5,7 @@ import { allUnits } from "@/lib/content/catalog";
 import { allBadges } from "@/lib/gamification/badges";
 import { MAX_FREEZES } from "@/lib/gamification/streak";
 import { useProgress } from "@/lib/progress/ProgressProvider";
+import { AccountSummary } from "./account/AccountSummary";
 import { OfflineSaver } from "./offline/OfflineSaver";
 import { StatsBar } from "./StatsBar";
 
@@ -28,6 +29,7 @@ export function Profile() {
     <div className="space-y-6">
       <h1 className="text-2xl font-bold">Your profile</h1>
       <StatsBar />
+      <AccountSummary />
 
       <section aria-labelledby="stats-heading">
         <h2 id="stats-heading" className="mb-3 text-lg font-bold">
