@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { InlineScript } from "@/components/InlineScript";
+import { OfflineBanner } from "@/components/offline/OfflineBanner";
+import { ServiceWorkerRegister } from "@/components/offline/ServiceWorkerRegister";
 import { ThemeToggle, themeScript } from "@/components/ThemeToggle";
 import { getCatalog } from "@/lib/content/loader";
 import { ProgressProvider } from "@/lib/progress/ProgressProvider";
@@ -13,6 +15,8 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 export const metadata: Metadata = {
   title: { default: "Stack Quest", template: "%s · Stack Quest" },
   description: "Learn full-stack web development from zero, one short unit at a time.",
+  appleWebApp: { capable: true, title: "Stack Quest", statusBarStyle: "default" },
+  icons: { apple: "/apple-icon.png" },
 };
 
 export const viewport: Viewport = {
@@ -38,6 +42,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
+        <ServiceWorkerRegister />
+        <OfflineBanner />
         <ProgressProvider catalog={catalog}>
           <header className="border-b border-border bg-surface">
             <nav aria-label="Main" className="mx-auto flex max-w-3xl items-center gap-2 px-4 py-2">

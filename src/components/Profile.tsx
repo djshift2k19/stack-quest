@@ -5,6 +5,7 @@ import { allUnits } from "@/lib/content/catalog";
 import { allBadges } from "@/lib/gamification/badges";
 import { MAX_FREEZES } from "@/lib/gamification/streak";
 import { useProgress } from "@/lib/progress/ProgressProvider";
+import { OfflineSaver } from "./offline/OfflineSaver";
 import { StatsBar } from "./StatsBar";
 
 export function Profile() {
@@ -71,12 +72,14 @@ export function Profile() {
         </ul>
       </section>
 
+      <OfflineSaver />
+
       <section aria-labelledby="reset-heading" className="rounded-xl border border-border bg-surface p-4">
         <h2 id="reset-heading" className="font-semibold">
           Start over
         </h2>
         <p className="mt-1 text-sm text-muted">
-          Your progress is saved only in this browser on this device. Resetting erases it and can&apos;t be undone.
+          Resetting erases your progress on this device and can&apos;t be undone.
         </p>
         <div className="mt-3 flex flex-wrap gap-3">
           {!confirming ? (
