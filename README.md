@@ -117,7 +117,8 @@ Some later features need private keys, for example for logins. These go in a fil
 
 | Setting | Phase | Where it's used |
 |---|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | 4 | accounts and progress sync |
+| `NEXT_PUBLIC_SUPABASE_URL` | 4 | accounts and progress sync (your project's address) |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | 4 | accounts and progress sync (safe in the browser; the *secret* key is never used) |
 | `ANTHROPIC_API_KEY` | 6 | the AI tutor, **server only**, never sent to the browser |
 
 ## Troubleshooting

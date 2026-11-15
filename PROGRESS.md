@@ -1,6 +1,6 @@
 # Stack Quest: where we are
 
-_Last updated: 14 November 2026_
+_Last updated: 15 November 2026_
 
 ## Your Phase 0 answers
 1. Extra libraries approved: zod, idb, yaml, MDX, CodeMirror 6, PGlite, Vitest, Testing Library, Playwright.
@@ -60,8 +60,22 @@ _Last updated: 14 November 2026_
 - GitHub isn't connected. The lesson explains how, and we'll do it together when you choose.
 - The practice terminal supports the commands listed in CONTENT_GUIDE.md only (no pipes `|`, no `cd -`, no git branches yet).
 
-## Next: Phase 4 (accounts, sync and offline)
-Supabase login and progress sync, PWA offline caching, and an opt-in leaderboard. I'll ask before installing Serwist or Supabase, or creating any accounts.
+## 🟡 Phase 4: accounts, sync and offline (almost done)
+- **Offline**: a hand-written service worker, a "save all lessons" button, an offline page, and an app manifest and icons so it can be installed like an app
+- **Accounts**: email and password sign-in through Supabase, password reset, and "delete my account" (POPIA)
+- **Sync**: progress merges between devices without losing anything, and the Supabase library only downloads when you use accounts
+- **Leaderboard**: opt-in only, showing display names and XP for the top 20
+- **Real Supabase project** "stack-quest" (free plan, EU Ireland). The tables and security rules from `supabase/schema.sql` are in, the security check shows only the 2 expected warnings, and your own sign-up, sync (10 XP) and leaderboard entry were checked in the database on 15 November 2026
+- Tests: 105 logic tests and 56 browser tests
+
+### Still to do in Phase 4
+- Put the app online with Vercel (free Hobby plan). I'll ask before creating the account.
+- After that, add the live address to Supabase (Authentication → URL Configuration) so email links open the live site.
+
+### Known limitations (Phase 4)
+- Supabase's built-in email only sends to members of your Supabase organisation, and only a few emails per hour. Before inviting other people, set up a proper email sender (SMTP).
+- Free Supabase projects go to sleep after a week without use. Wake it up in the dashboard if sign-in stops working.
+- Partial Prefetching is still off.
 
 ## To resume
 Open this folder in VS Code, start Claude, and say **"continue"**.
