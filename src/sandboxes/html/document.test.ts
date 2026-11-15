@@ -7,6 +7,7 @@ describe("HTML preview document", () => {
     expect(doc.startsWith("<!doctype html>")).toBe(true);
     expect(doc.indexOf("Content-Security-Policy")).toBeLessThan(doc.indexOf("<title>"));
     expect(doc).toContain("default-src 'none'");
+    expect(doc).toContain("form-action 'none'");
   });
 
   it("works with a fragment that has no <head>", () => {

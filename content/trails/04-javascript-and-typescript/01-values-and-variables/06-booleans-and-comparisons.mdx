@@ -1,0 +1,70 @@
+---
+id: booleans-and-comparisons
+title: Booleans and comparisons
+type: predict-output
+minutes: 6
+xp: 15
+goals:
+  - Compare values with > < >= <= === and !==.
+  - Explain why === is safer than ==.
+language: javascript
+code: |
+  const age = 18;
+  console.log(age >= 18);
+  console.log(age > 18);
+  console.log(age === "18");
+  console.log(age !== 21);
+options:
+  - text: |-
+      true
+      false
+      false
+      true
+    correct: true
+  - text: |-
+      true
+      true
+      false
+      true
+    why: "> means strictly greater than. 18 isn't greater than 18, so age > 18 is false."
+  - text: |-
+      true
+      false
+      true
+      true
+    why: '=== also checks the type. 18 is a number but "18" is a string, so they are not the same.'
+  - text: |-
+      false
+      false
+      false
+      false
+    why: "18 >= 18 is true, because >= means greater than OR equal to."
+explanation: "18 >= 18 is true (it's equal). 18 > 18 is false (it's not bigger). 18 === \"18\" is false, because a number and a string are different types. 18 !== 21 is true, because they are different."
+hints:
+  - Go line by line. Each comparison is a question with a yes (true) or no (false) answer.
+  - ">= means \"greater than or equal to\". === means \"exactly the same value AND the same type\"."
+  - "The third line compares the number 18 with the string \"18\". Are a number and a string exactly the same?"
+---
+
+A <Term word="boolean">boolean</Term> is a value that can only be `true` or `false`: the answer to a yes-or-no question. Comparisons give you booleans:
+
+- `>` greater than, `<` less than
+- `>=` greater than **or equal to**, `<=` less than or equal to
+- `===` exactly equal (the **same value** and the **same type**)
+- `!==` not equal
+
+```javascript
+console.log(10 > 3);      // true
+console.log(10 === 10);   // true
+console.log("10" === 10); // false: one is a string, one is a number
+```
+
+## Why three equals signs?
+
+- One `=` puts a value **into** a variable.
+- Three, `===`, **compares** two values.
+- There's also a two-sign `==`, which tries to convert types first, so `"10" == 10` is `true`. That causes surprising bugs, so professionals almost always use `===`.
+
+## Predict the output
+
+What does this code print?

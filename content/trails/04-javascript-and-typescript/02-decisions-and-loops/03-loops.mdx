@@ -1,0 +1,52 @@
+---
+id: loops
+title: Loops
+type: predict-output
+minutes: 7
+xp: 15
+goals:
+  - Read a for loop and say how many times it runs.
+  - Predict what a loop prints.
+language: javascript
+code: |
+  for (let day = 1; day <= 3; day++) {
+    console.log(`Day ${day}: ${day * 10} XP`);
+  }
+  console.log("Streak saved!");
+answer: |-
+  Day 1: 10 XP
+  Day 2: 20 XP
+  Day 3: 30 XP
+  Streak saved!
+explanation: "day starts at 1 and goes up by 1 each time, while day <= 3. So the loop runs for days 1, 2 and 3, printing 10, 20 and 30 XP. Then the loop ends and the last line runs once."
+hints:
+  - Follow the loop by hand. What is day the first time? When does it stop?
+  - day starts at 1, and the loop keeps going while day <= 3. day++ adds 1 after each run. Each time, it prints day and day * 10.
+  - "It prints three Day lines (1, 2 and 3), then \"Streak saved!\" once, after the loop has finished."
+---
+
+<Analogy title="Doing laps at the pool">
+A swimming coach says: "Start at lap 1. Keep going while you've done fewer than 10. After each lap, count one more." That's a **loop**: the same thing, repeated, with a counter to know when to stop.
+</Analogy>
+
+A <Term word="loop">loop</Term> repeats code. The most common one is the `for` loop:
+
+```javascript
+for (let lap = 1; lap <= 10; lap++) {
+  console.log(`Lap ${lap}`);
+}
+```
+
+The round brackets hold three parts, separated by semicolons:
+
+1. **Start**: `let lap = 1` makes a counter.
+2. **Keep going while**: `lap <= 10` is checked before every run. When it's false, the loop stops.
+3. **After each run**: `lap++` adds 1 to the counter. (`lap++` is short for `lap = lap + 1`.)
+
+The code in the curly brackets runs once for each lap: 10 times here.
+
+**Careful:** if the "keep going" condition never becomes false, the loop never ends. That's an **endless loop**. Stack Quest stops it after a few seconds, but in a real app it would freeze the page.
+
+## Predict the output
+
+What does this loop print? Type one line of output per line.

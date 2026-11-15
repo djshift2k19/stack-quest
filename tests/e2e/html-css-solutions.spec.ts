@@ -12,7 +12,7 @@
 import { expect, test, type Page } from "@playwright/test";
 import { getCatalog, getUnit } from "@/lib/content/loader";
 import type { Challenge, UnitFrontmatter } from "@/lib/content/schema";
-import { buildPreviewDocument } from "@/sandboxes/html/document";
+import { buildPreviewDocument, PREVIEW_SANDBOX } from "@/sandboxes/html/document";
 
 function challengeOf(meta: UnitFrontmatter): Challenge | undefined {
   if (meta.type === "fix-the-bug" || meta.type === "build-it" || meta.type === "boss") return meta.challenge;
@@ -46,10 +46,10 @@ async function run(page: Page, c: Challenge, code: string): Promise<Outcome> {
     runId: 1,
   });
   return page.evaluate(
-    (srcdoc) =>
+    ({ srcdoc, sandbox }) =>
       new Promise<Outcome>((resolve) => {
         const iframe = document.createElement("iframe");
-        iframe.setAttribute("sandbox", "allow-scripts");
+        iframe.setAttribute("sandbox", sandbox);
         iframe.style.cssText = "position:fixed;left:0;top:0;width:800px;height:600px;border:0;";
         const timer = setTimeout(() => resolve({ error: "timeout", results: [] }), 8000);
         window.addEventListener("message", function onMessage(e) {
@@ -64,7 +64,7 @@ async function run(page: Page, c: Challenge, code: string): Promise<Outcome> {
         void iframe.offsetWidth;
         iframe.srcdoc = srcdoc;
       }),
-    doc,
+    { srcdoc: doc, sandbox: PREVIEW_SANDBOX },
   );
 }
 

@@ -1,7 +1,7 @@
 "use client";
 
 import type { RunResult } from "../types";
-import { buildPreviewDocument, type PreviewInput } from "./document";
+import { buildPreviewDocument, PREVIEW_SANDBOX, type PreviewInput } from "./document";
 
 let counter = 0;
 
@@ -11,7 +11,7 @@ export function runHtmlTests(input: Omit<PreviewInput, "runId">, timeoutMs = 400
   const tests = input.tests ?? [];
   return new Promise((resolve) => {
     const iframe = document.createElement("iframe");
-    iframe.setAttribute("sandbox", "allow-scripts");
+    iframe.setAttribute("sandbox", PREVIEW_SANDBOX);
     iframe.setAttribute("aria-hidden", "true");
     iframe.tabIndex = -1;
     // Give it a real size so layout and styles can be measured.

@@ -1,0 +1,59 @@
+---
+id: variables
+title: Variables
+type: reading
+minutes: 6
+goals:
+  - Create variables with let and const.
+  - Choose between let and const.
+  - Pick clear variable names.
+---
+
+<Analogy title="Labelled jars in the kitchen">
+In a kitchen, you keep things in jars with labels: "Sugar", "Rice", "Mielie meal". When a recipe says "add sugar", you don't search every cupboard; you grab the jar labelled **Sugar**. A <Term word="variable">variable</Term> is a labelled jar for a <Term word="value">value</Term>.
+</Analogy>
+
+## Making a variable
+
+```javascript
+const town = "Mthatha";
+let score = 0;
+```
+
+- `const` or `let` says "make a new jar".
+- `town` and `score` are the labels: the variable **names**.
+- `=` means "put this value in the jar". (It doesn't mean "equals" like in maths. Read it as "becomes".)
+
+Now you can use the name instead of the value:
+
+```javascript
+console.log(town);   // prints Mthatha
+```
+
+The `//` starts a **comment**: a note for humans that JavaScript ignores.
+
+## let or const?
+
+- `const` (constant) means the jar's contents **never change**. Use it for most things.
+- `let` means you're going to **change** the contents later:
+
+```javascript
+let score = 0;
+score = 10;           // no let the second time: the jar already exists
+score = score + 5;    // take what's in score, add 5, put it back: now 15
+```
+
+Try to change a `const`, and JavaScript stops with an error: `Assignment to constant variable`. That's a feature: it catches mistakes where you change something by accident.
+
+**Rule of thumb:** start with `const`. Switch to `let` only when you need to change it.
+
+## Naming rules
+
+- Names can contain letters, numbers, `_` and `$`, but can't start with a number.
+- No spaces. For several words, use **camelCase**: start lowercase and give every following word a capital, like `totalPrice` or `numberOfLearners`.
+- Capitals matter: `score` and `Score` are different variables.
+- Make names describe what's inside. `x` tells you nothing; `ticketPrice` tells you everything.
+
+<KeyIdea>
+A variable is a labelled jar: `const name = value;`. Use **const** by default, and **let** when the value will change. Name things clearly, in camelCase.
+</KeyIdea>

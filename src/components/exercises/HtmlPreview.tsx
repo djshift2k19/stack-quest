@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { buildPreviewDocument, type PreviewInput } from "@/sandboxes/html/document";
+import { buildPreviewDocument, PREVIEW_SANDBOX, type PreviewInput } from "@/sandboxes/html/document";
 
 /**
  * Live preview of the learner's page. It updates shortly after typing
@@ -20,7 +20,7 @@ export function HtmlPreview({ language, code, fixture }: Omit<PreviewInput, "tes
       <p className="mb-1 text-sm font-semibold">Live preview</p>
       <iframe
         title="Live preview of your page"
-        sandbox="allow-scripts"
+        sandbox={PREVIEW_SANDBOX}
         srcDoc={doc}
         className="h-72 w-full rounded-[10px] border border-border bg-white"
       />

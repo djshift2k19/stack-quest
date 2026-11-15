@@ -1,0 +1,55 @@
+---
+id: if-and-else
+title: if and else
+type: reading
+minutes: 7
+goals:
+  - Write if, else if and else statements.
+  - Combine conditions with && and ||.
+---
+
+<Analogy title="A robot at the taxi rank">
+Imagine a robot marshal: "**If** the taxi is full, send it off. **Otherwise, if** it's half full, wait five minutes. **Otherwise**, keep calling passengers." Programs make decisions exactly like that.
+</Analogy>
+
+## if
+
+An `if` statement runs some code **only when** a <Term word="condition">condition</Term> is `true`:
+
+```javascript
+const temperature = 34;
+
+if (temperature > 30) {
+  console.log("Hot one today! Drink water.");
+}
+```
+
+- The condition goes in round brackets `( )`.
+- The code to run goes in curly brackets `{ }`. It's indented, so you can see it belongs to the `if`.
+- If the condition is `false`, JavaScript skips the whole block.
+
+## else and else if
+
+```javascript
+const stage = 4;
+
+if (stage === 0) {
+  console.log("No load shedding today.");
+} else if (stage <= 2) {
+  console.log("A little load shedding. Charge your phone.");
+} else {
+  console.log("Heavy load shedding. Get the candles out.");
+}
+```
+
+JavaScript checks each condition **from the top** and runs the **first** block that's true, then skips the rest. `else` (with no condition) catches everything left over.
+
+## Combining conditions
+
+- `&&` means **and**: both must be true. `age >= 13 && age <= 19` is a teenager.
+- `||` means **or**: at least one must be true. `day === "Saturday" || day === "Sunday"` is a weekend.
+- `!` means **not**: it flips true and false. `!isRaining` is true when it's **not** raining.
+
+<KeyIdea>
+`if (condition) { ... }` runs code only when the condition is true. Add `else if` for more options and `else` for everything else. JavaScript runs the **first** match only.
+</KeyIdea>

@@ -1,0 +1,88 @@
+---
+id: strings
+title: Strings (text)
+type: build-it
+minutes: 8
+xp: 20
+goals:
+  - Join strings together.
+  - Use template literals to put values inside text.
+  - Find the length of a string.
+challenge:
+  language: javascript
+  starter: |
+    const name = "Ayanda";
+    const town = "Polokwane";
+
+    // 1. Make greeting say: Hi Ayanda from Polokwane!
+    const greeting = "";
+
+    // 2. Make nameLength hold how many letters are in name
+    const nameLength = 0;
+
+    console.log(greeting);
+    console.log(nameLength);
+  solution: |
+    const name = "Ayanda";
+    const town = "Polokwane";
+
+    // 1. Make greeting say: Hi Ayanda from Polokwane!
+    const greeting = `Hi ${name} from ${town}!`;
+
+    // 2. Make nameLength hold how many letters are in name
+    const nameLength = name.length;
+
+    console.log(greeting);
+    console.log(nameLength);
+  hints:
+    - For the greeting, use a template literal (backticks) and put the variables inside it. For the length, every string has a .length.
+    - "Inside backticks, ${name} is replaced by what's in name. Don't type the names Ayanda or Polokwane yourself: use the variables."
+    - "Write const greeting = `Hi ${name} from ${town}!`; and const nameLength = name.length;"
+  tests:
+    - name: greeting is exactly "Hi Ayanda from Polokwane!"
+      code: expect(greeting).toBe("Hi Ayanda from Polokwane!")
+    - name: nameLength is 6 (the letters in Ayanda)
+      code: expect(nameLength).toBe(6)
+---
+
+<Analogy title="Fill in the blanks">
+A birthday card might say "Happy birthday, ______!" with a blank to fill in. Template literals are text with blanks that JavaScript fills in for you.
+</Analogy>
+
+A <Term word="string">string</Term> is text, inside quote marks. You can use `"double"` or `'single'` quotes, as long as both ends match.
+
+## Joining strings
+
+`+` joins strings together:
+
+```javascript
+const first = "Thandi";
+console.log("Hello, " + first + "!");   // Hello, Thandi!
+```
+
+Watch the spaces: `"Hello," + first` gives `Hello,Thandi` with no space, because JavaScript only adds what you give it.
+
+## Template literals: the easier way
+
+Use **backticks** (the key above Tab on a Mac keyboard, next to the 1) instead of quote marks, and you can put values straight inside with a dollar sign and curly brackets:
+
+```javascript
+const first = "Thandi";
+const age = 24;
+console.log(`${first} is ${age} years old.`);   // Thandi is 24 years old.
+```
+
+This is called a **template literal**. Most JavaScript developers use them because they're easier to read than lots of `+` signs.
+
+## How long is a string?
+
+Every string has a `.length`: the number of characters in it, including spaces.
+
+```javascript
+console.log("Soweto".length);   // 6
+```
+
+## Your turn
+
+1. Make `greeting` say exactly **Hi Ayanda from Polokwane!**, using the `name` and `town` variables (don't type the names again yourself)
+2. Make `nameLength` hold the number of letters in `name`

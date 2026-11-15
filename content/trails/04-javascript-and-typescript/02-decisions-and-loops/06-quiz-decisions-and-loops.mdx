@@ -1,0 +1,79 @@
+---
+id: quiz-decisions-and-loops
+title: Check your understanding
+type: quiz
+minutes: 5
+xp: 15
+goals:
+  - Recall if, loops and arrays.
+questions:
+  - prompt: What does this print when stage is 3?
+    code: |
+      if (stage >= 4) {
+        console.log("Candles");
+      } else if (stage >= 2) {
+        console.log("Charge your phone");
+      } else {
+        console.log("All good");
+      }
+    language: javascript
+    options:
+      - text: Charge your phone
+        correct: true
+        why: 3 >= 4 is false, so JavaScript checks the next condition. 3 >= 2 is true, so that block runs, and the rest is skipped.
+      - text: Candles
+        why: 3 isn't greater than or equal to 4.
+      - text: Both "Charge your phone" and "All good"
+        why: Only the FIRST true block runs. else is skipped once something has matched.
+  - prompt: What is fruit[1]?
+    code: const fruit = ["mango", "litchi", "guava"];
+    language: javascript
+    options:
+      - text: '"litchi"'
+        correct: true
+        why: Counting starts at 0, so index 1 is the second item.
+      - text: '"mango"'
+        why: mango is at index 0, the first position.
+      - text: undefined
+        why: Index 1 exists. undefined would be for an index past the end, like fruit[3].
+  - prompt: How many times does this loop run?
+    code: |
+      for (let i = 0; i < 5; i++) {
+        console.log(i);
+      }
+    language: javascript
+    options:
+      - text: 5 times (i is 0, 1, 2, 3 and 4)
+        correct: true
+        why: It starts at 0 and stops before 5, because the condition is i < 5.
+      - text: 4 times
+        why: Count them, including 0. 0, 1, 2, 3, 4 is five numbers.
+      - text: 6 times
+        why: When i reaches 5, i < 5 is false, so it stops. 5 isn't printed.
+  - prompt: Which condition means "a weekend day"?
+    options:
+      - text: day === "Saturday" || day === "Sunday"
+        correct: true
+        why: '|| means or: either one is enough.'
+      - text: day === "Saturday" && day === "Sunday"
+        why: '&& means and. A day can''t be Saturday AND Sunday at the same time, so this is never true.'
+      - text: day = "Saturday" || "Sunday"
+        why: One = puts a value in a variable instead of comparing. Always use === to compare.
+  - prompt: Why is the running total created BEFORE the loop?
+    code: |
+      let total = 0;
+      for (const price of prices) {
+        total = total + price;
+      }
+    language: javascript
+    options:
+      - text: Inside the loop, it would be reset to 0 every time round
+        correct: true
+        why: Exactly. Create it once, before, then add to it inside.
+      - text: Variables must always be at the top of a file
+        why: You can create variables anywhere. The position matters here because of the loop.
+      - text: Loops can't contain let
+        why: They can. It's about when the total is reset.
+---
+
+Five questions on decisions, loops and arrays.

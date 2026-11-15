@@ -1,0 +1,67 @@
+---
+id: ticket-prices
+title: Fix the ticket prices
+type: fix-the-bug
+minutes: 7
+xp: 20
+goals:
+  - Find a bug at the edge of a condition.
+  - Choose between > and >=.
+challenge:
+  language: javascript
+  starter: |
+    // Ticket prices at the Durban aquarium:
+    //   under 12: R150
+    //   60 and over (pensioners): R180
+    //   everyone else: R250
+    function ticketPrice(age) {
+      if (age < 12) {
+        return 150;
+      } else if (age > 60) {
+        return 180;
+      } else {
+        return 250;
+      }
+    }
+
+    console.log(ticketPrice(8));
+    console.log(ticketPrice(60));
+  solution: |
+    // Ticket prices at the Durban aquarium:
+    //   under 12: R150
+    //   60 and over (pensioners): R180
+    //   everyone else: R250
+    function ticketPrice(age) {
+      if (age < 12) {
+        return 150;
+      } else if (age >= 60) {
+        return 180;
+      } else {
+        return 250;
+      }
+    }
+
+    console.log(ticketPrice(8));
+    console.log(ticketPrice(60));
+  hints:
+    - Press Run & check and look at which age fails. It's an age right on the edge of a rule.
+    - '"60 and over" includes 60 itself. Does > 60 include 60?'
+    - Change age > 60 to age >= 60 on line 8.
+  tests:
+    - name: An 8-year-old pays R150
+      code: expect(ticketPrice(8)).toBe(150)
+    - name: A 30-year-old pays R250
+      code: expect(ticketPrice(30)).toBe(250)
+    - name: A 60-year-old pensioner pays R180
+      code: expect(ticketPrice(60)).toBe(180)
+    - name: A 75-year-old pensioner pays R180
+      code: expect(ticketPrice(75)).toBe(180)
+    - name: A 12-year-old pays the adult price, R250
+      code: expect(ticketPrice(12)).toBe(250)
+---
+
+This code is wrapped in a **function** called `ticketPrice`. You'll learn functions properly in the next module. For now, all you need to know: `ticketPrice(60)` runs the code inside with `age` set to 60, and `return` hands back the price.
+
+A gogo turned 60 last week and was charged the full R250. Find the bug.
+
+Bugs love to hide at the **edges**: exactly 12, exactly 60. Professional testers always check the edges, and so do the checks here.

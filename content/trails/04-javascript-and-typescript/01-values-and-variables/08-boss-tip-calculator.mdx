@@ -1,0 +1,66 @@
+---
+id: boss-tip-calculator
+title: "Boss: a tip calculator"
+type: boss
+minutes: 10
+goals:
+  - Combine variables, maths and template literals to solve a real problem.
+challenge:
+  language: javascript
+  starter: |
+    // Dinner at a restaurant in Pretoria
+    const bill = 480;
+    const tipPercent = 15;
+    const people = 4;
+
+    // 1. Work out the tip (15% of the bill)
+
+    // 2. Work out the total (bill plus tip)
+
+    // 3. Work out what each person pays (total shared between everyone)
+
+    // 4. Make a message like: Tip: R72. Total: R552. Each person pays R138.
+
+    console.log(message);
+  solution: |
+    // Dinner at a restaurant in Pretoria
+    const bill = 480;
+    const tipPercent = 15;
+    const people = 4;
+
+    // 1. Work out the tip (15% of the bill)
+    const tip = bill * tipPercent / 100;
+
+    // 2. Work out the total (bill plus tip)
+    const total = bill + tip;
+
+    // 3. Work out what each person pays (total shared between everyone)
+    const each = total / people;
+
+    // 4. Make a message like: Tip: R72. Total: R552. Each person pays R138.
+    const message = `Tip: R${tip}. Total: R${total}. Each person pays R${each}.`;
+
+    console.log(message);
+  hints:
+    - "You need four new const variables: tip, total, each and message. Each one uses the ones before it."
+    - "A percentage of something is: amount * percent / 100. Sharing between people is: total / people. The message is a template literal with ${...} for each number."
+    - "const tip = bill * tipPercent / 100; const total = bill + tip; const each = total / people; const message = `Tip: R${tip}. Total: R${total}. Each person pays R${each}.`;"
+  tests:
+    - name: tip is R72 (15% of R480)
+      code: expect(tip).toBe(72)
+    - name: total is R552
+      code: expect(total).toBe(552)
+    - name: each is R138 (shared between 4)
+      code: expect(each).toBe(138)
+    - name: 'The message reads exactly "Tip: R72. Total: R552. Each person pays R138."'
+      code: 'expect(message).toBe("Tip: R72. Total: R552. Each person pays R138.")'
+---
+
+Four friends have dinner in Pretoria. The bill is R480 and they want to leave a 15% tip. Build a calculator that works out:
+
+1. The **tip**, in a variable called `tip`
+2. The **total**, bill plus tip, in `total`
+3. What **each** person pays, in `each`
+4. A **message** that reads exactly: `Tip: R72. Total: R552. Each person pays R138.`
+
+Use the variables, not the numbers. If the bill changes to R600 tomorrow, only the first line should need to change. (Try it after you pass!)

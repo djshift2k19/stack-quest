@@ -86,7 +86,6 @@ You chose to write all the lessons before putting the app online, so content com
 
 ### Known limitations (Trail 3)
 - The practice preview doesn't download real images (to save data), so exercises show alt text or simple built-in pictures instead.
-- The preview is sealed, so forms never send anything, and the browser's "please fill in this field" message doesn't appear there.
 - Checks measure the page at 800px wide. To see a phone layout, make the browser window narrow or open the lesson on your phone.
 
 ## Next: Trail 4 (JavaScript, then TypeScript)

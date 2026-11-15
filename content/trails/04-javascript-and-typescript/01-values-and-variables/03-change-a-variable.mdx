@@ -1,0 +1,40 @@
+---
+id: change-a-variable
+title: Fix the scoreboard
+type: fix-the-bug
+minutes: 5
+xp: 20
+goals:
+  - Fix an "Assignment to constant variable" error.
+challenge:
+  language: javascript
+  starter: |
+    const team = "Kaizer Chiefs";
+    const goals = 0;
+
+    // A goal is scored!
+    goals = goals + 1;
+
+    console.log(team + " have scored " + goals);
+  solution: |
+    const team = "Kaizer Chiefs";
+    let goals = 0;
+
+    // A goal is scored!
+    goals = goals + 1;
+
+    console.log(team + " have scored " + goals);
+  hints:
+    - Press Run & check first and read the error. It tells you which kind of variable can't be changed.
+    - goals changes during the match, so it can't be a const. Which keyword makes a variable you can change?
+    - On line 2, change const goals = 0; to let goals = 0;
+  tests:
+    - name: goals is 1 after the goal is scored
+      code: expect(goals).toBe(1)
+    - name: The team name is still Kaizer Chiefs
+      code: expect(team).toBe("Kaizer Chiefs")
+---
+
+This scoreboard crashes as soon as a goal is scored. Press **▶ Run & check** first and read the error message: it's a big clue.
+
+Then fix it so the score can go up. Only one word needs to change.

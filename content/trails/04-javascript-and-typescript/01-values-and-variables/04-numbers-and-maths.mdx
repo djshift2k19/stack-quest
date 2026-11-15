@@ -1,0 +1,41 @@
+---
+id: numbers-and-maths
+title: Numbers and maths
+type: predict-output
+minutes: 6
+xp: 15
+goals:
+  - Use + - * / and brackets in JavaScript.
+  - Predict the result of a calculation.
+language: javascript
+code: |
+  const price = 200;
+  const vat = price * 15 / 100;
+  console.log(vat);
+  console.log(price + vat);
+  console.log((price + vat) / 2);
+answer: |-
+  30
+  230
+  115
+explanation: "VAT is 200 × 15 ÷ 100 = 30. The price with VAT is 200 + 30 = 230. Brackets go first, so (200 + 30) ÷ 2 = 115: half the price with VAT."
+hints:
+  - Work out each line in order, top to bottom, and write down what each variable holds.
+  - "vat is 200 * 15 / 100. Then the second console.log adds price and vat together."
+  - "The answers are vat (30), price + vat, and half of price + vat (the brackets are worked out first)."
+---
+
+<Term word="number">Numbers</Term> in JavaScript work like a calculator. These symbols are called <Term word="operator">operators</Term>:
+
+- `+` adds, `-` subtracts
+- `*` multiplies (not `×`)
+- `/` divides (not `÷`)
+- `%` gives the **remainder** after dividing: `7 % 2` is `1`. It's handy for "is this number even?"
+
+Just like in maths class, `*` and `/` happen before `+` and `-`, and **brackets go first**. So `2 + 3 * 4` is `14`, but `(2 + 3) * 4` is `20`.
+
+Numbers are written **without** quote marks, and without spaces or commas: `1500`, not `"1500"` or `1 500`. Decimals use a full stop: `0.15`.
+
+## Predict the output
+
+What does this code print? Work it out on paper, then type your answer: one number per line.

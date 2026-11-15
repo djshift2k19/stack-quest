@@ -14,7 +14,16 @@ import type { ChallengeTest } from "@/lib/content/schema";
 import { JS_RUNTIME_SOURCE } from "../js/runtime";
 
 export const PREVIEW_CSP =
-  "default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src data:; script-src 'unsafe-inline' 'unsafe-eval'";
+  "default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src data:; script-src 'unsafe-inline' 'unsafe-eval'; form-action 'none'";
+
+/**
+ * The iframe's sandbox setting. allow-forms is needed for a form's "submit"
+ * event to fire at all (lessons teach handling it in JavaScript), and
+ * form-action 'none' in the policy above stops any form from actually
+ * sending data or leaving the page. There's no allow-same-origin, so the
+ * page can't touch Stack Quest's storage.
+ */
+export const PREVIEW_SANDBOX = "allow-scripts allow-forms";
 
 const scriptSafe = (s: string) => s.replace(/<\/script/gi, "<\\/script").replace(/<!--/g, "<\\!--");
 

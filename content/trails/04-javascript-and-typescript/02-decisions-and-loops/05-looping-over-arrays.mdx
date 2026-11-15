@@ -1,0 +1,86 @@
+---
+id: looping-over-arrays
+title: Looping over arrays
+type: build-it
+minutes: 9
+xp: 20
+goals:
+  - Use for...of to visit every item in an array.
+  - Add up and count items in a loop.
+challenge:
+  language: javascript
+  starter: |
+    // Prices of everything in the shopping basket, in rand
+    const prices = [25, 40, 15, 60, 10];
+
+    let total = 0;
+    let cheapItems = 0;
+
+    // Loop over prices:
+    //   add every price to total
+    //   count how many prices are under R30 in cheapItems
+
+    console.log(`Total: R${total}`);
+    console.log(`Cheap items: ${cheapItems}`);
+  solution: |
+    // Prices of everything in the shopping basket, in rand
+    const prices = [25, 40, 15, 60, 10];
+
+    let total = 0;
+    let cheapItems = 0;
+
+    for (const price of prices) {
+      total = total + price;
+      if (price < 30) {
+        cheapItems = cheapItems + 1;
+      }
+    }
+
+    console.log(`Total: R${total}`);
+    console.log(`Cheap items: ${cheapItems}`);
+  hints:
+    - Write a for...of loop. Inside it, you need two things: add to total, and an if that adds 1 to cheapItems.
+    - "for (const price of prices) { ... } runs once per price. Inside, total = total + price; and if (price < 30) { cheapItems = cheapItems + 1; }"
+    - "for (const price of prices) { total = total + price; if (price < 30) { cheapItems = cheapItems + 1; } }"
+  tests:
+    - name: total is R150
+      code: expect(total).toBe(150)
+    - name: cheapItems is 3 (R25, R15 and R10)
+      code: expect(cheapItems).toBe(3)
+---
+
+You'll often want to do something with **every** item in an array. There's a loop made for that, `for...of`:
+
+```javascript
+const names = ["Lerato", "Sipho", "Naledi"];
+
+for (const name of names) {
+  console.log(`Hello, ${name}!`);
+}
+```
+
+Read it as "for each `name` in `names`". The loop runs once per item, and each time, `name` holds the next one. No counter needed.
+
+## Adding things up
+
+A very common pattern: start a **running total** at 0 **before** the loop, then add to it **inside** the loop:
+
+```javascript
+const scores = [10, 20, 15];
+let sum = 0;
+
+for (const score of scores) {
+  sum = sum + score;
+}
+
+console.log(sum);   // 45
+```
+
+The total must use `let`, because it changes each time round. And it must be created **outside** the loop. Inside, it would be reset to 0 on every run.
+
+## Your turn
+
+Loop over the shopping basket's `prices` and:
+
+1. Add every price to `total`
+2. Count how many prices are **under R30** in `cheapItems` (use an `if` inside the loop)

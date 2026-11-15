@@ -1,0 +1,71 @@
+---
+id: boss-shopping-totaller
+title: "Boss: a shopping list totaller"
+type: boss
+minutes: 10
+goals:
+  - Combine an array, a loop and if statements to solve a real problem.
+challenge:
+  language: javascript
+  starter: |
+    // Gogo's spaza shop has a special:
+    //   spend R200 or more and get R20 off.
+    // basketTotal(prices) should hand back what the customer pays.
+    function basketTotal(prices) {
+      // 1. Add up all the prices
+
+      // 2. If the total is R200 or more, take R20 off
+
+      // 3. Hand back the answer with return
+    }
+
+    console.log(basketTotal([50, 80, 30]));
+    console.log(basketTotal([120, 90]));
+  solution: |
+    // Gogo's spaza shop has a special:
+    //   spend R200 or more and get R20 off.
+    // basketTotal(prices) should hand back what the customer pays.
+    function basketTotal(prices) {
+      // 1. Add up all the prices
+      let total = 0;
+      for (const price of prices) {
+        total = total + price;
+      }
+
+      // 2. If the total is R200 or more, take R20 off
+      if (total >= 200) {
+        total = total - 20;
+      }
+
+      // 3. Hand back the answer with return
+      return total;
+    }
+
+    console.log(basketTotal([50, 80, 30]));
+    console.log(basketTotal([120, 90]));
+  hints:
+    - Inside the function, you need a running total, a for...of loop over prices, an if for the discount, and return total at the end.
+    - "Start with let total = 0; then for (const price of prices) { total = total + price; } then if (total >= 200) { ... }"
+    - "After the loop: if (total >= 200) { total = total - 20; } and finally return total;"
+  tests:
+    - name: R50 + R80 + R30 = R160 (no discount)
+      code: expect(basketTotal([50, 80, 30])).toBe(160)
+    - name: R120 + R90 = R210, minus R20 = R190
+      code: expect(basketTotal([120, 90])).toBe(190)
+    - name: Exactly R200 gets the discount (R180)
+      code: expect(basketTotal([100, 100])).toBe(180)
+    - name: R199 doesn't get the discount
+      code: expect(basketTotal([199])).toBe(199)
+    - name: An empty basket costs R0
+      code: expect(basketTotal([])).toBe(0)
+---
+
+Gogo's spaza shop is running a special: **spend R200 or more, and get R20 off**. Write the `basketTotal` function so it hands back what the customer actually pays.
+
+`prices` is an array of prices, like `[50, 80, 30]`. Your function needs to:
+
+1. **Add up** all the prices
+2. **Take R20 off** if the total is R200 or more
+3. **Return** the answer
+
+The checks try lots of different baskets, including the edges: exactly R200, R199 and an empty basket.

@@ -1,0 +1,11 @@
+id: decisions-and-loops
+title: Making Decisions and Repeating
+summary: Teach your code to choose between options with if and else, keep lists in arrays, and repeat work with loops.
+goals:
+  - Make decisions with if, else if and else.
+  - Repeat code with for loops.
+  - Store lists of values in arrays.
+  - Loop over an array to add things up and count them.
+badge:
+  name: Loop Master
+  emoji: 🔁

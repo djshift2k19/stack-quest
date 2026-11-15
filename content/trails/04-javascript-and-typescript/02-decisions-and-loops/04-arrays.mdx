@@ -1,0 +1,87 @@
+---
+id: arrays
+title: Arrays (lists)
+type: build-it
+minutes: 8
+xp: 20
+goals:
+  - Create an array and read items by their index.
+  - Add items with push and count them with length.
+challenge:
+  language: javascript
+  starter: |
+    const provinces = ["Gauteng", "Limpopo", "KwaZulu-Natal"];
+
+    // 1. Add "Free State" to the end of the list
+
+    // 2. Put the FIRST province in a variable called first
+    const first = "";
+
+    // 3. Put how many provinces are in the list in a variable called count
+    const count = 0;
+
+    console.log(provinces);
+  solution: |
+    const provinces = ["Gauteng", "Limpopo", "KwaZulu-Natal"];
+
+    // 1. Add "Free State" to the end of the list
+    provinces.push("Free State");
+
+    // 2. Put the FIRST province in a variable called first
+    const first = provinces[0];
+
+    // 3. Put how many provinces are in the list in a variable called count
+    const count = provinces.length;
+
+    console.log(provinces);
+  hints:
+    - Arrays have a push to add to the end, square brackets with a number to read one item, and a length.
+    - Remember, the first item is at index 0, not 1. And add Free State BEFORE you count, so the count includes it.
+    - "Write provinces.push(\"Free State\"); then const first = provinces[0]; and const count = provinces.length;"
+  tests:
+    - name: The list ends with "Free State"
+      code: expect(provinces[provinces.length - 1]).toBe("Free State")
+    - name: The list has 4 provinces
+      code: expect(provinces).toHaveLength(4)
+    - name: first is "Gauteng"
+      code: expect(first).toBe("Gauteng")
+    - name: count is 4
+      code: expect(count).toBe(4)
+---
+
+<Analogy title="A row of numbered lockers">
+Picture a row of school lockers, each with a number on the door. You can open any locker by its number. The strange part: in programming, the **first** locker is number **0**.
+</Analogy>
+
+An <Term word="array">array</Term> is a list of values in order, inside square brackets, separated by commas:
+
+```javascript
+const fruit = ["mango", "litchi", "guava"];
+```
+
+## Reading items
+
+Each item has a position number called its <Term word="index">index</Term>. Counting starts at **0**:
+
+```javascript
+console.log(fruit[0]);   // mango
+console.log(fruit[2]);   // guava
+console.log(fruit[3]);   // undefined: there's nothing in locker 3
+```
+
+`undefined` is JavaScript's way of saying "there's nothing here".
+
+## Adding and counting
+
+```javascript
+fruit.push("marula");        // adds to the end
+console.log(fruit.length);   // 4
+```
+
+Wait, `fruit` is a `const`, but we changed it? `const` means the variable always holds **the same array**. You can still put things in and take things out of that array, just as a labelled box can be repacked without changing its label.
+
+## Your turn
+
+1. Add `"Free State"` to the end of `provinces`
+2. Put the **first** province in `first`
+3. Put the **number** of provinces in `count`

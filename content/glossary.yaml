@@ -393,3 +393,95 @@
   term: Pixel
   definition: One tiny dot of light on a screen. CSS measures many sizes in pixels, written px.
   example: "padding: 16px; leaves 16 dots of space."
+
+# ---------- Trail 4: JavaScript and TypeScript ----------
+
+- id: value
+  term: Value
+  definition: A single piece of information a program works with, such as a number, some text, or true or false.
+  example: 42, "Durban" and true are all values.
+
+- id: string
+  term: String
+  definition: A piece of text in code, written inside quote marks. The name comes from a "string" of letters, one after another.
+  example: '"Sawubona" is a string.'
+
+- id: number
+  term: Number
+  definition: In JavaScript, any numeric value, whole or with a decimal point. You can do maths with numbers.
+  example: 350 and 0.15 are numbers.
+
+- id: boolean
+  term: Boolean
+  definition: A value that can only be true or false. It's the answer to a yes-or-no question.
+  example: 5 > 3 gives the boolean true.
+
+- id: operator
+  term: Operator
+  definition: A symbol that does something to values, like + to add, * to multiply or === to compare.
+  example: In price * 2, the * is an operator.
+
+- id: condition
+  term: Condition
+  definition: A question in code whose answer is true or false. if statements use conditions to decide what to do.
+  example: age >= 18 is a condition.
+
+- id: array
+  term: Array
+  definition: A list of values in a fixed order, written in square brackets. Each item has a numbered position, starting from 0.
+  example: '["Gauteng", "Limpopo", "Free State"] is an array of three strings.'
+
+- id: index
+  term: Index
+  definition: An item's position number in an array. The first item is at index 0, not 1.
+  example: In ["a", "b", "c"], "b" is at index 1.
+
+- id: object
+  term: Object
+  definition: A group of related values stored together, each with a name (called a property). Written in curly brackets.
+  example: '{ name: "Thandi", xp: 120 } is an object with two properties.'
+
+- id: property
+  term: Property
+  definition: One named value inside an object. You read it with a dot, like learner.name.
+  example: 'In { name: "Thandi" }, name is a property.'
+
+- id: parameter
+  term: Parameter
+  definition: A named input a function expects. When you call the function, the value you pass in fills the parameter.
+  example: In function greet(name), name is a parameter.
+
+- id: return-value
+  term: Return value
+  definition: The answer a function hands back with the return keyword, so the code that called it can use it.
+  example: add(2, 3) returns 5.
+
+- id: dom
+  term: DOM
+  definition: Short for Document Object Model. The browser's live version of a page, which JavaScript can read and change.
+  example: Changing a heading's text with JavaScript changes the DOM, and the page updates.
+
+- id: event
+  term: Event
+  definition: Something that happens on a page, such as a click, a key press or a form being sent. JavaScript can react to events.
+  example: Tapping a button fires a "click" event.
+
+- id: async
+  term: Async
+  definition: Short for asynchronous. Code that starts something slow, like downloading, and carries on with the answer later instead of freezing while it waits.
+  example: await fetch("/api/weather") waits for the weather to arrive without freezing the page.
+
+- id: typescript
+  term: TypeScript
+  definition: JavaScript with type labels added, such as "this must be a number". A checker reads the labels and warns you about mistakes before the code runs.
+  example: Stack Quest itself is written in TypeScript.
+
+- id: type
+  term: Type
+  definition: The kind of value something is, such as a number, a string or a boolean. In TypeScript you can label what type a value must be.
+  example: 'let age: number = 30;'
+
+- id: type-error
+  term: Type error
+  definition: A warning from TypeScript that a value is the wrong kind for where it's used, found before the code even runs.
+  example: Passing the text "ten" to a function that needs a number.

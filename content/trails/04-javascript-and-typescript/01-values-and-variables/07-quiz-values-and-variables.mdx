@@ -1,0 +1,63 @@
+---
+id: quiz-values-and-variables
+title: Check your understanding
+type: quiz
+minutes: 5
+xp: 15
+goals:
+  - Recall variables, numbers, strings and booleans.
+questions:
+  - prompt: You're storing a learner's streak, which goes up every day. Which line is best?
+    options:
+      - text: let streak = 0;
+        correct: true
+        why: The streak will change, so it needs let.
+      - text: const streak = 0;
+        why: A const can't change, so adding to the streak later would crash with "Assignment to constant variable".
+      - text: streak = 0;
+        why: This skips let or const. Always create a variable with one of them first.
+  - prompt: What does this print?
+    code: console.log("5" + 3);
+    language: javascript
+    options:
+      - text: "53"
+        correct: true
+        why: '"5" is a string, so + joins instead of adding. The 3 is stuck on the end, like letters.'
+      - text: "8"
+        why: That would be 5 + 3, with no quote marks. With a string involved, + joins text.
+      - text: An error
+        why: JavaScript happily joins a string and a number. It's a common surprise, not an error.
+  - prompt: Which variable name follows the camelCase convention?
+    options:
+      - text: totalPrice
+        correct: true
+        why: Starts lowercase, and each new word starts with a capital.
+      - text: total price
+        why: Names can't contain spaces.
+      - text: 2ndPrice
+        why: Names can't start with a number.
+  - prompt: What does this print?
+    code: |
+      const town = "Kimberley";
+      console.log(`Welcome to ${town}`);
+    language: javascript
+    options:
+      - text: Welcome to Kimberley
+        correct: true
+        why: Inside backticks, ${town} is replaced with the value of town.
+      - text: Welcome to ${town}
+        why: That would happen with normal quote marks. With backticks, the ${} part is filled in.
+      - text: Welcome to town
+        why: ${town} uses what's IN the variable, not its name.
+  - prompt: Which comparison is true?
+    options:
+      - text: 10 >= 10
+        correct: true
+        why: ">= means greater than or equal to, and 10 is equal to 10."
+      - text: 10 > 10
+        why: 10 isn't greater than itself.
+      - text: 10 === "10"
+        why: === checks the type too. A number isn't the same as a string.
+---
+
+Five questions on values and variables.

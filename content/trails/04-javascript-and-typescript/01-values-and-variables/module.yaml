@@ -1,0 +1,11 @@
+id: values-and-variables
+title: Values and Variables
+summary: Write your first real JavaScript. Store numbers, text and true-or-false answers in variables, and do maths with them.
+goals:
+  - Print messages with console.log.
+  - Store and change values with let and const.
+  - Do maths with numbers and join text with strings.
+  - Compare values and get true or false.
+badge:
+  name: Value Keeper
+  emoji: 📦
