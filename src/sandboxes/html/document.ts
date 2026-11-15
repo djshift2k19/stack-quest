@@ -26,10 +26,16 @@ document.addEventListener("submit", function (e) { e.preventDefault(); });
 function testScript(tests: Pick<ChallengeTest, "name" | "code">[], runId: number) {
   return `<script>
 window.addEventListener("load", function () {
-  var rt = ${scriptSafe(JS_RUNTIME_SOURCE)};
-  rt.run({ code: "", tests: ${scriptSafe(JSON.stringify(tests))} }).then(function (result) {
-    window.parent.postMessage({ kind: "html-result", id: ${runId}, result: result }, "*");
-  });
+  // Wait (up to 1 second) until the frame has a real width, so layout and
+  // media-query checks measure the page at its proper size.
+  var waited = 0;
+  (function whenSized() {
+    if (window.innerWidth === 0 && waited < 1000) { waited += 20; setTimeout(whenSized, 20); return; }
+    var rt = ${scriptSafe(JS_RUNTIME_SOURCE)};
+    rt.run({ code: "", tests: ${scriptSafe(JSON.stringify(tests))} }).then(function (result) {
+      window.parent.postMessage({ kind: "html-result", id: ${runId}, result: result }, "*");
+    });
+  })();
 });
 </script>`;
 }

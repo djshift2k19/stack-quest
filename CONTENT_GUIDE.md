@@ -176,7 +176,7 @@ terminal:
 
 Task checks (all the ones you list must be true): `ran` (a command name like `git status`, or an exact line like `ls Documents`; only commands that **succeed** count), `cwd`, `exists`, `missing`, `fileContains: { path, text }`, `gitRepo`, `gitCommits: { repo, atLeast }` and `gitStaged: { repo, paths }`. Supported commands: `help pwd ls cd mkdir touch cat echo (> and >>) rm mv cp clear history whoami code open git (init status add commit log)`.
 
-**Every challenge is tested automatically** (`tests/content-solutions.test.ts`): each solution must pass its own tests, and each starter must not. For terminal units, each task's `solution` commands must succeed and complete it, and no task may already be complete before it starts. Run `npm test` after writing one.
+**Every challenge is tested automatically** (`tests/content-solutions.test.ts`): each solution must pass its own tests, and each starter must not. For terminal units, each task's `solution` commands must succeed and complete it, and no task may already be complete before it starts. HTML and CSS challenges need a real browser, so they're checked by `tests/e2e/html-css-solutions.spec.ts` instead, in an 800px-wide preview (so media queries with `min-width` up to 800px apply). Run `npm test` after writing a JavaScript, SQL or terminal exercise, and `npx playwright test tests/e2e/html-css-solutions.spec.ts` after an HTML or CSS one.
 
 ### Building blocks you can use
 

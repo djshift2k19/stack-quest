@@ -38,7 +38,11 @@ export function runHtmlTests(input: Omit<PreviewInput, "runId">, timeoutMs = 400
       if (event.data?.kind === "html-result" && event.data.id === id) finish(event.data.result as RunResult);
     }
     window.addEventListener("message", onMessage);
-    iframe.srcdoc = buildPreviewDocument({ ...input, tests, runId: id });
+    // Attach the frame and let it get its 800 x 600 size BEFORE loading the
+    // page. Otherwise, on a busy device, the checks can run while the frame
+    // is still 0 pixels wide, so layouts and media queries measure wrongly.
     document.body.appendChild(iframe);
+    void iframe.offsetWidth;
+    iframe.srcdoc = buildPreviewDocument({ ...input, tests, runId: id });
   });
 }
